@@ -1,6 +1,6 @@
 public class VendingMachine {
     private 
-//test
+//test2
     public VendingMachine(){
 
     }
