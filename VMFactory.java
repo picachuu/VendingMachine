@@ -6,6 +6,7 @@ public class VMFactory {
         //Main Menu
         Scanner sc = new Scanner(System.in);
         boolean willLoop = false;
+        boolean vmExists = false;
 
         do{
             System.out.println("\n----------Main Menu----------");
@@ -30,10 +31,21 @@ public class VMFactory {
                                 isValid = true;
                                 RegularVM vm = new RegularVM();
                                 System.out.println("\nRegular Vending Machine successfully created!\n");
+                                vmExists = true;
                                 break;
                             case 2:
                                 isValid = true;
-                                System.out.println("Sorry! This feature is not yet available.\n");
+                                if (!vmExists)
+                                    System.out.println("Sorry! There is no vending machine to test.\n");
+                                else 
+                                    System.out.println("\n----------Test----------");
+                                    System.out.println("[1] Regular Vending Machine");
+                                    System.out.println("[2] Special Vending Maachine");
+                                    System.out.print("Input: ");
+                                    int nTestChoice = sc.nextInt();
+                                    switch(nTestChoice) {
+                                        case 1:
+
                                 break;
                             default:
                                 System.out.println("\nSorry, that is not option. Please re-enter input:");
