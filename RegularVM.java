@@ -1,21 +1,22 @@
 import java.util.ArrayList;
 
 public class RegularVM {
-    private ArrayList<Item> Slot;
+    private ArrayList<Item> slot;
 
     public RegularVM(){
-        Slot = new ArrayList<>();
+        slot = new ArrayList<>();
     }
 
     public void displayItems(){
-        System.out.printf("%23s", "Items");
+        System.out.printf("%21s", "Items\n");
         System.out.println("-------------------------------------");
-        System.out.printf("\n%10s%22s", "Name", "Price");
+        System.out.printf("%10s%22s", "Name", "Price\n");
         System.out.println("-------------------------------------");
-        for (int i = 1; i < Slot.size(); i++)
+        for (int i = 1; i < slot.size(); i++)
         {
-            System.out.printf("%d.) %-17s%10f", i, Item.getName(), Item.getPrice());
-
+            String name = slot.get(i).getName();
+            //System.out.println(Item.getName());
+            System.out.printf("%d.) %-17s%10f₱", i, slot.get(i).getName(), slot.get(i).getPrice());
         }
 
 
