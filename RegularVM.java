@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class RegularVM {
     private ArrayList<Item> slot;
+    private int totalIncome;
     
     public RegularVM(){
         Item Pepperoni = new Item("Pepperoni", 53, 136, 10);
@@ -47,4 +48,8 @@ public class RegularVM {
         sc.close();
     }
     
+    public void collectIncome()
+    {
+        totalIncome =0;
+    }
 }
