@@ -29,17 +29,17 @@ public class VMFactory {
                             case 1:
                                 isValid = true;
                                 RegularVM vm = new RegularVM();
-                                vm.displayItems();
-                                String buff = sc.next();
+                                System.out.println("\nRegular Vending Machine successfully created!\n");
                                 break;
                             case 2:
+                                isValid = true;
                                 System.out.println("Sorry! This feature is not yet available.\n");
                                 break;
                             default:
-                                System.out.println("Sorry, that is not option. Please re-enter input:");
+                                System.out.println("\nSorry, that is not option. Please re-enter input:");
                         }
                     }while (!isValid);
-                    System.out.print("\033[H\033[2J");
+                    //System.out.print("\033[H\033[2J");
                     break;
                 case 2:
                     System.out.println("Sorry! This feature is not yet available.\n");

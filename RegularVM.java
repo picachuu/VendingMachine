@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class RegularVM {
     private ArrayList<Item> slot;
@@ -36,6 +37,14 @@ public class RegularVM {
         }
     }
 
-   
+    public void setPrice(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter index: ");
+        int index = sc.nextInt();
+        System.out.println("Enter price: ");
+        double newPrice = sc.nextDouble();
+        slot.get(index).changePrice(newPrice);
+        sc.close();
+    }
     
 }
