@@ -18,7 +18,7 @@ public class VMFactory {
                 case 1:
                     System.out.print("\033[H\033[2J");
                     boolean isValid = false;
-                    
+
                     do{
                         System.out.println("\n----------Create----------");
                         System.out.println("[1] Regular Vending Machine");
