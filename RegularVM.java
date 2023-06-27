@@ -36,9 +36,6 @@ public class RegularVM {
         }
     }
 
-    public void collectPayment()
-    {
-        totalIncome = 0;
-    }
+   
     
 }
