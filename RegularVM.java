@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class RegularVM {
     private ArrayList<Item> slot;
-
+    private int totalIncome;
     public RegularVM(){
         Item Pepperoni = new Item("Pepperoni", 53, 136, 10);
         Item Ham = new Item("Ham", 69, 40, 10);
@@ -36,6 +36,9 @@ public class RegularVM {
         }
     }
 
-
+    public void collectPayment()
+    {
+        totalIncome = 0;
+    }
     
 }
