@@ -18,7 +18,10 @@ public class VMFactory {
                 case 1:
                     //isValid = true;
                     System.out.print("\033[H\033[2J");
+                    //test purposes
+                    RegularVM vm = new RegularVM();
                     System.out.println("Create Screen");
+                    vm.displayItems();
                     String buff = sc.next();
                     System.out.print("\033[H\033[2J");
                     break;
