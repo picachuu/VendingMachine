@@ -85,12 +85,6 @@ public class RegularVM {
                 System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 slot.get(selOrder).removeStock(1);
                 balance -= slot.get(selOrder).getPrice();
-
-                //test
-                //money.subtract(slot.get(selOrder).getPrice());
-                //System.out.println("Test purposes: \n500: " + money.getFiveHundred() + " \n100: " + money.getOneHundred() + " \n50: " + money.getFifty()
-                //+ " \n20: " + money.getTwenty() + " \n10: " + money.getTen() + " \n5: " + money.getFive() + " \n1: " + money.getOne());
-
                 System.out.printf("Thank you for your purchase!\n\n", balance);
             }
             else{
