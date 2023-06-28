@@ -103,5 +103,11 @@ public class Money {
 
     public void flush(){
         this.fiveHundred = 0;
+        this.oneHundred  = 0;
+        this.fifty = 0;
+        this.twenty = 0;
+        this.ten = 0;
+        this.five = 0;
+        this.one  = 0;
     }
 }

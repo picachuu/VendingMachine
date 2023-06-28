@@ -6,7 +6,7 @@ public class VMFactory {
         Scanner sc = new Scanner(System.in);
         boolean willLoop = false;
         boolean vmExists = false;
-
+        
         do{
             System.out.println("\n----------Main Menu----------");
             System.out.println("[1] Create a Vending Machine");
