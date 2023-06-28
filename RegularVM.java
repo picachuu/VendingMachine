@@ -1,10 +1,14 @@
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class RegularVM {
     private ArrayList<Item> slot;
     private double balance;
     private double totalIncome;
+    private double balance; //customes money
+    Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();
     private Money money;
     
     public RegularVM(){
@@ -114,5 +118,12 @@ public class RegularVM {
 
     public double getBalance(){
         return this.balance;
+    }
+
+    public void recordStock()
+    {
+        for (int i=0; i<slot.size(); i++) {
+        stockRecordMap.put(slot.get(i).getName(), slot.get(i).getStock());
+    }
     }
 }
