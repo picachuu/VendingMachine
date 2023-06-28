@@ -69,7 +69,7 @@ public class RegularVM {
         for (int i = 0; i < slot.size(); i++)
         {
             if (slot.get(i).getStock() > 0)
-                System.out.printf("%d.) %-17s%6s%.2f%13.1f\n", i+1, slot.get(i).getName(), "P", slot.get(i).getPrice(), slot.get(i).getCalories());
+                System.out.printf("%d.) %-17s%6s%5.2f%13.1f\n", i+1, slot.get(i).getName(), "P", slot.get(i).getPrice(), slot.get(i).getCalories());
             else
                 System.out.printf("%d.) %-25sNOT AVAILABLE\n", i+1, slot.get(i).getName());
         }
@@ -131,15 +131,10 @@ public class RegularVM {
             System.out.printf("\nRestock amount exceeds slot capacity (20)\n\n");
     }
 
-    public void setPrice(){
-        Scanner sc = new Scanner(System.in);
-        maintDisplayItems();
-        System.out.println("Please enter item number: ");
-        int index = sc.nextInt() - 1;
-        System.out.println("Please enter new price: ");
-        double newPrice = sc.nextDouble();
+    public void setPrice(int index, double newPrice){
         slot.get(index).changePrice(newPrice);
-        sc.close();
+        System.out.print("\033[H\033[2J");
+        System.out.printf("Price of: %s has been changed to %.2f\n\n", slot.get(index).getName(), newPrice);
     }
     
     public void collectIncome()
