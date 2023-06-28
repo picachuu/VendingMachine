@@ -14,7 +14,7 @@ public class RegularVM {
         Item Parmesan = new Item("Parmesan", 50, 42, 10);
         Item Jalapenos = new Item("Jalapenos", 45, 12.3, 10);
         Item Mushroom = new Item("Mushroom", 43, 10.2, 10);
-        Item Olives = new Item("Olives", 37, 13.2, 10);
+        Item Olives = new Item("Olives", 37, 13.2, 0);
         slot = new ArrayList<>();
         slot.add(Pepperoni);
         slot.add(Ham);
@@ -27,25 +27,26 @@ public class RegularVM {
         slot.add(Olives);
     }
 
-    public void displayItems(){//add calories
-        System.out.printf("%21s", "Items\n");
-        System.out.println("-------------------------------------");
-        System.out.printf("%10s%22s", "Name", "Price\n");
-        System.out.println("-------------------------------------");
+    public void displayItems(){
+        System.out.printf("%27s", "Items\n");
+        System.out.println("-----------------------------------------------");
+        System.out.printf("%10s%22s%16s", "Name", "Price", "Calories\n");
+        System.out.println("-----------------------------------------------");
         for (int i = 0; i < slot.size(); i++)
         {
             if (slot.get(i).getStock() > 0)
-                System.out.printf("%d.) %-17s%10.2fP\n", i+1, slot.get(i).getName(), slot.get(i).getPrice());
+                System.out.printf("%d.) %-17s%6s%.2f%13.1f\n", i+1, slot.get(i).getName(), "P", slot.get(i).getPrice(), slot.get(i).getCalories());
             else
-                System.out.printf("%d.) %-17sNOT AVAILABLE\n", i+1, slot.get(i).getName());
+                System.out.printf("%d.) %-25sNOT AVAILABLE\n", i+1, slot.get(i).getName());
         }
     }
 
     public void setPrice(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter index: ");
-        int index = sc.nextInt();
-        System.out.println("Enter price: ");
+        displayItems();
+        System.out.println("Please enter item number: ");
+        int index = sc.nextInt() - 1;
+        System.out.println("Please enter new price: ");
         double newPrice = sc.nextDouble();
         slot.get(index).changePrice(newPrice);
         sc.close();

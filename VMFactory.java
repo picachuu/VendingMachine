@@ -29,8 +29,7 @@ public class VMFactory {
                         int nCreateChoice = sc.nextInt();
                         switch(nCreateChoice) {
                             case 1:
-                                isValid = true;
-                                RegularVM vm = new RegularVM();
+                                isValid = true;                                
                                 System.out.println("\nRegular Vending Machine successfully created!\n");
                                 vmExists = true;
                                 break;
@@ -53,9 +52,11 @@ public class VMFactory {
                     }
                     else 
                     {
+                        RegularVM vm = new RegularVM();
                         System.out.print("\033[H\033[2J");
                         boolean isValid2 = false;
                         do{
+                            System.out.print("\033[H\033[2J");
                             System.out.println("\n----------Test----------");
                             System.out.println("[1] Insert Payment");
                             System.out.println("[2] Order Item");
@@ -72,7 +73,9 @@ public class VMFactory {
                                 case 2:
                                     System.out.print("\033[H\033[2J");
                                     System.out.println("2");
-                                    String buff2 = sc.nextLine();
+                                    vm.displayItems();
+                                    System.out.println("\nPlease enter item number: ");
+                                    int order = sc.nextInt() - 1;
                                     break;
                                 case 3:
                                     System.out.print("\033[H\033[2J");
