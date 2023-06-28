@@ -134,8 +134,27 @@ public class VMFactory {
                                         int nMainChoice = sc.nextInt();
                                         switch(nMainChoice){
                                             case 1:
-                                                System.out.println("1");
-                                                String buff = sc.nextLine();
+                                                boolean looper = true;
+                                                int index;
+                                                int choice;
+                                                do{
+                                                vm.maintDisplayItems();
+                                                do{
+                                                System.out.println("Please enter item number (Enter 10 to cancel): ");
+                                                choice = sc.nextInt();
+                                                if (choice > 10)
+                                                    System.out.println("Please enter item a number between 1-10!\n");
+                                                } while(choice > 10);
+                                                if (choice != 10)
+                                                {
+                                                    index = choice - 1 ;
+                                                    System.out.println("Please enter amount to restock: ");
+                                                    int toRestock = sc.nextInt();
+                                                    vm.restockItem(index, toRestock);
+                                                }
+                                                else
+                                                    looper = false;
+                                                }while (looper);
                                                 break;
                                             case 2:
                                                 System.out.println("2");
