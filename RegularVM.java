@@ -1,10 +1,13 @@
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class RegularVM {
     private ArrayList<Item> slot;
     private double totalIncome;
     private double balance; //customes money
+    Map<String,Integer> map = new LinkedHashMap<String,Integer>();
     
     public RegularVM(){
         Item Pepperoni = new Item("Pepperoni", 53, 136, 10);
@@ -107,5 +110,12 @@ public class RegularVM {
 
     public double getBalance(){
         return this.balance;
+    }
+
+    public void recordStock()
+    {
+        for (int i=0; i<slot.size(); i++) {
+        map.put(slot.get(i).getName(), slot.get(i).getStock());    // is there a clearer way?
+    }
     }
 }
