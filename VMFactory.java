@@ -71,7 +71,7 @@ public class VMFactory {
                                     System.out.print("\033[H\033[2J");
                                     boolean willLoop4 = false;
                                     do{                        
-                                        //System.out.printf("Current Balance: P%.2f\n", vm.Money.getTotalBalance());
+                                        System.out.printf("Current Balance: P%.2f\n", vm.getBalance());
                                         System.out.println("\n-------Vending Features-------");
                                         System.out.println("[1] Insert Payment");
                                         System.out.println("[2] Order Item");
@@ -122,7 +122,7 @@ public class VMFactory {
                                     System.out.print("\033[H\033[2J");
                                     boolean willLoop6 = false;
                                     do{
-                                        //System.out.printf("Current Balance: P%.2f\n", vm.getBalance());
+                                        System.out.printf("Current Balance: P%.2f\n", vm.getBalance());
                                         System.out.println("\n-------Maintenance Features-------");
                                         System.out.println("[1] Restock Item");
                                         System.out.println("[2] Set Price");
