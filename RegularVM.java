@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class RegularVM {
     private ArrayList<Item> slot;
     private double totalIncome;
-    private double balance; //customes money
+    private double balance; //customer money
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();
     
     public RegularVM(){
