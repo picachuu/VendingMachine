@@ -27,6 +27,11 @@ public class RegularVM {
         slot.add(Olives);
     }
 
+    //Vending Features
+    public void insertPayment(){
+
+    }
+
     public void displayItems(){
         System.out.printf("%27s", "Items\n");
         System.out.println("-----------------------------------------------");
@@ -39,6 +44,36 @@ public class RegularVM {
             else
                 System.out.printf("%d.) %-25sNOT AVAILABLE\n", i+1, slot.get(i).getName());
         }
+    }
+
+    public void orderItem(int selOrder) {
+        //if available
+        if(slot.get(selOrder).getStock() > 0)
+            //if enough money
+            if(totalIncome >= slot.get(selOrder).getPrice()){
+                System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
+                slot.get(selOrder).removeStock(1);
+                totalIncome -= slot.get(selOrder).getPrice();
+                System.out.printf("\nThank you for your purchase! Your remaining balance is P%.2f", totalIncome);
+            }
+            else{
+                System.out.print("\033[H\033[2J");
+                System.out.println("\n!: Sorry, you do not have enough balance.\n"); 
+            }
+        else
+        {
+            System.out.print("\033[H\033[2J");
+            System.out.println("\n!: Sorry, that item is out of stock.\n");
+        } 
+    }
+    
+    public void receiveChange(){
+
+    }
+
+    //Maintenance Features
+    public void restockItem(){
+
     }
 
     public void setPrice(){
@@ -57,14 +92,14 @@ public class RegularVM {
         totalIncome = 0;
     }
 
-    public void orderItem() {
+    public void replenishMoney(){
 
     }
 
-    public void keepRecord()
-    {
-        
+
     }
 
-
+    public double getTotalIncome(){
+        return this.totalIncome;
+    }
 }
