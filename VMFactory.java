@@ -35,14 +35,15 @@ public class VMFactory {
                                 break;
                             case 2:
                                 System.out.print("\033[H\033[2J");
-                                System.out.println("\nSorry! This feature is not yet available.");
+                                System.out.println("\n!: Sorry! This feature is not yet available.");
                                 break;
                             case 3:
                                 willLoop2 = true;
                                 System.out.print("\033[H\033[2J");
                                 break;
                             default:
-                                System.out.println("\nSorry, that is not option. Please re-enter input.");
+                                System.out.print("\033[H\033[2J");
+                                System.out.println("\n!: Sorry, that is not option.");
                         }
                     }while (!willLoop2);
                     break;
@@ -50,7 +51,7 @@ public class VMFactory {
                     if (!vmExists)
                     {
                         System.out.print("\033[H\033[2J");
-                        System.out.println("\nSorry! There is no vending machine to test.");
+                        System.out.println("\n!: Sorry! There is no vending machine to test.");
                     }
                     else 
                     {
@@ -97,7 +98,8 @@ public class VMFactory {
                                                         vm.orderItem(selOrder);
                                                     }   
                                                     else
-                                                        System.out.print("\nSorry, that is not an option. Please re-select: ");
+                                                        System.out.print("\033[H\033[2J");
+                                                        System.out.println("\n!: Sorry, that is not option.");
                                                 }while(!willLoop5);
                                                 break;
                                             case 3:
@@ -110,13 +112,56 @@ public class VMFactory {
                                                 System.out.print("\033[H\033[2J");
                                                 break;
                                             default: 
-                                                System.out.println("\nSorry, that is not option. Please re-enter input:");
+                                                System.out.print("\033[H\033[2J");
+                                                System.out.println("\n!: Sorry, that is not option.");
                                         }
                                         
                                     }while(!willLoop4);
                                     break;
                                 case 2:
                                     System.out.print("\033[H\033[2J");
+                                    boolean willLoop6 = false;
+                                    do{
+                                        System.out.printf("Current Balance: P%.2f\n", vm.getTotalIncome());
+                                        System.out.println("\n-------Maintenance Features-------");
+                                        System.out.println("[1] Restock Item");
+                                        System.out.println("[2] Set Price");
+                                        System.out.println("[3] Collect Payment");
+                                        System.out.println("[4] Replenish Money");
+                                        System.out.println("[5] Print Summary of Transactions");
+                                        System.out.println("[6] Return to Main Menu");
+                                        System.out.print("Input: ");
+                                        int nMainChoice = sc.nextInt();
+                                        switch(nMainChoice){
+                                            case 1:
+                                                System.out.println("1");
+                                                String buff = sc.nextLine();
+                                                break;
+                                            case 2:
+                                                System.out.println("2");
+                                                String buff2 = sc.nextLine();
+                                                break;
+                                            case 3:
+                                                System.out.println("3");
+                                                String buff3 = sc.nextLine();
+                                                break;
+                                            case 4:
+                                                System.out.println("4");
+                                                String buff4 = sc.nextLine();
+                                                break;
+                                            case 5:
+                                                System.out.println("5");
+                                                String buff6 = sc.nextLine();
+                                                break;
+                                            case 6:
+                                                willLoop6 = true;
+                                                System.out.print("\033[H\033[2J");
+                                                break;
+                                            default:
+                                                System.out.print("\033[H\033[2J");
+                                                System.out.println("\n!: Sorry, that is not option.");
+                                        }
+                                    }while(!willLoop6);
                                     System.out.println("2");
                                     String buff5 = sc.nextLine();
                                     break;
@@ -125,7 +170,8 @@ public class VMFactory {
                                     System.out.print("\033[H\033[2J");
                                     break;
                                 default: 
-                                    System.out.println("\nSorry, that is not option. Please re-enter input:");
+                                    System.out.print("\033[H\033[2J");
+                                    System.out.println("\n!: Sorry, that is not option.");
                             }
                             
                         }while(!willLoop3);
@@ -136,7 +182,8 @@ public class VMFactory {
                     willLoop = true;
                     break;
                 default:
-                    System.out.println("\nSorry, that is not option. Please re-enter input:");
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("\n!: Sorry, that is not option.");
                 }
         } while (!willLoop);
         sc.close();
