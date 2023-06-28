@@ -99,7 +99,7 @@ public class RegularVM {
 
     public void printSummary(){
 
-    }
+    
 
     public double getTotalIncome(){
         return this.totalIncome;
