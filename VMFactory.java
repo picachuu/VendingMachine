@@ -177,12 +177,22 @@ public class VMFactory {
                                                 vm.recordStock();
                                                 break;
                                             case 2:
-                                                System.out.println("2");
-                                                String buff2 = sc.nextLine();
+                                                vm.maintDisplayItems();
+                                                System.out.println("Please enter item number: ");
+                                                int index2 = sc.nextInt() - 1;
+                                                double newPrice;
+                                                do{
+                                                System.out.println("Please enter new price: ");
+                                                newPrice = sc.nextDouble();
+                                                if (newPrice % 1 == 0)
+                                                    vm.setPrice(index2, newPrice);
+                                                else
+                                                    System.out.println("\nThis machine does not take centavos\n");
+                                                }while(newPrice%1!=0);
+                                                // System.out.println("2");
+                                                // String buff2 = sc.nextLine();
                                                 break;
                                             case 3:
-                                                vm.collectIncome();
-                                                System.out.println("\n\nIncome has been Collected! \n");
                                                 // System.out.println("3");
                                                 // String buff3 = sc.nextLine();
                                                 break;
