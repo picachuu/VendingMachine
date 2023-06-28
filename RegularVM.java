@@ -82,13 +82,29 @@ public class RegularVM {
     }
 
     //Maintenance Features
-    public void restockItem(){
+    public void maintDisplayItems(){
+        System.out.printf("%27s", "Items\n");
+        System.out.println("-----------------------------------------------");
+        System.out.printf("%10s%22s%16s", "Name", "Price", "Stock\n");
+        System.out.println("-----------------------------------------------");
+        for (int i = 0; i < slot.size(); i++)
+        {
+            System.out.printf("%d.) %-17s%6s%.2f%13d\n", i+1, slot.get(i).getName(), "P",slot.get(i).getPrice(), slot.get(i).getStock());
+        }
+    }
+    public void restockItem(int index, int amount){
 
+        if (slot.get(index).addStock(amount))
+        {
+            System.out.printf("\n Item: %s has been restocked by: %d successfully.\n", slot.get(index).getName(), amount);
+        }
+        else
+            System.out.printf("Restock amount exceeds slot capacity (20)");
     }
 
     public void setPrice(){
         Scanner sc = new Scanner(System.in);
-        displayItems();
+        maintDisplayItems();
         System.out.println("Please enter item number: ");
         int index = sc.nextInt() - 1;
         System.out.println("Please enter new price: ");

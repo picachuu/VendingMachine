@@ -26,7 +26,7 @@ public class Item {
     public boolean addStock(int addtoStock)
     {
         boolean check = true;
-        if (this.stock + addtoStock > 20)
+        if (this.stock + addtoStock <= 20)
             this.stock += addtoStock;
         else
             check = false;
