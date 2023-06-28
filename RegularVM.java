@@ -52,6 +52,7 @@ public class RegularVM {
         if(slot.get(selOrder).getStock() > 0)
             //if enough money
             if(balance >= slot.get(selOrder).getPrice()){
+                System.out.print("\033[H\033[2J");
                 System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 slot.get(selOrder).removeStock(1);
                 balance -= slot.get(selOrder).getPrice();
