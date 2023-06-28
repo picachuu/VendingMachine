@@ -27,7 +27,7 @@ public class RegularVM {
         slot.add(Olives);
     }
 
-    public void displayItems(){
+    public void displayItems(){//add calories
         System.out.printf("%21s", "Items\n");
         System.out.println("-------------------------------------");
         System.out.printf("%10s%22s", "Name", "Price\n");

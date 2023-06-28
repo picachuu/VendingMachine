@@ -24,6 +24,7 @@ public class VMFactory {
                         System.out.println("\n----------Create----------");
                         System.out.println("[1] Regular Vending Machine");
                         System.out.println("[2] Special Vending Maachine");
+                        System.out.println("[3] Return to Main Menu");
                         System.out.print("Input: ");
                         int nCreateChoice = sc.nextInt();
                         switch(nCreateChoice) {
@@ -34,34 +35,66 @@ public class VMFactory {
                                 vmExists = true;
                                 break;
                             case 2:
+                                System.out.println("\nSorry! This feature is not yet available.");
+                                break;
+                            case 3:
                                 isValid = true;
-                                if (!vmExists)
-                                    System.out.println("Sorry! There is no vending machine to test.\n");
-                                else 
-                                    System.out.println("\n----------Test----------");
-                                    System.out.println("[1] Regular Vending Machine");
-                                    System.out.println("[2] Special Vending Maachine");
-                                    System.out.print("Input: ");
-                                    int nTestChoice = sc.nextInt();
-                                    switch(nTestChoice) {
-                                        case 1:
-
                                 break;
                             default:
-                                System.out.println("\nSorry, that is not option. Please re-enter input:");
+                                System.out.println("\nSorry, that is not option. Please re-enter input.");
                         }
                     }while (!isValid);
-                    //System.out.print("\033[H\033[2J");
                     break;
                 case 2:
-                    System.out.println("Sorry! This feature is not yet available.\n");
+                    if (!vmExists)
+                    {
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("\nSorry! There is no vending machine to test.");
+                    }
+                    else 
+                    {
+                        System.out.print("\033[H\033[2J");
+                        boolean isValid2 = false;
+                        do{
+                            System.out.println("\n----------Test----------");
+                            System.out.println("[1] Insert Payment");
+                            System.out.println("[2] Order Item");
+                            System.out.println("[3] Receive Change");//when no change return money
+                            System.out.println("[4] Return to Main Menu");
+                            System.out.print("Input: ");
+                            int nTestChoice = sc.nextInt();
+                            switch(nTestChoice) {
+                                case 1:
+                                    System.out.print("\033[H\033[2J");
+                                    System.out.println("1");
+                                    String buff = sc.nextLine();
+                                    break;
+                                case 2:
+                                    System.out.print("\033[H\033[2J");
+                                    System.out.println("2");
+                                    String buff2 = sc.nextLine();
+                                    break;
+                                case 3:
+                                    System.out.print("\033[H\033[2J");
+                                    System.out.println("3");
+                                    String buff3 = sc.nextLine();
+                                    break;
+                                case 4:
+                                    isValid2 = true;
+                                    System.out.print("\033[H\033[2J");
+                                    break;
+                                default: 
+                                    System.out.println("\nSorry, that is not option. Please re-enter input:");
+                            }
+                        }while(!isValid2);
+                    }
                     break;
                 case 3:
                     System.out.println("\nThank you! Have a good day!");
                     willLoop = true;
                     break;
                 default:
-                    System.out.println("Sorry, that is not option. Please re-enter input:");
+                    System.out.println("\nSorry, that is not option. Please re-enter input:");
                 }
         } while (!willLoop);
         sc.close();
