@@ -79,7 +79,7 @@ public class Money {
         this.one -= amt % 500 % 100 % 50 % 20 % 10 % 5;
     }
 /*
-    public double getTotalBalance() {
+    public double getIncome() {
         return 1 * one + 5 * five + 10 * ten + 20 * twenty + 50 * fifty + 100 * oneHundred + 500 *fiveHundred;
     }
     */
