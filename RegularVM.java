@@ -139,12 +139,13 @@ public class RegularVM {
     
     public void collectIncome()
     {
-
+        //System.out.println("")
         money.flush();
         totalIncome = 0;
     }
 
-    public void replenishMoney(int val, int amt, int value){
+    public void replenishMoney(int val, int amt){
+        int value = 0;
         switch(val){
             case 1:
                 money.addFiveHundred(amt);
@@ -175,6 +176,8 @@ public class RegularVM {
                 value = 1;
                 break;
         }
+        System.out.printf("\nSuccessfully added %d P%d bills/coins.\n", amt, value);                                                        
+
     }
 
     public void viewDenominations(){

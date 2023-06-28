@@ -188,8 +188,6 @@ public class VMFactory {
                                                 else
                                                     System.out.println("\nThis machine does not take centavos\n");
                                                 }while(newPrice%1!=0);
-                                                // System.out.println("2");
-                                                // String buff2 = sc.nextLine();
                                                 break;
                                             case 3:
                                                 // System.out.println("3");
@@ -216,12 +214,10 @@ public class VMFactory {
                                                         //willLoop7 = false;
                                                         System.out.print("\nHow many bills/coins?: ");
                                                         int nAmt = sc.nextInt();
-                                                        int value = 0;
-                                                        vm.replenishMoney(nVal, nAmt, value);
-                                                        //System.out.print("\033[H\033[2J");
-                                                        System.out.printf("\nSuccessfully added %d P%d bills/coins.\n", nAmt, value);                                                        
+                                                        vm.replenishMoney(nVal, nAmt);
                                                     }
                                                     else if(nVal == 8){
+                                                        System.out.print("\033[H\033[2J");
                                                         willLoop7 = false;
                                                         willLoop8 = false;
                                                     }
@@ -236,8 +232,6 @@ public class VMFactory {
                                                 break;
                                             case 6:
                                                 vm.printSummary();
-                                                // System.out.println("5");
-                                                // String buff6 = sc.nextLine();
                                                 break;
                                             case 7:
                                                 willLoop6 = true;
