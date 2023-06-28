@@ -156,6 +156,7 @@ public class VMFactory {
                                                 boolean looper = true;
                                                 int index;
                                                 int choice;
+                                                vm.stockRecordMap.clear();
                                                 do{
                                                 vm.maintDisplayItems();
                                                 do{
@@ -174,6 +175,7 @@ public class VMFactory {
                                                 else
                                                     looper = false;
                                                 }while (looper);
+                                                vm.recordStock();
                                                 break;
                                             case 2:
                                                 System.out.println("2");
