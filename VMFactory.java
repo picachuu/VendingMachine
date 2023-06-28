@@ -126,7 +126,7 @@ public class VMFactory {
                                         System.out.println("\n-------Maintenance Features-------");
                                         System.out.println("[1] Restock Item");
                                         System.out.println("[2] Set Price");
-                                        System.out.println("[3] Collect Payment");
+                                        System.out.println("[3] Collect Income");
                                         System.out.println("[4] Replenish Money");
                                         System.out.println("[5] Print Summary of Transactions");
                                         System.out.println("[6] Return to Main Menu");
