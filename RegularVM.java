@@ -53,7 +53,7 @@ public class RegularVM {
     
     public void collectIncome()
     {
-        totalIncome =0;
+        totalIncome = 0;
     }
 
 
