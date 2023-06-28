@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class RegularVM {
     private ArrayList<Item> slot;
     private double totalIncome;
-    private double balance; //customers money
+    private double balance=100; //customers money
     
     public RegularVM(){
         Item Pepperoni = new Item("Pepperoni", 53, 136, 10);
@@ -55,7 +55,7 @@ public class RegularVM {
                 System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 slot.get(selOrder).removeStock(1);
                 balance -= slot.get(selOrder).getPrice();
-                System.out.printf("\nThank you for your purchase! Your remaining balance is P%.2f", balance);
+                System.out.printf("\nThank you for your purchase! Your remaining balance is P%.2f\n", balance);
             }
             else{
                 System.out.print("\033[H\033[2J");
@@ -69,7 +69,12 @@ public class RegularVM {
     }
     
     public void receiveChange(){
-
+        if(balance > 0){
+            System.out.printf("\nYour change is P%.2f. Please collect, thank you!\n\n", balance);
+            balance = 0;
+        }
+        else
+            System.out.println("You have no change to receive.");
     }
 
     //Maintenance Features

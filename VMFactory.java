@@ -97,15 +97,15 @@ public class VMFactory {
                                                         willLoop5 = true;
                                                         vm.orderItem(selOrder);
                                                     }   
-                                                    else
+                                                    else{
                                                         System.out.print("\033[H\033[2J");
                                                         System.out.println("\n!: Sorry, that is not option.");
+                                                    }                       
                                                 }while(!willLoop5);
                                                 break;
                                             case 3:
                                                 System.out.print("\033[H\033[2J");
-                                                System.out.println("3");
-                                                String buff3 = sc.nextLine();
+                                                vm.receiveChange();
                                                 break;
                                             case 4:
                                                 willLoop4 = true;
