@@ -148,8 +148,43 @@ public class RegularVM {
         totalIncome = 0;
     }
 
-    public void replenishMoney(){
+    public void replenishMoney(int val, int amt){
+        switch(val){
+            case 500:
+                money.addFiveHundred(amt);
+                break;
+            case 100:
+                money.addOneHundred(amt);
+                break;
+            case 50:
+                money.addFifty(amt);
+                break;
+            case 20:
+                money.addTwenty(amt);
+                break;
+            case 10:
+                money.addTen(amt);
+                break;
+            case 5:
+                money.addFive(amt);
+                break;
+            case 1:
+                money.addOne(amt);
+                break;
+        }
+    }
 
+    public void viewDenominations(){
+        System.out.print("\033[H\033[2J");
+        System.out.println("Machine currently has");
+        System.out.printf("\n%d P500 bills...", money.getFiveHundred());
+        System.out.printf("\n%d P100 bills...", money.getOneHundred());
+        System.out.printf("\n%d P50 bills...", money.getFifty());
+        System.out.printf("\n%d P20 bills...", money.getTwenty());
+        System.out.printf("\n%d P10 bills...", money.getTen());
+        System.out.printf("\n%d P5 bills...", money.getFive());
+        System.out.printf("\n%d P1 bills...\n", money.getOne());
+        System.out.printf("\ncoming to a total of P%.2f.", money.getTotal());
     }
 
     public void printSummary(){

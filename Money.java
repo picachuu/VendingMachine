@@ -96,9 +96,8 @@ public class Money {
         if(amt % 500 % 100 % 50 % 20 % 10 % 5 != 0)
             System.out.printf("Dispensing %d P1 bills...\n", amt % 500 % 100 % 50 % 20 % 10 % 5);
     }
-/*
-    public double getIncome() {
+
+    public double getTotal() {
         return 1 * one + 5 * five + 10 * ten + 20 * twenty + 50 * fifty + 100 * oneHundred + 500 *fiveHundred;
     }
-    */
 }
