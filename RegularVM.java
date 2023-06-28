@@ -97,7 +97,7 @@ public class RegularVM {
     }
 
 
-    }
+    
 
     public double getTotalIncome(){
         return this.totalIncome;
