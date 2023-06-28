@@ -100,7 +100,7 @@ public class RegularVM {
             System.out.printf("\n Item: %s has been restocked by: %d successfully.\n", slot.get(index).getName(), amount);
         }
         else
-            System.out.printf("Restock amount exceeds slot capacity (20)");
+            System.out.printf("\nRestock amount exceeds slot capacity (20)\n\n");
     }
 
     public void setPrice(){
