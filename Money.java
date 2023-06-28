@@ -78,6 +78,24 @@ public class Money {
         this.five -= amt % 500 % 100 % 50 % 20 % 10 / 5;
         this.one -= amt % 500 % 100 % 50 % 20 % 10 % 5;
     }
+    
+    public void dispense(double balance){
+        int amt = (int)balance;
+        if(amt / 500 != 0)
+            System.out.printf("Dispensing %d P500 bills...\n", amt / 500);
+        if(amt % 500 / 100 != 0)
+            System.out.printf("Dispensing %d P100 bills...\n", amt % 500 / 100);
+        if(amt % 500 % 100 / 50 != 0)
+            System.out.printf("Dispensing %d P50 bills...\n", amt % 500 % 100 / 50);
+        if(amt % 500 % 100 % 50 / 20 != 0)
+            System.out.printf("Dispensing %d P20 bills...\n", amt % 500 % 100 % 50 / 20);
+        if(amt % 500 % 100 % 50 % 20 / 10 != 0)
+            System.out.printf("Dispensing %d P10 bills...\n", amt % 500 % 100 % 50 % 20 / 10);
+        if(amt % 500 % 100 % 50 % 20 % 10 / 5 != 0)
+            System.out.printf("Dispensing %d P5 bills...\n", amt % 500 % 100 % 50 % 20 % 10 / 5);
+        if(amt % 500 % 100 % 50 % 20 % 10 % 5 != 0)
+            System.out.printf("Dispensing %d P1 bills...\n", amt % 500 % 100 % 50 % 20 % 10 % 5);
+    }
 /*
     public double getIncome() {
         return 1 * one + 5 * five + 10 * ten + 20 * twenty + 50 * fifty + 100 * oneHundred + 500 *fiveHundred;
