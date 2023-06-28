@@ -33,9 +33,14 @@ public class Item {
         return check;
     }
 
-    public void removeStock(int removefromStock)
+    public boolean removeStock(int removefromStock)
     {
-        this.stock -= removefromStock;
+         boolean check = true;
+        if (this.stock - removefromStock > 0)
+            this.stock -= removefromStock;
+        else
+            check = false;
+        return check;
     }
 
     public String getName()
