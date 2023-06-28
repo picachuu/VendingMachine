@@ -121,6 +121,7 @@ public class RegularVM {
             System.out.printf("%d.) %-17s%6s%.2f%13d\n", i+1, slot.get(i).getName(), "P",slot.get(i).getPrice(), slot.get(i).getStock());
         }
     }
+    
     public void restockItem(int index, int amount){
 
         if (slot.get(index).addStock(amount))
