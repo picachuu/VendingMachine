@@ -115,7 +115,7 @@ public class RegularVM {
     public void recordStock()
     {
         for (int i=0; i<slot.size(); i++) {
-        stockRecordMap.put(slot.get(i).getName(), slot.get(i).getStock());    // is there a clearer way?
+        stockRecordMap.put(slot.get(i).getName(), slot.get(i).getStock());
     }
     }
 }
