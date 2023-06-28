@@ -136,10 +136,15 @@ public class VMFactory {
                                             case 1:
                                                 boolean looper = true;
                                                 int index;
+                                                int choice;
                                                 do{
                                                 vm.maintDisplayItems();
+                                                do{
                                                 System.out.println("Please enter item number (Enter 10 to cancel): ");
-                                                int choice = sc.nextInt();
+                                                choice = sc.nextInt();
+                                                if (choice > 10)
+                                                    System.out.println("Please enter item a number between 1-10!\n");
+                                                } while(choice > 10);
                                                 if (choice != 10)
                                                 {
                                                     index = choice - 1 ;
