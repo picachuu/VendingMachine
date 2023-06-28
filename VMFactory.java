@@ -157,7 +157,7 @@ public class VMFactory {
                                                 do{
                                                 vm.maintDisplayItems();
                                                 do{
-                                                System.out.println("Please enter item number (Enter 10 to cancel): ");
+                                                System.out.println("Please enter item number (Enter 10 to exit): ");
                                                 choice = sc.nextInt();
                                                 if (choice > 10)
                                                     System.out.println("Please enter item a number between 1-10!\n");
