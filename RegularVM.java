@@ -14,7 +14,7 @@ public class RegularVM {
         Item Parmesan = new Item("Parmesan", 50, 42, 10);
         Item Jalapenos = new Item("Jalapenos", 45, 12.3, 10);
         Item Mushroom = new Item("Mushroom", 43, 10.2, 10);
-        Item Olives = new Item("Olives", 37, 13.2, 10);
+        Item Olives = new Item("Olives", 37, 13.2, 0);
         slot = new ArrayList<>();
         slot.add(Pepperoni);
         slot.add(Ham);
@@ -37,7 +37,7 @@ public class RegularVM {
             if (slot.get(i).getStock() > 0)
                 System.out.printf("%d.) %-17s%6s%.2f%13.1f\n", i+1, slot.get(i).getName(), "P", slot.get(i).getPrice(), slot.get(i).getCalories());
             else
-                System.out.printf("%d.) %-17sNOT AVAILABLE\n", i+1, slot.get(i).getName());
+                System.out.printf("%d.) %-25sNOT AVAILABLE\n", i+1, slot.get(i).getName());
         }
     }
 
