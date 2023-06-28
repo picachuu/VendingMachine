@@ -76,7 +76,7 @@ public class VMFactory {
                                         System.out.println("[1] Insert Payment");
                                         System.out.println("[2] Order Item");
                                         System.out.println("[3] Receive Change");//when no change return money
-                                        System.out.println("[4] Return to Main Menu");
+                                        System.out.println("[4] Return to Test Menu");
                                         System.out.print("Input: ");
                                         int nVenChoice = sc.nextInt();
                                         switch(nVenChoice) {
@@ -129,7 +129,7 @@ public class VMFactory {
                                         System.out.println("[3] Collect Income");
                                         System.out.println("[4] Replenish Money");
                                         System.out.println("[5] Print Summary of Transactions");
-                                        System.out.println("[6] Return to Main Menu");
+                                        System.out.println("[6] Return to Test Menu");
                                         System.out.print("Input: ");
                                         int nMainChoice = sc.nextInt();
                                         switch(nMainChoice){
@@ -162,8 +162,6 @@ public class VMFactory {
                                                 System.out.println("\n!: Sorry, that is not option.");
                                         }
                                     }while(!willLoop6);
-                                    System.out.println("2");
-                                    String buff5 = sc.nextLine();
                                     break;
                                 case 3:
                                     willLoop3 = true;
@@ -173,7 +171,6 @@ public class VMFactory {
                                     System.out.print("\033[H\033[2J");
                                     System.out.println("\n!: Sorry, that is not option.");
                             }
-                            
                         }while(!willLoop3);
                     }
                     break;
@@ -188,5 +185,4 @@ public class VMFactory {
         } while (!willLoop);
         sc.close();
     }
-
 }
