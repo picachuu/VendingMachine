@@ -23,14 +23,24 @@ public class Item {
         this.price = newPrice;
     }
 
-    public void addStock(int addtoStock)
+    public boolean addStock(int addtoStock)
     {
-        this.stock += addtoStock;
+        boolean check = true;
+        if (this.stock + addtoStock > 20)
+            this.stock += addtoStock;
+        else
+            check = false;
+        return check;
     }
 
-    public void removeStock(int removefromStock)
+    public boolean removeStock(int removefromStock)
     {
-        this.stock -= removefromStock;
+         boolean check = true;
+        if (this.stock - removefromStock > 0)
+            this.stock -= removefromStock;
+        else
+            check = false;
+        return check;
     }
 
     public String getName()
