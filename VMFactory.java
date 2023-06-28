@@ -139,7 +139,6 @@ public class VMFactory {
                                     System.out.print("\033[H\033[2J");
                                     boolean willLoop6 = false;
                                     do{
-                                        System.out.printf("Current Balance: P%.2f\n", vm.getBalance());
                                         System.out.println("\n-------Maintenance Features-------");
                                         System.out.println("[1] Restock Item");
                                         System.out.println("[2] Set Price");
@@ -180,8 +179,10 @@ public class VMFactory {
                                                 String buff2 = sc.nextLine();
                                                 break;
                                             case 3:
-                                                System.out.println("3");
-                                                String buff3 = sc.nextLine();
+                                                vm.collectIncome();
+                                                System.out.println("\n\nIncome has been Collected! \n");
+                                                // System.out.println("3");
+                                                // String buff3 = sc.nextLine();
                                                 break;
                                             case 4:
                                                 System.out.println("4");
