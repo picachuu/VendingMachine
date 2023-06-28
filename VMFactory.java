@@ -56,8 +56,8 @@ public class VMFactory {
                         RegularVM vm = new RegularVM();
                         System.out.print("\033[H\033[2J");
                         boolean isValid2 = false;
-                        do{
-                            //System.out.print("\033[H\033[2J");
+                       
+                        do{                        
                             System.out.printf("\nCurrent Balance: P%.2f\n", vm.getTotalIncome());
                             System.out.println("\n----------Test----------");
                             System.out.println("[1] Insert Payment");
@@ -75,8 +75,18 @@ public class VMFactory {
                                 case 2:
                                     System.out.print("\033[H\033[2J");
                                     vm.displayItems();
-                                    vm.orderItem();
+                                    System.out.print("\nPlease enter item number: ");
                                     
+                                    boolean willLoop2 = false;
+                                    do{
+                                        int selOrder = sc.nextInt() - 1;
+                                        if(selOrder >=0 && selOrder <= 8){
+                                            willLoop2 = true;
+                                            vm.orderItem(selOrder);
+                                        }   
+                                        else
+                                            System.out.print("\nSorry, that is not an option. Please re-select: ");
+                                    }while(!willLoop2);
                                     break;
                                 case 3:
                                     System.out.print("\033[H\033[2J");
@@ -90,6 +100,7 @@ public class VMFactory {
                                 default: 
                                     System.out.println("\nSorry, that is not option. Please re-enter input:");
                             }
+                            
                         }while(!isValid2);
                     }
                     break;
