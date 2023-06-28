@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class RegularVM {
     private ArrayList<Item> slot;
-    private double balance;
+    private double balance = 100;
     private double totalIncome;
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();
     private Money money;
@@ -30,6 +30,7 @@ public class RegularVM {
         slot.add(Jalapenos);
         slot.add(Mushroom);
         slot.add(Olives);
+        this.money = new Money();
     }
 
     //Vending Features
@@ -57,9 +58,18 @@ public class RegularVM {
             //if enough money
             if(balance >= slot.get(selOrder).getPrice()){
                 System.out.print("\033[H\033[2J");
+                System.out.println("Test purposes: \n500: " + money.getFiveHundred() + " \n100: " + money.getOneHundred() + " \n50: " + money.getFifty()
+                + " \n20: " + money.getTwenty() + " \n10: " + money.getTen() + " \n5: " + money.getFive() + " \n1: " + money.getOne());
+
                 System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 slot.get(selOrder).removeStock(1);
                 balance -= slot.get(selOrder).getPrice();
+
+                //test
+                money.subtract(slot.get(selOrder).getPrice());
+                System.out.println("Test purposes: \n500: " + money.getFiveHundred() + " \n100: " + money.getOneHundred() + " \n50: " + money.getFifty()
+                + " \n20: " + money.getTwenty() + " \n10: " + money.getTen() + " \n5: " + money.getFive() + " \n1: " + money.getOne());
+
                 System.out.printf("Thank you for your purchase!\n\n", balance);
             }
             else{
