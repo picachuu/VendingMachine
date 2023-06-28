@@ -27,6 +27,11 @@ public class RegularVM {
         slot.add(Olives);
     }
 
+    //Vending Features
+    public void insertPayment(){
+
+    }
+
     public void displayItems(){
         System.out.printf("%27s", "Items\n");
         System.out.println("-----------------------------------------------");
@@ -39,22 +44,6 @@ public class RegularVM {
             else
                 System.out.printf("%d.) %-25sNOT AVAILABLE\n", i+1, slot.get(i).getName());
         }
-    }
-
-    public void setPrice(){
-        Scanner sc = new Scanner(System.in);
-        displayItems();
-        System.out.println("Please enter item number: ");
-        int index = sc.nextInt() - 1;
-        System.out.println("Please enter new price: ");
-        double newPrice = sc.nextDouble();
-        slot.get(index).changePrice(newPrice);
-        sc.close();
-    }
-    
-    public void collectIncome()
-    {
-        totalIncome = 0;
     }
 
     public void orderItem(int selOrder) {
@@ -75,18 +64,43 @@ public class RegularVM {
         {
             System.out.print("\033[H\033[2J");
             System.out.println("\n!: Sorry, that item is out of stock.\n");
-        }
-            
+        } 
+    }
+    
+    public void receiveChange(){
 
-            
-        
     }
 
-        
+    //Maintenance Features
+    public void restockItem(){
+
+    }
+
+    public void setPrice(){
+        Scanner sc = new Scanner(System.in);
+        displayItems();
+        System.out.println("Please enter item number: ");
+        int index = sc.nextInt() - 1;
+        System.out.println("Please enter new price: ");
+        double newPrice = sc.nextDouble();
+        slot.get(index).changePrice(newPrice);
+        sc.close();
+    }
+    
+    public void collectIncome()
+    {
+        totalIncome = 0;
+    }
+
+    public void replenishMoney(){
+
+    }
+    
+    public void printSummary(){
+
+    }
 
     public double getTotalIncome(){
         return this.totalIncome;
     }
-
-
 }
