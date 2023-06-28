@@ -34,7 +34,10 @@ public class RegularVM {
         System.out.println("-------------------------------------");
         for (int i = 0; i < slot.size(); i++)
         {
-            System.out.printf("%d.) %-17s%10.2fP\n", i+1, slot.get(i).getName(), slot.get(i).getPrice());
+            if (slot.get(i).getStock() > 0)
+                System.out.printf("%d.) %-17s%10.2fP\n", i+1, slot.get(i).getName(), slot.get(i).getPrice());
+            else
+                System.out.printf("%d.) %-17sNOT AVAILABLE\n", i+1, slot.get(i).getName());
         }
     }
 
@@ -52,4 +55,6 @@ public class RegularVM {
     {
         totalIncome =0;
     }
+
+
 }
