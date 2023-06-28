@@ -82,8 +82,28 @@ public class VMFactory {
                                         switch(nVenChoice) {
                                             case 1:
                                                 System.out.print("\033[H\033[2J");
-                                                System.out.println("1");
-                                                String buff = sc.nextLine();
+                                                System.out.println("We accept the following: ");
+                                                System.out.println("Bills: 500, 100, 50, 20");
+                                                System.out.println("Coins: 10, 5, 1");
+                                                System.out.println("Enter 0 to exit.\n");
+                                                System.out.printf("\nPlease input bill/coin value to insert: ");
+                                                boolean willLoop6 = false;
+                                                do{
+                                                    int value = sc.nextInt();
+                                                    if(value != 500 && value != 100 && value != 50 && value != 50 && value != 20 && value != 10 && value != 5 && value != 1 && value != 0)
+                                                        System.out.printf("\nSorry, we don't accept that. Please enter another value: ");
+                                                    else if(value == 0){
+                                                        System.out.print("\033[H\033[2J");
+                                                        willLoop6 = true;
+                                                    }                                                        
+                                                    else{                                            
+                                                        vm.insertPayment(value);
+                                                        System.out.println("Successfully added P" + value + "!\n");
+                                                        System.out.printf("Please input bill/coin value to insert: ");
+                                                    }                                                      
+                                                }while(!willLoop6);
+                                                
+
                                                 break;
                                             case 2:
                                                 System.out.print("\033[H\033[2J");
@@ -98,8 +118,7 @@ public class VMFactory {
                                                         vm.orderItem(selOrder);
                                                     }   
                                                     else{
-                                                        System.out.print("\033[H\033[2J");
-                                                        System.out.println("\n!: Sorry, that is not option.");
+                                                        System.out.printf("\n!: Sorry, that is not option. Please re-enter input: ");
                                                     }                       
                                                 }while(!willLoop5);
                                                 break;

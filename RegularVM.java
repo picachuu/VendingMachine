@@ -34,8 +34,31 @@ public class RegularVM {
     }
 
     //Vending Features
-    public void insertPayment(){
-
+    public void insertPayment(int val){
+        balance += val;
+        switch(val){
+            case 500:
+                money.addFiveHundred(1);
+                break;
+            case 100:
+                money.addOneHundred(1);
+                break;
+            case 50:
+                money.addFifty(1);
+                break;
+            case 20:
+                money.addTwenty(1);
+                break;
+            case 10:
+                money.addTen(1);
+                break;
+            case 5:
+                money.addFive(1);
+                break;
+            case 1:
+                money.addOne(1);
+                break;
+        }
     }
 
     public void displayItems(){
