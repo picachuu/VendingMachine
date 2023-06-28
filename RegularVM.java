@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class RegularVM {
     private ArrayList<Item> slot;
-    private double balance = 100;
+    private double balance;
     private double totalIncome;
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();
     private Money money;
@@ -81,18 +81,10 @@ public class RegularVM {
             //if enough money
             if(balance >= slot.get(selOrder).getPrice()){
                 System.out.print("\033[H\033[2J");
-                System.out.println("Test purposes: \n500: " + money.getFiveHundred() + " \n100: " + money.getOneHundred() + " \n50: " + money.getFifty()
-                + " \n20: " + money.getTwenty() + " \n10: " + money.getTen() + " \n5: " + money.getFive() + " \n1: " + money.getOne());
 
                 System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 slot.get(selOrder).removeStock(1);
                 balance -= slot.get(selOrder).getPrice();
-
-                //test
-                money.subtract(slot.get(selOrder).getPrice());
-                System.out.println("Test purposes: \n500: " + money.getFiveHundred() + " \n100: " + money.getOneHundred() + " \n50: " + money.getFifty()
-                + " \n20: " + money.getTwenty() + " \n10: " + money.getTen() + " \n5: " + money.getFive() + " \n1: " + money.getOne());
-
                 System.out.printf("Thank you for your purchase!\n\n", balance);
             }
             else{
@@ -108,11 +100,14 @@ public class RegularVM {
     
     public void receiveChange(){
         if(balance > 0){
-            System.out.printf("\nYour change is P%.2f. Please collect, thank you!\n\n", balance);
+            System.out.printf("\nYour change is P%.2f.\n\n", balance);
+            money.dispense(balance);
+            System.out.printf("\nPlease collect, thank you!\n\n");
             balance = 0;
+            money.subtract(balance);
         }
         else
-            System.out.println("You have no change to receive.");
+            System.out.println("You have no change to receive.\n");
     }
 
     //Maintenance Features
@@ -144,6 +139,7 @@ public class RegularVM {
     
     public void collectIncome()
     {
+        money.subtract(totalIncome);
         totalIncome = 0;
     }
 
@@ -187,6 +183,6 @@ public class RegularVM {
     {
         for (int i=0; i<slot.size(); i++) {
         stockRecordMap.put(slot.get(i).getName(), slot.get(i).getStock());
-    }
+        }
     }
 }
