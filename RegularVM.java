@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class RegularVM {
     private ArrayList<Item> slot;
     private double totalIncome;
-    private double balance; //customes money
+    private double balance; //customers money
     
     public RegularVM(){
         Item Pepperoni = new Item("Pepperoni", 53, 136, 10);
@@ -99,7 +99,7 @@ public class RegularVM {
 
     public void printSummary(){
 
-    
+    }
 
     public double getTotalIncome(){
         return this.totalIncome;
