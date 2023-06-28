@@ -56,7 +56,7 @@ public class RegularVM {
                 System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 slot.get(selOrder).removeStock(1);
                 balance -= slot.get(selOrder).getPrice();
-                System.out.printf("\nThank you for your purchase! Your remaining balance is P%.2f\n", balance);
+                System.out.printf("\nThank you for your purchase!\n", balance);
             }
             else{
                 System.out.print("\033[H\033[2J");
