@@ -102,8 +102,6 @@ public class VMFactory {
                                                         System.out.printf("Please input bill/coin value to insert: ");
                                                     }                                                      
                                                 }while(!willLoop6);
-                                                
-
                                                 break;
                                             case 2:
                                                 System.out.print("\033[H\033[2J");
