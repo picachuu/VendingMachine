@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class RegularVM {
     private ArrayList<Item> slot;
     private double totalIncome;
+    private double balance; //customes money
     
     public RegularVM(){
         Item Pepperoni = new Item("Pepperoni", 53, 136, 10);
@@ -50,11 +51,11 @@ public class RegularVM {
         //if available
         if(slot.get(selOrder).getStock() > 0)
             //if enough money
-            if(totalIncome >= slot.get(selOrder).getPrice()){
+            if(balance >= slot.get(selOrder).getPrice()){
                 System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 slot.get(selOrder).removeStock(1);
-                totalIncome -= slot.get(selOrder).getPrice();
-                System.out.printf("\nThank you for your purchase! Your remaining balance is P%.2f", totalIncome);
+                balance -= slot.get(selOrder).getPrice();
+                System.out.printf("\nThank you for your purchase! Your remaining balance is P%.2f", balance);
             }
             else{
                 System.out.print("\033[H\033[2J");
@@ -96,10 +97,15 @@ public class RegularVM {
 
     }
 
+    public void printSummary(){
 
     }
 
     public double getTotalIncome(){
         return this.totalIncome;
+    }
+
+    public double getBalance(){
+        return this.balance;
     }
 }
