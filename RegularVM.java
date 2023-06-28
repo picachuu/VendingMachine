@@ -135,6 +135,26 @@ public class RegularVM {
 
     public void printSummary(){
 
+        System.out.printf("%23s", "Inventory\n");
+        System.out.println("-----------------------------------------------");
+        System.out.printf("%10s%22s%16s", "Name", "Starting Stock", "Current Stock\n");
+        System.out.println("-----------------------------------------------");
+        for (int i = 0; i < slot.size(); i++)
+        {
+            System.out.printf("%d.) %-17s%6s%13d\n", i+1, slot.get(i).getName(), stockRecordMap.get(slot.get(i).getName()), slot.get(i).getStock());
+        }
+        System.out.println("-----------------------------------------------");
+        System.out.printf("%25s", "Summary\n");
+        System.out.println("-----------------------------------------------");
+        System.out.printf("%10s%22s%16s", "Name", "Quantity Sold", "Earnings\n");
+        System.out.println("-----------------------------------------------");
+        int amtsold;
+        for (int i = 0; i < slot.size(); i++)
+        {
+            amtsold = stockRecordMap.get(slot.get(i).getName()) - slot.get(i).getStock();
+            System.out.printf("%d.) %-17s%6d%13s%.2f\n", i+1, slot.get(i).getName(), amtsold, "P",amtsold * slot.get(i).getPrice() );
+        }
+
     }
 
     public double getTotalIncome(){

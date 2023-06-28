@@ -171,8 +171,9 @@ public class VMFactory {
                                                 String buff4 = sc.nextLine();
                                                 break;
                                             case 5:
-                                                System.out.println("5");
-                                                String buff6 = sc.nextLine();
+                                                vm.printSummary();
+                                                // System.out.println("5");
+                                                // String buff6 = sc.nextLine();
                                                 break;
                                             case 6:
                                                 willLoop6 = true;
