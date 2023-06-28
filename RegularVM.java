@@ -61,5 +61,10 @@ public class RegularVM {
 
     }
 
+    public void keepRecord()
+    {
+        
+    }
+
 
 }
