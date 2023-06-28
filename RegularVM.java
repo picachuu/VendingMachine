@@ -57,26 +57,28 @@ public class RegularVM {
         totalIncome = 0;
     }
 
-    public void orderItem() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("\nPlease enter item number: ");
-        int selOrder = sc.nextInt() - 1;
-        sc.close();
-        //if valid input
-        //if(selOrder)
-
+    public void orderItem(int selOrder) {
         //if available
-
-        //if enough money
-        if(totalIncome >= slot.get(selOrder).getPrice()){
-            System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
-            slot.get(selOrder).removeStock(1);
-            totalIncome -= slot.get(selOrder).getPrice();
-            System.out.printf("\nThank you for your purchase! Your remaining balance is P%.2f", totalIncome);
-        }
+        if(slot.get(selOrder).getStock() > 0)
+            //if enough money
+            if(totalIncome >= slot.get(selOrder).getPrice()){
+                System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
+                slot.get(selOrder).removeStock(1);
+                totalIncome -= slot.get(selOrder).getPrice();
+                System.out.printf("\nThank you for your purchase! Your remaining balance is P%.2f", totalIncome);
+            }
+            else{
+                System.out.print("\033[H\033[2J");
+                System.out.println("\n!: Sorry, you do not have enough balance."); 
+            }
         else
-            System.out.println("\n!: Sorry, you do not have enough balance.");
-        
+        {
+            System.out.print("\033[H\033[2J");
+            System.out.println("\n!: Sorry, that item is out of stock.");
+        }
+            
+
+            
         
     }
 
