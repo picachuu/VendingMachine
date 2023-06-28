@@ -7,7 +7,6 @@ public class RegularVM {
     private ArrayList<Item> slot;
     private double balance;
     private double totalIncome;
-    private double balance; //customes money
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();
     private Money money;
     
