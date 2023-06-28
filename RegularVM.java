@@ -205,7 +205,7 @@ public class RegularVM {
             System.out.printf("%d.) %-17s%6d%13s%.2f\n", i+1, slot.get(i).getName(), amtsold, "P",amtsold * slot.get(i).getPrice() );
         }
         System.out.println("-----------------------------------------------");
-        System.out.printf("Total Earnings (since last restocking):%5s%7.2f", "P", totalEarnings);
+        System.out.printf("Total Earnings (since last restocking):\n%5s%7.2f\n", "P", totalEarnings);
         System.out.println("-----------------------------------------------");
     }
 
