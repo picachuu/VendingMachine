@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class RegularVM {
     private ArrayList<Item> slot;
-    private double balance = 100;
+    private double balance;
     private double totalIncome;
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();
     private Money money;
@@ -144,6 +144,7 @@ public class RegularVM {
     
     public void collectIncome()
     {
+        money.subtract(totalIncome);
         totalIncome = 0;
     }
 
@@ -187,6 +188,6 @@ public class RegularVM {
     {
         for (int i=0; i<slot.size(); i++) {
         stockRecordMap.put(slot.get(i).getName(), slot.get(i).getStock());
-    }
+        }
     }
 }
