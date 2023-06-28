@@ -69,12 +69,12 @@ public class RegularVM {
             }
             else{
                 System.out.print("\033[H\033[2J");
-                System.out.println("\n!: Sorry, you do not have enough balance."); 
+                System.out.println("\n!: Sorry, you do not have enough balance.\n"); 
             }
         else
         {
             System.out.print("\033[H\033[2J");
-            System.out.println("\n!: Sorry, that item is out of stock.");
+            System.out.println("\n!: Sorry, that item is out of stock.\n");
         }
             
 
