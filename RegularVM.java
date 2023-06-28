@@ -139,39 +139,47 @@ public class RegularVM {
     
     public void collectIncome()
     {
-        money.subtract(totalIncome);
+
+        money.flush();
         totalIncome = 0;
     }
 
-    public void replenishMoney(int val, int amt){
+    public void replenishMoney(int val, int amt, int value){
         switch(val){
-            case 500:
+            case 1:
                 money.addFiveHundred(amt);
+                value = 500;
                 break;
-            case 100:
+            case 2:
                 money.addOneHundred(amt);
+                value = 100;
                 break;
-            case 50:
+            case 3:
                 money.addFifty(amt);
+                value = 50;
                 break;
-            case 20:
+            case 4:
                 money.addTwenty(amt);
-                break;
-            case 10:
-                money.addTen(amt);
+                value = 20;
                 break;
             case 5:
-                money.addFive(amt);
+                money.addTen(amt);
+                value = 10;
                 break;
-            case 1:
+            case 6:
+                money.addFive(amt);
+                value = 5;
+                break;
+            case 7:
                 money.addOne(amt);
+                value = 1;
                 break;
         }
     }
 
     public void viewDenominations(){
         System.out.print("\033[H\033[2J");
-        System.out.println("Machine currently has");
+        System.out.println("\nMachine currently has");
         System.out.printf("\n%d P500 bills...", money.getFiveHundred());
         System.out.printf("\n%d P100 bills...", money.getOneHundred());
         System.out.printf("\n%d P50 bills...", money.getFifty());
@@ -179,7 +187,7 @@ public class RegularVM {
         System.out.printf("\n%d P10 bills...", money.getTen());
         System.out.printf("\n%d P5 bills...", money.getFive());
         System.out.printf("\n%d P1 bills...\n", money.getOne());
-        System.out.printf("\ncoming to a total of P%.2f.", money.getTotal());
+        System.out.printf("\ncoming to a total of P%.2f.\n", money.getTotal());
     }
 
     public void printSummary(){

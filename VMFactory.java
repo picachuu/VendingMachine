@@ -144,8 +144,9 @@ public class VMFactory {
                                         System.out.println("[2] Set Price");
                                         System.out.println("[3] Collect Income");
                                         System.out.println("[4] Replenish Money");
-                                        System.out.println("[5] Print Summary of Transactions");
-                                        System.out.println("[6] Return to Test Menu");
+                                        System.out.println("[5] View Denominations of Money");
+                                        System.out.println("[6] Print Summary of Transactions");
+                                        System.out.println("[7] Return to Test Menu");
                                         System.out.print("Input: ");
                                         int nMainChoice = sc.nextInt();
                                         switch(nMainChoice){
@@ -195,15 +196,50 @@ public class VMFactory {
                                                 // String buff3 = sc.nextLine();
                                                 break;
                                             case 4:
-                                                System.out.println("4");
-                                                String buff4 = sc.nextLine();
+                                                boolean willLoop7 = true;
+                                                System.out.print("\033[H\033[2J");
+                                                do{
+                                                    System.out.println("[1] P500");
+                                                    System.out.println("[2] P100");
+                                                    System.out.println("[3] P50");
+                                                    System.out.println("[4] P20");
+                                                    System.out.println("[5] P10");
+                                                    System.out.println("[6] P5");
+                                                    System.out.println("[7] P1");
+                                                    System.out.println("[8] Exit");
+
+                                                    boolean willLoop8 = true; 
+                                                    while(willLoop8){
+                                                    System.out.print("\nChoose which bill/coin to replenish: ");
+                                                    int nVal = sc.nextInt();
+                                                    if(nVal > 0 && nVal <8){
+                                                        //willLoop7 = false;
+                                                        System.out.print("\nHow many bills/coins?: ");
+                                                        int nAmt = sc.nextInt();
+                                                        int value = 0;
+                                                        vm.replenishMoney(nVal, nAmt, value);
+                                                        //System.out.print("\033[H\033[2J");
+                                                        System.out.printf("\nSuccessfully added %d P%d bills/coins.\n", nAmt, value);                                                        
+                                                    }
+                                                    else if(nVal == 8){
+                                                        willLoop7 = false;
+                                                        willLoop8 = false;
+                                                    }
+                                                    else{
+                                                        System.out.println("Sorry that is not a bill or coin we accept.\n");
+                                                    }
+                                                }
+                                                }while(willLoop7);
                                                 break;
                                             case 5:
+                                                vm.viewDenominations();
+                                                break;
+                                            case 6:
                                                 vm.printSummary();
                                                 // System.out.println("5");
                                                 // String buff6 = sc.nextLine();
                                                 break;
-                                            case 6:
+                                            case 7:
                                                 willLoop6 = true;
                                                 System.out.print("\033[H\033[2J");
                                                 break;
