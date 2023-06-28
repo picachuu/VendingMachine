@@ -55,10 +55,11 @@ public class RegularVM {
         if(slot.get(selOrder).getStock() > 0)
             //if enough money
             if(balance >= slot.get(selOrder).getPrice()){
+                System.out.print("\033[H\033[2J");
                 System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 slot.get(selOrder).removeStock(1);
                 balance -= slot.get(selOrder).getPrice();
-                System.out.printf("\nThank you for your purchase! Your remaining balance is P%.2f", balance);
+                System.out.printf("Thank you for your purchase!\n\n", balance);
             }
             else{
                 System.out.print("\033[H\033[2J");
@@ -72,7 +73,12 @@ public class RegularVM {
     }
     
     public void receiveChange(){
-
+        if(balance > 0){
+            System.out.printf("\nYour change is P%.2f. Please collect, thank you!\n\n", balance);
+            balance = 0;
+        }
+        else
+            System.out.println("You have no change to receive.");
     }
 
     //Maintenance Features
