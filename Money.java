@@ -3,13 +3,13 @@ public class Money {
     private int twenty, fifty, oneHundred, fiveHundred; //bills
 
     public Money(){
-        one = 5;
-        five = 5;
-        ten = 5;
-        twenty = 5;
-        fifty = 5;
-        oneHundred = 5;
-        fiveHundred = 5;
+        one = 4;
+        five = 4;
+        ten = 4;
+        twenty = 4;
+        fifty = 4;
+        oneHundred = 4;
+        fiveHundred = 4;
     }
 
     public int getOne() {
