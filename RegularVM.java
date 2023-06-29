@@ -79,12 +79,23 @@ public class RegularVM {
         if(slot.get(selOrder).getStock() > 0)
             //if enough money
             if(balance >= slot.get(selOrder).getPrice()){
+                if(money.checkAvail(balance - slot.get(selOrder).getPrice())){
                 System.out.print("\033[H\033[2J");
+                //if may change
 
                 System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 slot.get(selOrder).removeStock(1);
                 balance -= slot.get(selOrder).getPrice();
                 System.out.printf("Thank you for your purchase!\n\n", balance);
+                receiveChange();
+                }
+                else{
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("!: Sorry, this machine does not have enough change to return.");   
+                    System.out.println("Cancelling transaction..."); 
+                    System.out.println("Returning money...");   
+                    receiveChange();                  
+                }
             }
             else{
                 System.out.print("\033[H\033[2J");
