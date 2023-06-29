@@ -2,10 +2,9 @@ import java.util.Scanner;
 
 public class VMFactory {
     public static void main(String[] args) {
-
+        RegularVM vm = null;
         Scanner sc = new Scanner(System.in);
         boolean willLoop = false;
-        boolean vmExists = false;
         
         do{
             System.out.println("\n----------Main Menu----------");
@@ -31,7 +30,7 @@ public class VMFactory {
                                 willLoop2 = true;       
                                 System.out.print("\033[H\033[2J");                         
                                 System.out.println("\nRegular Vending Machine successfully created!\n");
-                                vmExists = true;
+                                vm = new RegularVM();
                                 break;
                             case 2:
                                 System.out.print("\033[H\033[2J");
@@ -48,14 +47,14 @@ public class VMFactory {
                     }while (!willLoop2);
                     break;
                 case 2:
-                    if (!vmExists)
+                    if (vm == null)
                     {
                         System.out.print("\033[H\033[2J");
                         System.out.println("\n!: Sorry! There is no vending machine to test.");
                     }
                     else 
                     {
-                        RegularVM vm = new RegularVM();
+                        //RegularVM vm = new RegularVM();
                         System.out.print("\033[H\033[2J");
                         boolean willLoop3 = false;
                        
@@ -75,7 +74,7 @@ public class VMFactory {
                                         System.out.println("\n-------Vending Features-------");
                                         System.out.println("[1] Insert Payment");
                                         System.out.println("[2] Order Item");
-                                        System.out.println("[3] Receive Change");//when no change return money
+                                        System.out.println("[3] Receive Change");
                                         System.out.println("[4] Return to Test Menu");
                                         System.out.print("Input: ");
                                         int nVenChoice = sc.nextInt();
