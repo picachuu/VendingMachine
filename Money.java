@@ -124,6 +124,8 @@ public class Money {
             System.out.printf("Dispensing %d P5 bills...\n", amt % 500 % 100 % 50 % 20 % 10 / 5);
         if(amt % 500 % 100 % 50 % 20 % 10 % 5 != 0)
             System.out.printf("Dispensing %d P1 bills...\n", amt % 500 % 100 % 50 % 20 % 10 % 5);
+        System.out.printf("\nPlease collect, thank you!\n\n");
+        subtract(balance);
     }
 
     public double getTotal() {
@@ -139,4 +141,17 @@ public class Money {
         this.five = 0;
         this.one  = 0;
     }
+
+    public void dispenseAll(){
+        System.out.printf("Dispensing %d P500 bills...\n", this.fiveHundred);
+        System.out.printf("Dispensing %d P100 bills...\n", this.oneHundred);
+        System.out.printf("Dispensing %d P50 bills...\n", this.fifty);
+        System.out.printf("Dispensing %d P20 bills...\n", this.twenty);
+        System.out.printf("Dispensing %d P10 bills...\n", this.ten);
+        System.out.printf("Dispensing %d P5 bills...\n", this.five);
+        System.out.printf("Dispensing %d P1 bills...\n", this.one);
+        System.out.printf("\nPlease collect, thank you!\n\n");
+        flush();
+    }
+
 }
