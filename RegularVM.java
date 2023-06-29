@@ -122,7 +122,7 @@ public class RegularVM {
     public void maintDisplayItems(){
         System.out.printf("%27s", "Items\n");
         System.out.println("-----------------------------------------------");
-        System.out.printf("%10s%22s%16s", "Name", "Price", "Stock\n");
+        System.out.printf("%10s%22s%14s", "Name", "Price", "Stock\n");
         System.out.println("-----------------------------------------------");
         for (int i = 0; i < slot.size(); i++)
         {

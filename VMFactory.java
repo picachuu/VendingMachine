@@ -155,22 +155,22 @@ public class VMFactory {
                                                 int choice;
                                                 vm.stockRecordMap.clear();
                                                 do{
-                                                vm.maintDisplayItems();
-                                                do{
-                                                System.out.println("Please enter item number (Enter 10 to exit): ");
-                                                choice = sc.nextInt();
-                                                if (choice > 10)
-                                                    System.out.println("Please enter item a number between 1-10!\n");
-                                                } while(choice > 10);
-                                                if (choice != 10)
-                                                {
-                                                    index = choice - 1 ;
-                                                    System.out.println("Please enter amount to restock: ");
-                                                    int toRestock = sc.nextInt();
-                                                    vm.restockItem(index, toRestock);
-                                                }
-                                                else
-                                                    looper = false;
+                                                    vm.maintDisplayItems();
+                                                    do{
+                                                        System.out.println("Please enter item number (Enter 10 to exit): ");
+                                                        choice = sc.nextInt();
+                                                        if (choice > 10)
+                                                            System.out.println("Please enter item a number between 1-10!\n");
+                                                    } while(choice > 10);
+                                                    if (choice != 10)
+                                                    {
+                                                        index = choice - 1 ;
+                                                        System.out.println("Please enter amount to restock: ");
+                                                        int toRestock = sc.nextInt();
+                                                        vm.restockItem(index, toRestock);
+                                                    }
+                                                    else
+                                                        looper = false;
                                                 }while (looper);
                                                 vm.recordStock();
                                                 break;
