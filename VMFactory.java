@@ -143,7 +143,7 @@ public class VMFactory {
                                         System.out.println("\n-------Maintenance Features-------");
                                         System.out.println("[1] Restock / Stock");
                                         System.out.println("[2] Set Price");
-                                        System.out.println("[3] Collect Income");
+                                        System.out.println("[3] Collect Money");
                                         System.out.println("[4] Replenish Money");
                                         System.out.println("[5] View Denominations of Money");
                                         System.out.println("[6] Print Summary of Transactions");
@@ -230,8 +230,8 @@ public class VMFactory {
                                                 }while(newPrice%1!=0);
                                                 break;
                                             case 3:
-                                                // System.out.println("3");
-                                                // String buff3 = sc.nextLine();
+                                                System.out.print("\033[H\033[2J");
+                                                vm.collectMoney();
                                                 break;
                                             case 4:
                                                 boolean willLoop7 = true;

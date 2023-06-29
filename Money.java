@@ -3,13 +3,13 @@ public class Money {
     private int twenty, fifty, oneHundred, fiveHundred; //bills
 
     public Money(){
-        one = 5;
-        five = 5;
-        ten = 5;
-        twenty = 5;
-        fifty = 5;
-        oneHundred = 5;
-        fiveHundred = 5;
+        one = 4;
+        five = 4;
+        ten = 4;
+        twenty = 4;
+        fifty = 4;
+        oneHundred = 4;
+        fiveHundred = 4;
     }
 
     public int getOne() {
@@ -68,6 +68,35 @@ public class Money {
         this.fiveHundred += add;
     }
 
+    public boolean checkAvail(double money){
+        boolean verdict = false;
+        int amt = (int)money / 500;
+
+        if(this.fiveHundred >= amt || amt == 0){
+            amt = (int)money % 500 / 100;
+            if(this.oneHundred >= amt || amt == 0){
+                amt = (int)money % 500 % 100 / 50;
+                if(this.fifty >= amt || amt == 0){
+                    amt = (int)money % 500 % 100 % 50 / 20;
+                    if(this.twenty >= amt || amt == 0){
+                        amt = (int)money % 500 % 100 % 50 % 20 / 10;
+                        if(this.ten >= amt || amt == 0){
+                            amt = (int)money % 500 % 100 % 50 % 20 % 10 / 5;
+                            if(this.five >= amt || amt == 0){
+                                amt = (int)money % 500 % 100 % 50 % 20 % 10 % 5;
+                                if(this.one >= amt || amt == 0)
+                                    verdict = true;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        }
+        return verdict;
+    }
+
     public void subtract(double sub) {
         int amt = (int)sub;
         this.fiveHundred -= amt / 500;
@@ -95,6 +124,8 @@ public class Money {
             System.out.printf("Dispensing %d P5 bills...\n", amt % 500 % 100 % 50 % 20 % 10 / 5);
         if(amt % 500 % 100 % 50 % 20 % 10 % 5 != 0)
             System.out.printf("Dispensing %d P1 bills...\n", amt % 500 % 100 % 50 % 20 % 10 % 5);
+        System.out.printf("\nPlease collect, thank you!\n\n");
+        subtract(balance);
     }
 
     public double getTotal() {
@@ -110,4 +141,17 @@ public class Money {
         this.five = 0;
         this.one  = 0;
     }
+
+    public void dispenseAll(){
+        System.out.printf("Dispensing %d P500 bills...\n", this.fiveHundred);
+        System.out.printf("Dispensing %d P100 bills...\n", this.oneHundred);
+        System.out.printf("Dispensing %d P50 bills...\n", this.fifty);
+        System.out.printf("Dispensing %d P20 bills...\n", this.twenty);
+        System.out.printf("Dispensing %d P10 bills...\n", this.ten);
+        System.out.printf("Dispensing %d P5 bills...\n", this.five);
+        System.out.printf("Dispensing %d P1 bills...\n", this.one);
+        System.out.printf("\nPlease collect, thank you!\n\n");
+        flush();
+    }
+
 }
