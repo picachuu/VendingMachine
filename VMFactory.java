@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class VMFactory {
     public static void main(String[] args) {
+        RegularVM vm = null;
 
         Scanner sc = new Scanner(System.in);
         boolean willLoop = false;
@@ -14,8 +15,7 @@ public class VMFactory {
             System.out.println("[3] Exit"); 
             System.out.print("Input: ");
             int nChoice = sc.nextInt();
-            switch(nChoice) {
-                case 1:
+            if(nChoice == 1){
                     System.out.print("\033[H\033[2J");
                     boolean willLoop2 = false;
 
@@ -26,36 +26,39 @@ public class VMFactory {
                         System.out.println("[3] Return to Main Menu");
                         System.out.print("Input: ");
                         int nCreateChoice = sc.nextInt();
-                        switch(nCreateChoice) {
-                            case 1:
+                        if (nCreateChoice == 1) {
+                            
                                 willLoop2 = true;       
                                 System.out.print("\033[H\033[2J");                         
                                 System.out.println("\nRegular Vending Machine successfully created!\n");
+                                vm = new RegularVM();
                                 vmExists = true;
-                                break;
-                            case 2:
+                            }
+                            else if (nCreateChoice == 2) {
+                          
                                 System.out.print("\033[H\033[2J");
                                 System.out.println("\n!: Sorry! This feature is not yet available.");
-                                break;
-                            case 3:
+                            }
+                            else if (nCreateChoice == 2) {
                                 willLoop2 = true;
                                 System.out.print("\033[H\033[2J");
-                                break;
-                            default:
+                            } else{
                                 System.out.print("\033[H\033[2J");
                                 System.out.println("\n!: Sorry, that is not option.");
                         }
                     }while (!willLoop2);
-                    break;
-                case 2:
-                    if (!vmExists)
+                }
+                
+                    
+                
+                if (nChoice == 2) {
+                    if (vm == null)
                     {
                         System.out.print("\033[H\033[2J");
                         System.out.println("\n!: Sorry! There is no vending machine to test.");
                     }
                     else 
-                    {
-                        RegularVM vm = new RegularVM();
+                    {                        
                         System.out.print("\033[H\033[2J");
                         boolean willLoop3 = false;
                        
@@ -253,12 +256,12 @@ public class VMFactory {
                             }
                         }while(!willLoop3);
                     }
-                    break;
-                case 3:
+                } 
+                else if (nChoice == 3){
                     System.out.println("\nThank you! Have a good day!");
                     willLoop = true;
-                    break;
-                default:
+                }
+                else{
                     System.out.print("\033[H\033[2J");
                     System.out.println("\n!: Sorry, that is not option.");
                 }
