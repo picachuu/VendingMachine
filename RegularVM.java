@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class RegularVM {
     private ArrayList<Item> slot;
