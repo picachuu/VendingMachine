@@ -245,4 +245,20 @@ public class RegularVM {
         stockRecordMap.put(slot.get(i).getName(), slot.get(i).getStock());
         }
     }
+    public void addItem(int index,String name, double price, double calories, int stock)
+    {
+        Item toAdd = new Item(name, price,calories, stock); 
+        slot.add(index, toAdd);
+    }
+
+    public int checkEmpty()
+    {
+        int emptyIndex = -1;
+        for (int i = 0; i < slot.size() && emptyIndex == -1; i++)
+        {
+            if (slot.get(i).getStock() == 0 )
+                emptyIndex = i;
+        }
+        return emptyIndex;
+    }
 }
