@@ -190,8 +190,6 @@ public class VMFactory {
                                                 break;
                                             case 3:
                                                 System.out.print("\033[H\033[2J");
-                                                // System.out.println("3");
-                                                // String buff3 = sc.nextLine();
                                                 vm.collectMoney();
                                                 break;
                                             case 4:
