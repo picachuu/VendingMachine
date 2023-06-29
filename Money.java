@@ -68,6 +68,35 @@ public class Money {
         this.fiveHundred += add;
     }
 
+    public boolean checkAvail(double money){
+        boolean verdict = false;
+        int amt = (int)money / 500;
+
+        if(this.fiveHundred >= amt || amt == 0){
+            amt = (int)money % 500 / 100;
+            if(this.oneHundred >= amt || amt == 0){
+                amt = (int)money % 500 % 100 / 50;
+                if(this.fifty >= amt || amt == 0){
+                    amt = (int)money % 500 % 100 % 50 / 20;
+                    if(this.twenty >= amt || amt == 0){
+                        amt = (int)money % 500 % 100 % 50 % 20 / 10;
+                        if(this.ten >= amt || amt == 0){
+                            amt = (int)money % 500 % 100 % 50 % 20 % 10 / 5;
+                            if(this.five >= amt || amt == 0){
+                                amt = (int)money % 500 % 100 % 50 % 20 % 10 % 5;
+                                if(this.one >= amt || amt == 0)
+                                    verdict = true;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        }
+        return verdict;
+    }
+
     public void subtract(double sub) {
         int amt = (int)sub;
         this.fiveHundred -= amt / 500;
