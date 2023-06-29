@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import javax.lang.model.util.ElementScanner14;
+
 public class VMFactory {
     public static void main(String[] args) {
         RegularVM vm = null;
@@ -139,7 +141,7 @@ public class VMFactory {
                                     boolean willLoop6 = false;
                                     do{
                                         System.out.println("\n-------Maintenance Features-------");
-                                        System.out.println("[1] Restock Item");
+                                        System.out.println("[1] Restock / Stock");
                                         System.out.println("[2] Set Price");
                                         System.out.println("[3] Collect Income");
                                         System.out.println("[4] Replenish Money");
@@ -148,30 +150,69 @@ public class VMFactory {
                                         System.out.println("[7] Return to Test Menu");
                                         System.out.print("Input: ");
                                         int nMainChoice = sc.nextInt();
-                                        switch(nMainChoice){
+                                        switch(nMainChoice)
+                                        {
                                             case 1:
-                                                boolean looper = true;
+                                                boolean looper = true, looper2 = true;
                                                 int index;
                                                 int choice;
                                                 vm.stockRecordMap.clear();
-                                                do{
-                                                vm.maintDisplayItems();
-                                                do{
-                                                System.out.println("Please enter item number (Enter 10 to exit): ");
-                                                choice = sc.nextInt();
-                                                if (choice > 10)
-                                                    System.out.println("Please enter item a number between 1-10!\n");
-                                                } while(choice > 10);
-                                                if (choice != 10)
+                                                do
                                                 {
-                                                    index = choice - 1 ;
-                                                    System.out.println("Please enter amount to restock: ");
-                                                    int toRestock = sc.nextInt();
-                                                    vm.restockItem(index, toRestock);
-                                                }
-                                                else
-                                                    looper = false;
-                                                }while (looper);
+                                                    vm.maintDisplayItems();
+                                                    System.out.println("\n-------Stocking Options-------");
+                                                    System.out.println("[1] Restock items");
+                                                    System.out.println("[2] Stock New Items");
+                                                    System.out.println("[3] Exit");
+                                                    System.out.print("Input: ");
+                                                    int restockChoice = sc.nextInt();
+                                                    switch(restockChoice)
+                                                    {
+                                                        case 1: 
+                                                                do
+                                                                {
+                                                                    do
+                                                                    {
+                                                                    System.out.println("Please enter item number (Enter 10 to exit): ");
+                                                                    choice = sc.nextInt();
+                                                                    if (choice > 10)
+                                                                        System.out.println("Please enter item a number between 1-10!\n");
+                                                                    } while(choice > 10);
+                                                                    if (choice != 10)
+                                                                    {
+                                                                        index = choice - 1 ;
+                                                                        System.out.println("Please enter amount to restock: ");
+                                                                        int toRestock = sc.nextInt();
+                                                                        vm.restockItem(index, toRestock);
+                                                                    }
+                                                                    else
+                                                                        looper = false;
+                                                                }while (looper);
+                                                                break;
+                                                        case 2:
+                                                                if (vm.checkEmpty() != -1)
+                                                                {
+                                                                    System.out.println("Please enter item name: ");
+                                                                    String bufferString = sc.nextLine();
+                                                                    String newName = sc.nextLine();
+                                                                    System.out.println("Please enter item price: ");
+                                                                    double newPrice = sc.nextDouble();
+                                                                    System.out.println("Please enter item calories: ");
+                                                                    double newCal = sc.nextDouble();
+                                                                    System.out.println("Amount to be stocked: ");
+                                                                    int newStock = sc.nextInt();
+                                                                    vm.addItem(vm.checkEmpty(), newName, newPrice, newCal, newStock);
+                                                                    System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n", newName, newStock);
+                                                                }
+                                                                else
+                                                                    System.out.println("No available slots!");
+                                                                    break;
+                                                        case 3:
+                                                                System.out.println("Exiting Stocking Options...\nReturning to Maintenance Features");
+                                                                looper2 = false;
+                                                                break;
+                                                    }
+                                                }while(looper2);
                                                 vm.recordStock();
                                                 break;
                                             case 2:
