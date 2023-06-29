@@ -112,9 +112,7 @@ public class RegularVM {
         if(balance > 0){
             System.out.printf("\nYour change is P%.2f.\n\n", balance);
             money.dispense(balance);
-            System.out.printf("\nPlease collect, thank you!\n\n");
             balance = 0;
-            money.subtract(balance);
         }
         else
             System.out.println("You have no change to receive.\n");
@@ -148,11 +146,13 @@ public class RegularVM {
         System.out.printf("Price of: %s has been changed to %.2f\n\n", slot.get(index).getName(), newPrice);
     }
     
-    public void collectIncome()
+    public void collectMoney()
     {
-        //System.out.println("")
-        money.flush();
-        totalIncome = 0;
+        System.out.printf("\nTotal money held is P%.2f\n\n", money.getTotal());
+        if(money.getTotal() != 0)
+            money.dispenseAll();
+        else
+            System.out.println("No money to dispense.");
     }
 
     public void replenishMoney(int val, int amt){
