@@ -9,6 +9,13 @@ public class RegularVM {
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();
     private Money money;
     
+    /**
+     * A constructor that creates a regular vending machine.
+     * 
+     * Items in each slot of the machine are initialized with each having a 
+     * stock of 10 then added to their respective slot.
+     * Money inside the machine is also created.
+    */
     public RegularVM(){
         Item itemOne = new Item("Pepperoni", 53, 136, 10);
         Item itemTwo = new Item("Ham", 69, 40, 10);
@@ -35,8 +42,10 @@ public class RegularVM {
     //Vending Features
 
     /**
+     * Receives payment from customer in different denominations.
      * Adds inputted value to the customer's balance 
      * and adds 1 to selected money denomination in the machine.
+     * 
      * @param val value of the bill or coin inserted into the vending machine
      */
     public void insertPayment(int val){
@@ -67,7 +76,8 @@ public class RegularVM {
     }
 
     /**
-     * Prints the available items of the vending machine, including its name, price, and calories.
+     * Prints the available items of the vending machine, including its 
+     * name, price, and calories.
      */
     public void displayItems(){
         System.out.printf("%26s", "Items\n");
@@ -91,7 +101,9 @@ public class RegularVM {
     /**
      * Orders item from vending machine.
      * Selected item is dispensed, which entails diminishing the item's stock by one,
-     * and returns change, if present, to customer.
+     * and returns change, if present, to customer. Order is cancelled when machine does 
+     * not have enough change to give.
+     * 
      * @param selOrder index of selected item to order
      */
     public void orderItem(int selOrder) {
@@ -131,7 +143,7 @@ public class RegularVM {
     }
     
     /**
-     * 
+     * Dispenses customer's current balance after purchase deductions.
      */
     public void receiveChange(){
         if(balance > 0){
@@ -165,6 +177,7 @@ public class RegularVM {
     
     /**
      * Restocks selected item by adding inputted number to current stock.
+     * 
      * @param index index of the selected item to restock
      * @param amount amount to add to stock of selected item
      */
@@ -180,6 +193,7 @@ public class RegularVM {
 
     /**
      * Sets a new price to selected item.
+     * 
      * @param index index of selected item
      * @param newPrice new price of selected item
      */
@@ -190,7 +204,7 @@ public class RegularVM {
     }
     
     /**
-     * Dispenses all money currently inside the machine.
+     * Dispenses all money in denominations currently inside the machine.
      */
     public void collectMoney()
     {
@@ -203,6 +217,7 @@ public class RegularVM {
 
     /**
      * Adds to the number of bills or coins for selected denomination.
+     * 
      * @param val value of money denomination
      * @param amt number of bills or coins to add
      */
@@ -295,6 +310,7 @@ public class RegularVM {
 
     /**
      * Returns the total income earned by the vending machine.
+     * 
      * @return total money earned
      */
     public double getTotalIncome(){
@@ -303,6 +319,7 @@ public class RegularVM {
 
     /**
      * Returns the current customer's balance.
+     * 
      * @return amount of money the customer has
      */
     public double getBalance(){

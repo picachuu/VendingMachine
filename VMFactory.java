@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class VMFactory {
+
     public static void main(String[] args) {
         RegularVM vm = null;
         Scanner sc = new Scanner(System.in);
