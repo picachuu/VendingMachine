@@ -96,37 +96,76 @@ public class Money {
         }
         return verdict;
     }
-
-    public void subtract(double sub) {
-        int amt = (int)sub;
-        this.fiveHundred -= amt / 500;
-        this.oneHundred -= amt % 500 / 100;
-        this.fifty -= amt % 500 % 100 / 50;
-        this.twenty -= amt % 500 % 100 % 50 / 20;
-        this.ten -= amt % 500 % 100 % 50 % 20 / 10;
-        this.five -= amt % 500 % 100 % 50 % 20 % 10 / 5;
-        this.one -= amt % 500 % 100 % 50 % 20 % 10 % 5;
-    }
     
     public void dispense(double balance){
         int amt = (int)balance;
-        if(amt / 500 != 0)
-            System.out.printf("Dispensing %d P500 bill/s...\n", amt / 500);
-        if(amt % 500 / 100 != 0)
-            System.out.printf("Dispensing %d P100 bill/s...\n", amt % 500 / 100);
-        if(amt % 500 % 100 / 50 != 0)
-            System.out.printf("Dispensing %d P50 bill/s...\n", amt % 500 % 100 / 50);
-        if(amt % 500 % 100 % 50 / 20 != 0)
-            System.out.printf("Dispensing %d P20 bill/s...\n", amt % 500 % 100 % 50 / 20);
-        if(amt % 500 % 100 % 50 % 20 / 10 != 0)
-            System.out.printf("Dispensing %d P10 coin/s...\n", amt % 500 % 100 % 50 % 20 / 10);
-        if(amt % 500 % 100 % 50 % 20 % 10 / 5 != 0)
-            System.out.printf("Dispensing %d P5 coin/s...\n", amt % 500 % 100 % 50 % 20 % 10 / 5);
-        if(amt % 500 % 100 % 50 % 20 % 10 % 5 != 0)
-            System.out.printf("Dispensing %d P1 coin/s...\n", amt % 500 % 100 % 50 % 20 % 10 % 5);
+        int left =(int) balance;
+
+        amt = (int)balance / 500;
+        if(amt <= this.fiveHundred){
+            left -= amt * 500;
+            if(amt != 0){
+                System.out.printf("Dispensing %d P500 bill/s...\n", amt);
+                this.fiveHundred -= amt;
+            }
+        }
+        
+        amt = left / 100;
+        if(amt <= this.oneHundred){
+            left -= amt * 100;
+            if(amt != 0){
+                System.out.printf("Dispensing %d P100 bill/s...\n", amt);
+                this.oneHundred -= amt;
+            }
+        }
+
+        amt = left / 50;
+        if(amt <= this.fifty){
+            left -= amt * 50;
+            if(amt != 0){
+                System.out.printf("Dispensing %d P50 bill/s...\n", amt);
+                this.fifty -= amt;
+            }
+        }
+
+        amt = left / 20;
+        if(amt <= this.twenty){
+            left -= amt * 20;
+            if(amt != 0){
+                System.out.printf("Dispensing %d P20 bill/s...\n", amt);
+                this.twenty -= amt;
+            }
+        }
+
+        amt = left / 10;
+        if(amt <= this.fiveHundred){
+            left -= amt * 10;
+            if(amt != 0){
+                System.out.printf("Dispensing %d P10 coin/s...\n", amt);
+                this.ten -= amt;
+            }
+        }
+
+        amt = left / 5;
+        if(amt <= this.five){
+            left -= amt * 5;
+            if(amt != 0){
+                System.out.printf("Dispensing %d P5 coin/s...\n", amt);
+                this.five -= amt;
+            }
+        }
+
+        amt = left;
+        if(amt <= this.one){
+            left -= amt;
+            if(amt != 0){
+                System.out.printf("Dispensing %d P1 coin/s...\n", amt);
+                this.one -= amt;
+            }
+        }
+
         System.out.printf("\nPlease collect, thank you!\n\n");
         System.out.println();
-        subtract(balance);
     }
 
     public double getTotal() {
