@@ -223,7 +223,7 @@ public class VMFactory {
                                                                         looper3 =false;
                                                                     else
                                                                         System.out.println("Amount exceeds max item stock (20)");
-                                                                    }while (looper3=true);
+                                                                    }while (looper3);
                                                                     vm.addItem(vm.checkEmpty(), newName, newPrice, newCal, newStock);
                                                                     System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n", newName, newStock);
                                                                 }
