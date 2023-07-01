@@ -330,7 +330,7 @@ public class RegularVM {
     public void addItem(int index,String name, double price, double calories, int stock)
     {
         Item toAdd = new Item(name, price,calories, stock); 
-        slot.add(index, toAdd);
+        slot.set(index, toAdd);
     }
 
     /**

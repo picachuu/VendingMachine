@@ -33,6 +33,7 @@ public class VMFactory {
                                 willLoop2 = true;       
                                 System.out.println("\nRegular Vending Machine successfully created!\n");
                                 vm = new RegularVM();
+                                vm.recordStock();
                                 break;
                             case 2:
                                 System.out.println("\n!: Sorry! This feature is not yet available.");
@@ -196,25 +197,39 @@ public class VMFactory {
                                                             break;
 
                                                         case 2:
-                                                            System.out.print("\033[H\033[2J");
-
-                                                            if (vm.checkEmpty() != -1){
-                                                                System.out.print("Please enter item name: ");
-                                                                String bufferString = sc.nextLine();
-                                                                String newName = sc.nextLine();
-                                                                System.out.print("Please enter item price: ");
-                                                                double newPrice = sc.nextDouble();
-                                                                System.out.print("Please enter item calories: ");
-                                                                double newCal = sc.nextDouble();
-                                                                System.out.print("Amount to be stocked: ");
-                                                                int newStock = sc.nextInt();
-                                                                vm.addItem(vm.checkEmpty(), newName, newPrice, newCal, newStock);
-                                                                System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n", newName, newStock);
-                                                            }
-                                                            else
-                                                                System.out.println("!: No available slots!\n");
-                                                            break;
-
+                                                                boolean looper3 = true;
+                                                                double newPrice =0;
+                                                                int newStock;
+                                                                if (vm.checkEmpty() != -1)
+                                                                {
+                                                                    System.out.println("Please enter item name: ");
+                                                                    String bufferString = sc.nextLine();
+                                                                    String newName = sc.nextLine();
+                                                                    do{
+                                                                    System.out.println("Please enter item price: ");
+                                                                    newPrice = sc.nextDouble();
+                                                                    if (newPrice % 1 == 0)
+                                                                        looper3 = false;
+                                                                    else
+                                                                        System.out.println("\nThis machine does not take centavos\n");
+                                                                    }while (looper3);
+                                                                    System.out.println("Please enter item calories: ");
+                                                                    double newCal = sc.nextDouble();
+                                                                    looper3 =true;
+                                                                    do{
+                                                                    System.out.println("Amount to be stocked: ");
+                                                                    newStock= sc.nextInt();
+                                                                    if (newStock <= 20)
+                                                                        looper3 =false;
+                                                                    else
+                                                                        System.out.println("Amount exceeds max item stock (20)");
+                                                                    }while (looper3);
+                                                                    vm.addItem(vm.checkEmpty(), newName, newPrice, newCal, newStock);
+                                                                    System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n", newName, newStock);
+                                                                }
+                                                                else
+                                                                    System.out.println("No available slots!");
+                                                                    break;
                                                         case 3:
                                                             System.out.println("Exiting Stocking Options...\nReturning to Maintenance Features");
                                                             looper2 = false;
