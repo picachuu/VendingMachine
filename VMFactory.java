@@ -203,22 +203,22 @@ public class VMFactory {
                                                                 int newStock;
                                                                 if (vm.checkEmpty() != -1)
                                                                 {
-                                                                    System.out.println("Please enter item name: ");
-                                                                    String bufferString = sc.nextLine();
+                                                                    System.out.print("Please enter item name: ");
+                                                                    sc.nextLine();
                                                                     String newName = sc.nextLine();
                                                                     do{
-                                                                    System.out.println("Please enter item price: ");
+                                                                    System.out.print("Please enter item price: ");
                                                                     newPrice = sc.nextDouble();
                                                                     if (newPrice % 1 == 0)
                                                                         looper3 = false;
                                                                     else
                                                                         System.out.println("\nThis machine does not take centavos\n");
                                                                     }while (looper3);
-                                                                    System.out.println("Please enter item calories: ");
+                                                                    System.out.print("Please enter item calories: ");
                                                                     double newCal = sc.nextDouble();
                                                                     looper3 =true;
                                                                     do{
-                                                                    System.out.println("Amount to be stocked: ");
+                                                                    System.out.print("Amount to be stocked: ");
                                                                     newStock= sc.nextInt();
                                                                     if (newStock <= 20)
                                                                         looper3 =false;
@@ -226,6 +226,7 @@ public class VMFactory {
                                                                         System.out.println("Amount exceeds max item stock (20)");
                                                                     }while (looper3);
                                                                     vm.addItem(vm.checkEmpty(), newName, newPrice, newCal, newStock);
+                                                                    System.out.print("\033[H\033[2J");
                                                                     System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n", newName, newStock);
                                                                 }
                                                                 else
