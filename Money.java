@@ -111,20 +111,21 @@ public class Money {
     public void dispense(double balance){
         int amt = (int)balance;
         if(amt / 500 != 0)
-            System.out.printf("Dispensing %d P500 bills...\n", amt / 500);
+            System.out.printf("Dispensing %d P500 bill/s...\n", amt / 500);
         if(amt % 500 / 100 != 0)
-            System.out.printf("Dispensing %d P100 bills...\n", amt % 500 / 100);
+            System.out.printf("Dispensing %d P100 bill/s...\n", amt % 500 / 100);
         if(amt % 500 % 100 / 50 != 0)
-            System.out.printf("Dispensing %d P50 bills...\n", amt % 500 % 100 / 50);
+            System.out.printf("Dispensing %d P50 bill/s...\n", amt % 500 % 100 / 50);
         if(amt % 500 % 100 % 50 / 20 != 0)
-            System.out.printf("Dispensing %d P20 bills...\n", amt % 500 % 100 % 50 / 20);
+            System.out.printf("Dispensing %d P20 bill/s...\n", amt % 500 % 100 % 50 / 20);
         if(amt % 500 % 100 % 50 % 20 / 10 != 0)
-            System.out.printf("Dispensing %d P10 bills...\n", amt % 500 % 100 % 50 % 20 / 10);
+            System.out.printf("Dispensing %d P10 coin/s...\n", amt % 500 % 100 % 50 % 20 / 10);
         if(amt % 500 % 100 % 50 % 20 % 10 / 5 != 0)
-            System.out.printf("Dispensing %d P5 bills...\n", amt % 500 % 100 % 50 % 20 % 10 / 5);
+            System.out.printf("Dispensing %d P5 coin/s...\n", amt % 500 % 100 % 50 % 20 % 10 / 5);
         if(amt % 500 % 100 % 50 % 20 % 10 % 5 != 0)
-            System.out.printf("Dispensing %d P1 bills...\n", amt % 500 % 100 % 50 % 20 % 10 % 5);
+            System.out.printf("Dispensing %d P1 coin/s...\n", amt % 500 % 100 % 50 % 20 % 10 % 5);
         System.out.printf("\nPlease collect, thank you!\n\n");
+        System.out.println();
         subtract(balance);
     }
 
