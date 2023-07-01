@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 /**
  * Javadoc documentation by Niccolo G. Jimenez & Jannica S. Lim
  * The class is a blueprint to create an object, the class "RegularVM" creates a regular vending machine
@@ -88,6 +89,7 @@ public class RegularVM {
         System.out.println("-----------------------------------------------");
         System.out.printf("%10s%19s%18s", "Name", "Price", "Calories\n");
         System.out.println("-----------------------------------------------");
+        
         for (int i = 0; i < slot.size(); i++)
         {
             
