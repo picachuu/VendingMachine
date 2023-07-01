@@ -327,7 +327,7 @@ public class RegularVM {
     }
 
     /**
-     * 
+     * Records the stock to a hashmap
      */
     public void recordStock()
     {
@@ -337,7 +337,7 @@ public class RegularVM {
     }
 
     /**
-     * 
+     * Adds item to the arraylist given the index and item information
      * @param index
      * @param name
      * @param price
@@ -351,8 +351,8 @@ public class RegularVM {
     }
 
     /**
-     * 
-     * @return
+     * Loops through the ArrayList to find the first empty slot it can find
+     * @return the index of the empty slot
      */
     public int checkEmpty()
     {
