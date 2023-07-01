@@ -342,11 +342,11 @@ public class RegularVM {
 
     /**
      * Adds item to the arraylist given the index and item information
-     * @param index
-     * @param name
-     * @param price
-     * @param calories
-     * @param stock
+     * @param index index of the free slot
+     * @param name name of the new item
+     * @param price price of the new item
+     * @param calories calories of the new item
+     * @param stock stock to be set of the new item
      */
     public void addItem(int index,String name, double price, double calories, int stock)
     {
