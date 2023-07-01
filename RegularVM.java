@@ -61,7 +61,7 @@ public class RegularVM {
     }
 
     public void displayItems(){
-        System.out.printf("%27s", "Items\n");
+        System.out.printf("%26s", "Items\n");
         System.out.println("-----------------------------------------------");
         System.out.printf("%10s%19s%16s", "Name", "Price", "Calories\n");
         System.out.println("-----------------------------------------------");
