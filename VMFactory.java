@@ -166,14 +166,11 @@ public class VMFactory {
                                                     System.out.println("[3] Exit");
                                                     System.out.print("\nInput: ");
                                                     int restockChoice = sc.nextInt();
-
+                                                    System.out.print("\033[H\033[2J");
                                                     
                                                     switch(restockChoice){
                                                         case 1: 
-                                                            
-
-                                                            do{
-                                                                System.out.print("\033[H\033[2J");
+                                                            do{                                                               
                                                                 vm.maintDisplayItems();
 
                                                                 do{
@@ -227,7 +224,7 @@ public class VMFactory {
                                                                     }while (looper3);
                                                                     vm.addItem(vm.checkEmpty(), newName, newPrice, newCal, newStock);
                                                                     System.out.print("\033[H\033[2J");
-                                                                    System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n", newName, newStock);
+                                                                    System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n\n", newName, newStock);
                                                                 }
                                                                 else
                                                                     System.out.println("No available slots!");
@@ -249,15 +246,21 @@ public class VMFactory {
                                                 vm.maintDisplayItems();
                                                 System.out.printf("\nPlease enter item number: ");
                                                 int index2 = sc.nextInt() - 1;
-                                                
-                                                do{
-                                                    System.out.printf("\nPlease enter new price: ");
-                                                    newPrice = sc.nextDouble();
-                                                    if (newPrice % 1 == 0)
-                                                        vm.setPrice(index2, newPrice);
-                                                    else
-                                                        System.out.println("Sorry, this machine does not take centavos.");
-                                                }while(newPrice % 1 != 0);
+
+                                                if(index2 < 9){                                                
+                                                    do{
+                                                        System.out.printf("\nPlease enter new price: ");
+                                                        newPrice = sc.nextDouble();
+                                                        if (newPrice % 1 == 0)
+                                                            vm.setPrice(index2, newPrice);
+                                                        else
+                                                            System.out.println("Sorry, this machine does not take centavos.");
+                                                    }while(newPrice % 1 != 0);
+                                                }
+                                                else{
+                                                    System.out.print("\033[H\033[2J");
+                                                    System.out.println("That is not an option.");
+                                                }
                                                 break;
 
                                             case 3:

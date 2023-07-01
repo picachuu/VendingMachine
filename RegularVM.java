@@ -306,7 +306,7 @@ public class RegularVM {
         for (int i = 0; i < slot.size(); i++)
         {
             amtsold = stockRecordMap.get(slot.get(i).getName()) - slot.get(i).getStock();
-            totalEarnings =+ amtsold;
+            totalEarnings += amtsold * slot.get(i).getPrice();
             System.out.printf("%d.) %-17s%6d%13s%.2f\n", i+1, slot.get(i).getName(), amtsold, "P",amtsold * slot.get(i).getPrice() );
         }
         System.out.println("-----------------------------------------------");
