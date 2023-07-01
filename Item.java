@@ -1,7 +1,7 @@
 /**
  * Javadoc documentation by Niccolo G. Jimenez & Jannica S. Lim
  * The class is a blueprint to create an object, the class "Item" creates an object for a vending machine item
- * The class "Item" has 7 attributes: name, calories, price, stock;
+ * The class "Item" has 4 attributes: name, calories, price, stock;
  */
 public class Item {
     private String name;
