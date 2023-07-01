@@ -33,6 +33,12 @@ public class RegularVM {
     }
 
     //Vending Features
+
+    /**
+     * Adds inputted value to the customer's balance 
+     * and adds 1 to selected money denomination in the machine.
+     * @param val value of the bill or coin inserted into the vending machine
+     */
     public void insertPayment(int val){
         balance += val;
         switch(val){
@@ -60,37 +66,48 @@ public class RegularVM {
         }
     }
 
+    /**
+     * Prints the available items of the vending machine, including its name, price, and calories.
+     */
     public void displayItems(){
         System.out.printf("%26s", "Items\n");
         System.out.println("-----------------------------------------------");
-        System.out.printf("%10s%19s%16s", "Name", "Price", "Calories\n");
+        System.out.printf("%10s%19s%18s", "Name", "Price", "Calories\n");
         System.out.println("-----------------------------------------------");
         for (int i = 0; i < slot.size(); i++)
         {
             
             if (slot.get(i).getStock() > 0)
                 if(i < 10)
-                    System.out.printf("%d.) %-17s%8.2f%s%12.1f\n", i+1, slot.get(i).getName(), slot.get(i).getPrice(), "P", slot.get(i).getCalories());
+                    System.out.printf("%d.) %-17s%8.2f%s%12.1fkcal\n", i+1, slot.get(i).getName(), slot.get(i).getPrice(), "P", slot.get(i).getCalories());
                 else
-                    System.out.printf("%d.) %-17s%5.2f%s%11.1f\n", i+1, slot.get(i).getName(), slot.get(i).getPrice(), "P", slot.get(i).getCalories());
+                    System.out.printf("%d.) %-17s%5.2f%s%11.1fkcal\n", i+1, slot.get(i).getName(), slot.get(i).getPrice(), "P", slot.get(i).getCalories());
             else
-                System.out.printf("%d.) %-22sNOT AVAILABLE\n", i+1, slot.get(i).getName());
+                System.out.printf("%d.) %-24sNOT AVAILABLE\n", i+1, slot.get(i).getName());
                 
         }
     }
 
+    /**
+     * Orders item from vending machine.
+     * Selected item is dispensed, which entails diminishing the item's stock by one,
+     * and returns change, if present, to customer.
+     * @param selOrder index of selected item to order
+     */
     public void orderItem(int selOrder) {
-        //if available
+
+        //if selected item is available
         if(slot.get(selOrder).getStock() > 0)
-            //if enough money
+
+            //if customer has enough balance
             if(balance >= slot.get(selOrder).getPrice()){
                 if(money.checkAvail(balance - slot.get(selOrder).getPrice())){
-                System.out.print("\033[H\033[2J");
-                //if may change
 
-                System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 slot.get(selOrder).removeStock(1);
                 balance -= slot.get(selOrder).getPrice();
+                
+                System.out.print("\033[H\033[2J");
+                System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
                 System.out.printf("Thank you for your purchase!\n\n", balance);
                 receiveChange();
                 }
@@ -113,6 +130,9 @@ public class RegularVM {
         } 
     }
     
+    /**
+     * 
+     */
     public void receiveChange(){
         if(balance > 0){
             System.out.printf("\nYour change is P%.2f.\n\n", balance);
@@ -124,6 +144,11 @@ public class RegularVM {
     }
 
     //Maintenance Features
+
+    /**
+     * Prints the available items of the vending machine, 
+     * including its name, price, and stock number.
+     */
     public void maintDisplayItems(){
         System.out.printf("%25s", "Items\n");
         System.out.println("--------------------------------------------");
@@ -138,6 +163,11 @@ public class RegularVM {
         }
     }
     
+    /**
+     * Restocks selected item by adding inputted number to current stock.
+     * @param index index of the selected item to restock
+     * @param amount amount to add to stock of selected item
+     */
     public void restockItem(int index, int amount){
 
         if (slot.get(index).addStock(amount))
@@ -148,12 +178,20 @@ public class RegularVM {
             System.out.printf("\n!: Restock amount exceeds slot capacity (20)\n\n");
     }
 
+    /**
+     * Sets a new price to selected item.
+     * @param index index of selected item
+     * @param newPrice new price of selected item
+     */
     public void setPrice(int index, double newPrice){
         slot.get(index).changePrice(newPrice);
         System.out.print("\033[H\033[2J");
         System.out.printf("Price of: %s has been changed to %.2f\n\n", slot.get(index).getName(), newPrice);
     }
     
+    /**
+     * Dispenses all money currently inside the machine.
+     */
     public void collectMoney()
     {
         System.out.printf("\nTotal money held is P%.2f\n\n", money.getTotal());
@@ -163,6 +201,11 @@ public class RegularVM {
             System.out.println("No money to dispense.");
     }
 
+    /**
+     * Adds to the number of bills or coins for selected denomination.
+     * @param val value of money denomination
+     * @param amt number of bills or coins to add
+     */
     public void replenishMoney(int val, int amt){
         int value = 0;
         switch(val){
@@ -199,6 +242,9 @@ public class RegularVM {
 
     }
 
+    /**
+     * Prints the number of each denomination currently in the machine.
+     */
     public void viewDenominations(){
         System.out.print("\033[H\033[2J");
         System.out.println("\nMachine currently has");
@@ -212,20 +258,28 @@ public class RegularVM {
         System.out.printf("\ncoming to a total of P%.2f.\n", money.getTotal());
     }
 
+    /**
+     * Prints the summary of transactions involving earnings and inventory stock.
+     */
     public void printSummary(){
         double totalEarnings = 0;
-        System.out.printf("%23s", "Inventory\n");
+        int totalStart = 0;
+        int totalEnd = 0;
+        System.out.printf("%28s\n", "Inventory");
         System.out.println("-----------------------------------------------");
         System.out.printf("%10s%22s%16s", "Name", "Starting Stock", "Current Stock\n");
         System.out.println("-----------------------------------------------");
         for (int i = 0; i < slot.size(); i++)
         {
             System.out.printf("%d.) %-17s%6s%13d\n", i+1, slot.get(i).getName(), stockRecordMap.get(slot.get(i).getName()), slot.get(i).getStock());
+            totalStart += stockRecordMap.get(slot.get(i).getName());
+            totalEnd += slot.get(i).getStock();
         }
         System.out.println("-----------------------------------------------");
-        System.out.printf("%25s", "Summary\n");
+        System.out.printf("Total: %10d%10d\n", totalStart, totalEnd);
+        System.out.printf("%25s\n\n", "Summary");
         System.out.println("-----------------------------------------------");
-        System.out.printf("%10s%22s%16s", "Name", "Quantity Sold", "Earnings\n");
+        System.out.printf("%10s%22s%16s\n", "Name", "Quantity Sold", "Earnings");
         System.out.println("-----------------------------------------------");
         int amtsold;
         for (int i = 0; i < slot.size(); i++)
@@ -239,26 +293,50 @@ public class RegularVM {
         System.out.println("-----------------------------------------------");
     }
 
+    /**
+     * Returns the total income earned by the vending machine.
+     * @return total money earned
+     */
     public double getTotalIncome(){
         return this.totalIncome;
     }
 
+    /**
+     * Returns the current customer's balance.
+     * @return amount of money the customer has
+     */
     public double getBalance(){
         return this.balance;
     }
 
+    /**
+     * 
+     */
     public void recordStock()
     {
         for (int i=0; i<slot.size(); i++) {
         stockRecordMap.put(slot.get(i).getName(), slot.get(i).getStock());
         }
     }
+
+    /**
+     * 
+     * @param index
+     * @param name
+     * @param price
+     * @param calories
+     * @param stock
+     */
     public void addItem(int index,String name, double price, double calories, int stock)
     {
         Item toAdd = new Item(name, price,calories, stock); 
         slot.add(index, toAdd);
     }
 
+    /**
+     * 
+     * @return
+     */
     public int checkEmpty()
     {
         int emptyIndex = -1;
