@@ -1,5 +1,5 @@
 /**
- * Javadoc documentation by Niccolo G. Jimenez & Jannica S. Lim
+ * Javadoc documentation by Niccolo G. Jimenez and Jannica S. Lim
  * The class is a blueprint to create an object, the class "Item" creates an object for a vending machine item
  * The class "Item" has 4 attributes: name, calories, price, stock;
  */
@@ -44,7 +44,7 @@ public class Item {
     /**
      * This method adds stock of the current item
      * @param addtoStock amount of stock to be added
-     * @return
+     * @return boolean value if stock was added successfully
      */
     public boolean addStock(int addtoStock)
     {
@@ -58,7 +58,7 @@ public class Item {
     /**
      * This item removes stock from the item
      * @param removefromStock amount of stock to be removed
-     * @return
+     * @return boolean value if stock was removed successfully
      */
     public boolean removeStock(int removefromStock)
     {

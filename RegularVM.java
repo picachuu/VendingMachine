@@ -3,7 +3,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Javadoc documentation by Niccolo G. Jimenez & Jannica S. Lim
+ * Javadoc documentation by Niccolo G. Jimenez and Jannica S. Lim
  * The class is a blueprint to create an object, the class "RegularVM" creates a regular vending machine
  * The class "RegularVM" has 5 attributes: slot, balance, totalIncome, stockRecord, money;
  */
@@ -344,11 +344,11 @@ public class RegularVM {
 
     /**
      * Adds item to the arraylist given the index and item information
-     * @param index
-     * @param name
-     * @param price
-     * @param calories
-     * @param stock
+     * @param index index of the free slot
+     * @param name name of the new item
+     * @param price price of the new item
+     * @param calories calories of the new item
+     * @param stock stock to be set of the new item
      */
     public void addItem(int index,String name, double price, double calories, int stock)
     {
