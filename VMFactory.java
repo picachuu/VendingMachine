@@ -33,6 +33,7 @@ public class VMFactory {
                                 System.out.print("\033[H\033[2J");                         
                                 System.out.println("\nRegular Vending Machine successfully created!\n");
                                 vm = new RegularVM();
+                                vm.recordStock();
                                 break;
                             case 2:
                                 System.out.print("\033[H\033[2J");
@@ -190,17 +191,33 @@ public class VMFactory {
                                                                 }while (looper);
                                                                 break;
                                                         case 2:
+                                                                boolean looper3 = true;
+                                                                double newPrice =0;
+                                                                int newStock;
                                                                 if (vm.checkEmpty() != -1)
                                                                 {
                                                                     System.out.println("Please enter item name: ");
                                                                     String bufferString = sc.nextLine();
                                                                     String newName = sc.nextLine();
+                                                                    do{
                                                                     System.out.println("Please enter item price: ");
-                                                                    double newPrice = sc.nextDouble();
+                                                                    newPrice = sc.nextDouble();
+                                                                    if (newPrice % 1 == 0)
+                                                                        looper3 = false;
+                                                                    else
+                                                                        System.out.println("\nThis machine does not take centavos\n");
+                                                                    }while (looper3);
                                                                     System.out.println("Please enter item calories: ");
                                                                     double newCal = sc.nextDouble();
+                                                                    looper3 =true;
+                                                                    do{
                                                                     System.out.println("Amount to be stocked: ");
-                                                                    int newStock = sc.nextInt();
+                                                                    newStock= sc.nextInt();
+                                                                    if (newStock <= 20)
+                                                                        looper3 =false;
+                                                                    else
+                                                                        System.out.println("Amount exceeds max item stock (20)");
+                                                                    }while (looper3=true);
                                                                     vm.addItem(vm.checkEmpty(), newName, newPrice, newCal, newStock);
                                                                     System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n", newName, newStock);
                                                                 }
