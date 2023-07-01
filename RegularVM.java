@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
+/**
+ * Javadoc documentation by Niccolo G. Jimenez & Jannica S. Lim
+ * The class is a blueprint to create an object, the class "RegularVM" creates a regular vending machine
+ * The class "RegularVM" has 5 attributes: slot, balance, totalIncome, stockRecord, money;
+ */
 public class RegularVM {
     private ArrayList<Item> slot;
     private double balance;
