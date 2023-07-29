@@ -63,7 +63,7 @@ public class Item {
     public boolean removeStock(int removefromStock)
     {
          boolean check = true;
-        if (this.stock - removefromStock > 0)
+        if (this.stock - removefromStock >= 0)
             this.stock -= removefromStock;
         else
             check = false;
