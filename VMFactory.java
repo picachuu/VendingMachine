@@ -198,8 +198,9 @@ public class VMFactory {
                                                                 boolean looper3 = true;
                                                                 double newPrice =0;
                                                                 int newStock;
+                                                                vm.maintDisplayItems();
                                                                 System.out.print("Please enter slot: ");
-                                                                int newSlot = sc.nextInt();
+                                                                int newSlot = sc.nextInt() - 1;
                                                                 System.out.print("Please enter item name: ");
                                                                 sc.nextLine();
                                                                 String newName = sc.nextLine();
