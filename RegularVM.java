@@ -44,8 +44,11 @@ public class RegularVM {
         slotRecord.put(6,itemSeven);
         slotRecord.put(7,itemEight);
         slotRecord.put(8,itemNine);
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 10; j++) {
+                if (slotList.size() <= i) {
+                    slotList.add(new ArrayList<Item>());
+                }
                 slotList.get(i).add(slotRecord.get(i));
             }
         }
@@ -198,9 +201,13 @@ public class RegularVM {
      */
     public void restockItem(int index, int amount){
 
-        if (slotList.get(index).addStock(amount))
+        if (slotList.get(index).size() + amount <= 20)
         {
-            System.out.printf("\nItem: %s has been restocked by: %d successfully.\n\n", slot.get(index).getName(), amount);
+            for (int i = 0; i < amount; i++)
+            {
+                slotList.get(index).add(slotRecord.get(index));
+            }
+            System.out.printf("\nItem: %s has been restocked by: %d successfully.\n\n", slotRecord.get(index).getName(), amount);
         }
         else
             System.out.printf("\n!: Restock amount exceeds slot capacity (20)\n\n");
@@ -213,9 +220,13 @@ public class RegularVM {
      * @param newPrice new price of selected item
      */
     public void setPrice(int index, double newPrice){
-        slot.get(index).changePrice(newPrice);
+        slotRecord.get(index).changePrice(newPrice);
+        for (int i = 0; i < slotList.get(index).size(); i++)
+        {
+            slotList.get(index).get(i).changePrice(newPrice);
+        }
         System.out.print("\033[H\033[2J");
-        System.out.printf("Price of: %s has been changed to %.2f\n\n", slot.get(index).getName(), newPrice);
+        System.out.printf("Price of: %s has been changed to %.2f\n\n", slotRecord.get(index).getName(), newPrice);
     }
     
     /**
@@ -299,11 +310,11 @@ public class RegularVM {
         System.out.println("-----------------------------------------------");
         System.out.printf("%10s%22s%16s", "Name", "Starting Stock", "Current Stock\n");
         System.out.println("-----------------------------------------------");
-        for (int i = 0; i < slot.size(); i++)
+        for (int i = 0; i < 9; i++)
         {
-            System.out.printf("%d.) %-17s%6s%13d\n", i+1, slot.get(i).getName(), stockRecordMap.get(slot.get(i).getName()), slot.get(i).getStock());
-            totalStart += stockRecordMap.get(slot.get(i).getName());
-            totalEnd += slot.get(i).getStock();
+            System.out.printf("%d.) %-17s%6s%13d\n", i+1, slotRecord.get(i).getName(), stockRecordMap.get(slotRecord.get(i).getName()), slotList.get(i).size());
+            totalStart += stockRecordMap.get(slotRecord.get(i).getName());
+            totalEnd += slotList.get(i).size();
         }
         System.out.println("-----------------------------------------------");
         System.out.printf("Total: %20d%13d\n", totalStart, totalEnd);
@@ -312,11 +323,11 @@ public class RegularVM {
         System.out.printf("%10s%22s%16s\n", "Name", "Quantity Sold", "Earnings");
         System.out.println("-----------------------------------------------");
         int amtsold;
-        for (int i = 0; i < slot.size(); i++)
+        for (int i = 0; i < 9; i++)
         {
-            amtsold = stockRecordMap.get(slot.get(i).getName()) - slot.get(i).getStock();
-            totalEarnings += amtsold * slot.get(i).getPrice();
-            System.out.printf("%d.) %-17s%6d%15s%.2f\n", i+1, slot.get(i).getName(), amtsold, "P",amtsold * slot.get(i).getPrice() );
+            amtsold = stockRecordMap.get(slotRecord.get(i).getName()) - slotList.get(i).size();
+            totalEarnings += amtsold * slotRecord.get(i).getPrice();
+            System.out.printf("%d.) %-17s%6d%15s%.2f\n", i+1, slotRecord.get(i).getName(), amtsold, "P",amtsold * slotRecord.get(i).getPrice() );
         }
         System.out.println("-----------------------------------------------");
         System.out.printf("Total Earnings (since last restocking):%3s%.2f\n", " P", totalEarnings);
@@ -346,8 +357,8 @@ public class RegularVM {
      */
     public void recordStock()
     {
-        for (int i=0; i<slot.size(); i++) {
-        stockRecordMap.put(slot.get(i).getName(), slot.get(i).getStock());
+        for (int i=0; i < 9; i++) {
+        stockRecordMap.put(slotRecord.get(i).getName(), slotList.get(i).size());
         }
     }
 
@@ -361,8 +372,12 @@ public class RegularVM {
      */
     public void addItem(int index,String name, double price, double calories, int stock)
     {
-        Item toAdd = new Item(name, price,calories, stock); 
-        slot.set(index, toAdd);
+        Item toAdd = new Item(name, price,calories); 
+        slotRecord.put(index, toAdd);
+        for (int i = 0; i < stock; i++)
+        {
+            slotList.get(index).add(toAdd);
+        }
     }
 
     /**
@@ -372,9 +387,9 @@ public class RegularVM {
     public int checkEmpty()
     {
         int emptyIndex = -1;
-        for (int i = 0; i < slot.size() && emptyIndex == -1; i++)
+        for (int i = 0; i < 9 && emptyIndex == -1; i++)
         {
-            if (slot.get(i).getStock() == 0 )
+            if (slotList.get(i).size() == 0 )
                 emptyIndex = i;
         }
         return emptyIndex;
