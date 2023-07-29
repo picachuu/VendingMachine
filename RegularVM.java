@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.*;
 
 /**
  * Javadoc documentation by Niccolo G. Jimenez and Jannica S. Lim
@@ -8,9 +9,11 @@ import java.util.Map;
  * The class "RegularVM" has 5 attributes: slot, balance, totalIncome, stockRecord, money;
  */
 public class RegularVM {
-    private ArrayList<Item> slot;
+    //private ArrayList<Item> slot;
     private double balance;
     private double totalIncome;
+    private List<List<Item>> slotList = new ArrayList<List<Item>>();
+    Map<Integer, Item> slotRecord = new LinkedHashMap<Integer, Item>();
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();
     private Money money;
     
@@ -22,25 +25,31 @@ public class RegularVM {
      * Money inside the machine is also created.
     */
     public RegularVM(){
-        Item itemOne = new Item("Pepperoni", 53, 136, 10);
-        Item itemTwo = new Item("Ham", 69, 40, 10);
-        Item itemThree = new Item("Sausage", 55, 210, 10);
-        Item itemFour = new Item("BBQ Chicken", 55, 215, 10);
-        Item itemFive = new Item("Mozarella", 40, 85, 10);
-        Item itemSix = new Item("Parmesan", 50, 42, 10);
-        Item itemSeven = new Item("Jalapenos", 45, 12.3, 10);
-        Item itemEight = new Item("Mushroom", 43, 10.2, 10);
-        Item itemNine = new Item("Olives", 37, 13.2, 0);
-        slot = new ArrayList<>();
-        slot.add(itemOne);
-        slot.add(itemTwo);
-        slot.add(itemThree);
-        slot.add(itemFour);
-        slot.add(itemFive);
-        slot.add(itemSix);
-        slot.add(itemSeven);
-        slot.add(itemEight);
-        slot.add(itemNine);
+        Item itemOne = new Item("Pepperoni", 53, 136);
+        Item itemTwo = new Item("Ham", 69, 40);
+        Item itemThree = new Item("Sausage", 55, 210);
+        Item itemFour = new Item("BBQ Chicken", 55, 215);
+        Item itemFive = new Item("Mozarella", 40, 85);
+        Item itemSix = new Item("Parmesan", 50, 42);
+        Item itemSeven = new Item("Jalapenos", 45, 12.3);
+        Item itemEight = new Item("Mushroom", 43, 10.2);
+        Item itemNine = new Item("Olives", 37, 13.2);
+        //slot = new ArrayList<>();
+        slotRecord.put(0,itemOne);
+        slotRecord.put(1,itemTwo);
+        slotRecord.put(2,itemThree);
+        slotRecord.put(3,itemFour);
+        slotRecord.put(4,itemFive);
+        slotRecord.put(5,itemSix);
+        slotRecord.put(6,itemSeven);
+        slotRecord.put(7,itemEight);
+        slotRecord.put(8,itemNine);
+        for (int i = 1; i <= 9; i++) {
+            for (int j = 0; j < 10; j++) {
+                slotList.get(i).add(slotRecord.get(i));
+            }
+        }
+        
         this.money = new Money();
     }
 
@@ -90,16 +99,16 @@ public class RegularVM {
         System.out.printf("%10s%19s%18s", "Name", "Price", "Calories\n");
         System.out.println("-----------------------------------------------");
         
-        for (int i = 0; i < slot.size(); i++)
+        for (int i = 0; i < 9; i++)
         {
             
-            if (slot.get(i).getStock() > 0)
+            if (slotList.get(i).size() > 0)
                 if(i < 10)
-                    System.out.printf("%d.) %-17s%8.2f%s%12.1fkcal\n", i+1, slot.get(i).getName(), slot.get(i).getPrice(), "P", slot.get(i).getCalories());
+                    System.out.printf("%d.) %-17s%8.2f%s%12.1fkcal\n", i+1, slotRecord.get(i).getName(), slotRecord.get(i).getPrice(), "P", slotRecord.get(i).getCalories());
                 else
-                    System.out.printf("%d.) %-17s%5.2f%s%11.1fkcal\n", i+1, slot.get(i).getName(), slot.get(i).getPrice(), "P", slot.get(i).getCalories());
+                    System.out.printf("%d.) %-17s%5.2f%s%11.1fkcal\n", i+1, slotRecord.get(i).getName(), slotRecord.get(i).getPrice(), "P", slotRecord.get(i).getCalories());
             else
-                System.out.printf("%d.) %-24sNOT AVAILABLE\n", i+1, slot.get(i).getName());
+                System.out.printf("%d.) %-24sNOT AVAILABLE\n", i+1, slotRecord.get(i).getName());
                 
         }
     }
@@ -115,17 +124,17 @@ public class RegularVM {
     public void orderItem(int selOrder) {
 
         //if selected item is available
-        if(slot.get(selOrder).getStock() > 0)
+        if(slotList.get(selOrder).size() > 0)
 
             //if customer has enough balance
-            if(balance >= slot.get(selOrder).getPrice()){
-                if(money.checkAvail(balance - slot.get(selOrder).getPrice())){
+            if(balance >= slotRecord.get(selOrder).getPrice()){
+                if(money.checkAvail(balance - slotRecord.get(selOrder).getPrice())){
 
-                slot.get(selOrder).removeStock(1);
-                balance -= slot.get(selOrder).getPrice();
+                slotList.get(selOrder).remove(slotList.get(selOrder).size()-1);
+                balance -= slotRecord.get(selOrder).getPrice();
                 
                 System.out.print("\033[H\033[2J");
-                System.out.println("\nDispensing " + slot.get(selOrder).getName() + "...");
+                System.out.println("\nDispensing " + slotRecord.get(selOrder).getName() + "...");
                 System.out.printf("Thank you for your purchase!\n\n", balance);
                 receiveChange();
                 }
@@ -172,12 +181,12 @@ public class RegularVM {
         System.out.println("--------------------------------------------");
         System.out.printf("%10s%19s%13s", "Name", "Price", "Stock\n");
         System.out.println("--------------------------------------------");
-        for (int i = 0; i < slot.size(); i++)
+        for (int i = 0; i < 9; i++)
         {
             if(i < 9)
-                System.out.printf("%d.) %-17s%8.2f%s%10d\n", i+1, slot.get(i).getName(),slot.get(i).getPrice(), "P", slot.get(i).getStock());
+                System.out.printf("%d.) %-17s%8.2f%s%10d\n", i+1, slotRecord.get(i).getName(),slotRecord.get(i).getPrice(), "P", slotList.get(i).size());
             else
-                System.out.printf("%d.) %-17s%7.2f%s%10d\n", i+1, slot.get(i).getName(),slot.get(i).getPrice(), "P", slot.get(i).getStock());
+                System.out.printf("%d.) %-17s%7.2f%s%10d\n", i+1, slotRecord.get(i).getName(),slotRecord.get(i).getPrice(), "P", slotList.get(i).size());
         }
     }
     
@@ -189,7 +198,7 @@ public class RegularVM {
      */
     public void restockItem(int index, int amount){
 
-        if (slot.get(index).addStock(amount))
+        if (slotList.get(index).addStock(amount))
         {
             System.out.printf("\nItem: %s has been restocked by: %d successfully.\n\n", slot.get(index).getName(), amount);
         }
