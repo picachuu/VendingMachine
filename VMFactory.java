@@ -198,37 +198,34 @@ public class VMFactory {
                                                                 boolean looper3 = true;
                                                                 double newPrice =0;
                                                                 int newStock;
-                                                                if (vm.checkEmpty() != -1)
-                                                                {
-                                                                    System.out.print("Please enter item name: ");
-                                                                    sc.nextLine();
-                                                                    String newName = sc.nextLine();
-                                                                    do{
-                                                                    System.out.print("Please enter item price: ");
-                                                                    newPrice = sc.nextDouble();
-                                                                    if (newPrice % 1 == 0)
-                                                                        looper3 = false;
-                                                                    else
-                                                                        System.out.println("\nThis machine does not take centavos\n");
-                                                                    }while (looper3);
-                                                                    System.out.print("Please enter item calories: ");
-                                                                    double newCal = sc.nextDouble();
-                                                                    looper3 =true;
-                                                                    do{
-                                                                    System.out.print("Amount to be stocked: ");
-                                                                    newStock= sc.nextInt();
-                                                                    if (newStock <= 20)
-                                                                        looper3 =false;
-                                                                    else
-                                                                        System.out.println("Amount exceeds max item stock (20)");
-                                                                    }while (looper3);
-                                                                    vm.addItem(vm.checkEmpty(), newName, newPrice, newCal, newStock);
-                                                                    System.out.print("\033[H\033[2J");
-                                                                    System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n\n", newName, newStock);
-                                                                }
+                                                                System.out.print("Please enter slot: ");
+                                                                int newSlot = sc.nextInt();
+                                                                System.out.print("Please enter item name: ");
+                                                                sc.nextLine();
+                                                                String newName = sc.nextLine();
+                                                                do{
+                                                                System.out.print("Please enter item price: ");
+                                                                newPrice = sc.nextDouble();
+                                                                if (newPrice % 1 == 0)
+                                                                    looper3 = false;
                                                                 else
-                                                                    System.out.println("No available slots!");
-                                                                    break;
+                                                                    System.out.println("\nThis machine does not take centavos\n");
+                                                                }while (looper3);
+                                                                System.out.print("Please enter item calories: ");
+                                                                double newCal = sc.nextDouble();
+                                                                looper3 =true;
+                                                                do{
+                                                                System.out.print("Amount to be stocked: ");
+                                                                newStock= sc.nextInt();
+                                                                if (newStock <= 20)
+                                                                    looper3 =false;
+                                                                else
+                                                                    System.out.println("Amount exceeds max item stock (20)");
+                                                                }while (looper3);
+                                                                vm.addItem(newSlot, newName, newPrice, newCal, newStock);
+                                                                System.out.print("\033[H\033[2J");
+                                                                System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n\n", newName, newStock);
+                                                                break;
                                                         case 3:
                                                             System.out.println("Exiting Stocking Options...\nReturning to Maintenance Features");
                                                             looper2 = false;
