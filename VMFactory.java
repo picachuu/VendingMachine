@@ -4,7 +4,7 @@ public class VMFactory {
 
     public static void main(String[] args) {
         RegularVM vm = null;
-        VMView view = new VMView();
+        //MView view = new VMView();
         Scanner sc = new Scanner(System.in);
 
         boolean willLoop = false;        
@@ -75,11 +75,7 @@ public class VMFactory {
                                     boolean willLoop4 = false;
                                     do{                        
                                         System.out.printf("Current Balance: P%.2f\n", vm.getBalance());
-                                        System.out.println("\n-------Vending Features-------");
-                                        System.out.println("[1] Insert Payment");
-                                        System.out.println("[2] Order Item");
-                                        System.out.println("[3] Receive Change");
-                                        System.out.println("[4] Return to Test Menu");
+                                        vm.displayVendingFeaturesMenu();
                                         System.out.print("Input: ");
                                         int nVenChoice = sc.nextInt();
 
