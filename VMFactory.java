@@ -227,10 +227,12 @@ public class VMFactory {
                                                                 System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n\n", newName, newStock);
                                                                 break;
                                                         case 3:
-                                                            System.out.println("Exiting Stocking Options...\nReturning to Maintenance Features");
+                                                            //System.out.println("Exiting Stocking Options...\nReturning to Maintenance Features");
                                                             looper2 = false;
                                                             System.out.print("\033[H\033[2J");
                                                             break;
+                                                        default:
+                                                            System.out.println("That is not an option.\n");
                                                     }
                                                 }while(looper2);
                                                 vm.recordStock();
