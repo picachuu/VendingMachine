@@ -11,9 +11,8 @@ public class RegularVM {
     private ArrayList<Item> slot;
     private double balance;
     private double totalIncome;
-    Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();
-    private Money money;
-    
+    Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();    
+    private cashRegister cashRegister;
     /**
      * A constructor that creates a regular vending machine.
      * 
@@ -41,7 +40,7 @@ public class RegularVM {
         slot.add(itemSeven);
         slot.add(itemEight);
         slot.add(itemNine);
-        this.money = new Money();
+        cashRegister = new cashRegister(10);    
     }
 
     //Vending Features
@@ -55,29 +54,7 @@ public class RegularVM {
      */
     public void insertPayment(int val){
         balance += val;
-        switch(val){
-            case 500:
-                money.addFiveHundred(1);
-                break;
-            case 100:
-                money.addOneHundred(1);
-                break;
-            case 50:
-                money.addFifty(1);
-                break;
-            case 20:
-                money.addTwenty(1);
-                break;
-            case 10:
-                money.addTen(1);
-                break;
-            case 5:
-                money.addFive(1);
-                break;
-            case 1:
-                money.addOne(1);
-                break;
-        }
+        cashRegister.addMoney(val, 1);
     }
 
     /**
@@ -119,7 +96,7 @@ public class RegularVM {
 
             //if customer has enough balance
             if(balance >= slot.get(selOrder).getPrice()){
-                if(money.checkAvail(balance - slot.get(selOrder).getPrice())){
+                if(cashRegister.checkAvail(balance - slot.get(selOrder).getPrice())){
 
                 slot.get(selOrder).removeStock(1);
                 balance -= slot.get(selOrder).getPrice();
@@ -154,7 +131,7 @@ public class RegularVM {
     public void receiveChange(){
         if(balance > 0){
             System.out.printf("\nYour change is P%.2f.\n\n", balance);
-            money.dispense(balance);
+            cashRegister.dispenseMoney(balance);
             balance = 0;
         }
         else
@@ -214,9 +191,9 @@ public class RegularVM {
      */
     public void collectMoney()
     {
-        System.out.printf("\nTotal money held is P%.2f\n\n", money.getTotal());
-        if(money.getTotal() != 0)
-            money.dispenseAll();
+        System.out.printf("\nTotal money held is P%.2f\n\n", cashRegister.getTotal());
+        if(cashRegister.getTotal() != 0)
+            cashRegister.dispenseAll();
         else
             System.out.println("No money to dispense.");
     }
@@ -228,39 +205,8 @@ public class RegularVM {
      * @param amt number of bills or coins to add
      */
     public void replenishMoney(int val, int amt){
-        int value = 0;
-        switch(val){
-            case 1:
-                money.addFiveHundred(amt);
-                value = 500;
-                break;
-            case 2:
-                money.addOneHundred(amt);
-                value = 100;
-                break;
-            case 3:
-                money.addFifty(amt);
-                value = 50;
-                break;
-            case 4:
-                money.addTwenty(amt);
-                value = 20;
-                break;
-            case 5:
-                money.addTen(amt);
-                value = 10;
-                break;
-            case 6:
-                money.addFive(amt);
-                value = 5;
-                break;
-            case 7:
-                money.addOne(amt);
-                value = 1;
-                break;
-        }
-        System.out.printf("\nSuccessfully added %d P%d bills/coins.\n", amt, value);                                                        
-
+        cashRegister.addMoney(val, amt);
+        System.out.printf("\nSuccessfully added %d P%d bills/coins.\n", amt, val);                                                        
     }
 
     /**
@@ -269,14 +215,15 @@ public class RegularVM {
     public void viewDenominations(){
         System.out.print("\033[H\033[2J");
         System.out.println("\nMachine currently has");
-        System.out.printf("\n%d P500 bills...", money.getFiveHundred());
-        System.out.printf("\n%d P100 bills...", money.getOneHundred());
-        System.out.printf("\n%d P50 bills...", money.getFifty());
-        System.out.printf("\n%d P20 bills...", money.getTwenty());
-        System.out.printf("\n%d P10 bills...", money.getTen());
-        System.out.printf("\n%d P5 bills...", money.getFive());
-        System.out.printf("\n%d P1 bills...\n", money.getOne());
-        System.out.printf("\ncoming to a total of P%.2f.\n", money.getTotal());
+        System.out.printf("\n%d P500 bills...", cashRegister.getFiveHundred());
+        System.out.printf("\n%d P200 bills...", cashRegister.getTwoHundred());
+        System.out.printf("\n%d P100 bills...", cashRegister.getHundred());
+        System.out.printf("\n%d P50 bills...", cashRegister.getFifty());
+        System.out.printf("\n%d P20 bills...", cashRegister.getTwenty());
+        System.out.printf("\n%d P10 bills...", cashRegister.getTen());
+        System.out.printf("\n%d P5 bills...", cashRegister.getFive());
+        System.out.printf("\n%d P1 bills...\n", cashRegister.getOne());
+        System.out.printf("\ncoming to a total of P%.2f.\n", cashRegister.getTotal());
     }
 
     /**
