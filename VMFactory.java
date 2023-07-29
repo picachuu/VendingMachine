@@ -87,7 +87,7 @@ public class VMFactory {
                                         switch(nVenChoice){
                                             case 1:
                                                 System.out.println("We accept the following: ");
-                                                System.out.println("Bills: 500, 100, 50, 20");
+                                                System.out.println("Bills: 500, 200, 100, 50, 20");
                                                 System.out.println("Coins: 10, 5, 1");
                                                 System.out.println("Enter 0 to exit.\n");
                                                 System.out.printf("\nPlease input bill/coin value to insert: ");
@@ -277,32 +277,27 @@ public class VMFactory {
                                                 System.out.print("\033[H\033[2J");
 
                                                 do{
-                                                    System.out.println("[1] P500");
-                                                    System.out.println("[2] P100");
-                                                    System.out.println("[3] P50");
-                                                    System.out.println("[4] P20");
-                                                    System.out.println("[5] P10");
-                                                    System.out.println("[6] P5");
-                                                    System.out.println("[7] P1");
-                                                    System.out.println("[8] Exit");
+                                                    System.out.println("Denominations available:");
+                                                    System.out.println("Bills: P500, P200, P100, P50, P20");
+                                                    System.out.println("Coins: P10, P5, P1");
+                                                    System.out.println("Enter 0 to exit. \n");
 
                                                     boolean willLoop8 = true; 
                                                     while(willLoop8){
-                                                        System.out.print("\nChoose which bill/coin to replenish: ");
-                                                        int nVal = sc.nextInt();
-
-                                                        if(nVal > 0 && nVal <8){
-                                                            System.out.print("\nHow many bills/coins?: ");
-                                                            int nAmt = sc.nextInt();
-                                                            vm.replenishMoney(nVal, nAmt);
-                                                        }
-                                                        else if(nVal == 8){
+                                                        System.out.printf("Please input bill/coin value to insert: ");
+                                                        int value = sc.nextInt();
+                                                        if(value != 500 && value != 100 && value != 50 && value != 50 && value != 20 && value != 10 && value != 5 && value != 1 && value != 0)
+                                                            System.out.println("\nSorry that is not a bill or coin we accept.\n");
+                                                        else if(value == 0){
                                                             System.out.print("\033[H\033[2J");
                                                             willLoop7 = false;
                                                             willLoop8 = false;
                                                         }
-                                                        else
-                                                            System.out.println("Sorry that is not a bill or coin we accept.\n");
+                                                        else{
+                                                            System.out.printf("\nHow many bills/coins?: ");
+                                                            int amount = sc.nextInt();
+                                                            vm.replenishMoney(value, amount);
+                                                        }
                                                     }
                                                 }while(willLoop7);
                                                 break;
