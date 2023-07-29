@@ -297,8 +297,8 @@ public class RegularVM {
             totalEnd += slot.get(i).getStock();
         }
         System.out.println("-----------------------------------------------");
-        System.out.printf("Total: %10d%10d\n", totalStart, totalEnd);
-        System.out.printf("%25s\n\n", "Summary");
+        System.out.printf("Total: %20d%13d\n", totalStart, totalEnd);
+        System.out.printf("\n%27s\n", "Summary");
         System.out.println("-----------------------------------------------");
         System.out.printf("%10s%22s%16s\n", "Name", "Quantity Sold", "Earnings");
         System.out.println("-----------------------------------------------");
@@ -307,10 +307,10 @@ public class RegularVM {
         {
             amtsold = stockRecordMap.get(slot.get(i).getName()) - slot.get(i).getStock();
             totalEarnings += amtsold * slot.get(i).getPrice();
-            System.out.printf("%d.) %-17s%6d%13s%.2f\n", i+1, slot.get(i).getName(), amtsold, "P",amtsold * slot.get(i).getPrice() );
+            System.out.printf("%d.) %-17s%6d%15s%.2f\n", i+1, slot.get(i).getName(), amtsold, "P",amtsold * slot.get(i).getPrice() );
         }
         System.out.println("-----------------------------------------------");
-        System.out.printf("Total Earnings (since last restocking):\n%5s%7.2f\n", "P", totalEarnings);
+        System.out.printf("Total Earnings (since last restocking):%3s%.2f\n", " P", totalEarnings);
         System.out.println("-----------------------------------------------");
     }
 

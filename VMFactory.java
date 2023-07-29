@@ -308,6 +308,7 @@ public class VMFactory {
                                                 break;
 
                                             case 6:
+                                                System.out.print("\033[H\033[2J");
                                                 vm.printSummary();
                                                 break;
 
