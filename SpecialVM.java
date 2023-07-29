@@ -3,11 +3,13 @@ public class SpecialVM extends RegularVM {
         super();
     }
 
-    public void displayItems(){
-        System.out.printf("%26s", "Items\n");
-        System.out.println("-----------------------------------------------");
-        System.out.printf("%10s%19s%18s", "Name", "Price", "Calories\n");
-        System.out.println("-----------------------------------------------");
-        
+    @Override
+    public void displayVendingFeaturesMenu(){
+        System.out.println("\n-------Vending Features-------");
+        System.out.println("[1] Insert Payment");
+        System.out.println("[2] Order Item");
+        System.out.println("[3] Order Custom Item");
+        System.out.println("[4] Receive Change");
+        System.out.println("[5] Return to Test Menu");
     }
 }

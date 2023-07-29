@@ -8,11 +8,11 @@ import java.util.Map;
  * The class "RegularVM" has 5 attributes: slot, balance, totalIncome, stockRecord, money;
  */
 public class RegularVM {
-    private ArrayList<Item> slot;
-    private double balance;
-    private double totalIncome;
+    protected ArrayList<Item> slot;
+    protected double balance;
+    protected double totalIncome;
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();    
-    private cashRegister cashRegister;
+    protected cashRegister cashRegister;
     /**
      * A constructor that creates a regular vending machine.
      * 
@@ -41,6 +41,14 @@ public class RegularVM {
         slot.add(itemEight);
         slot.add(itemNine);
         cashRegister = new cashRegister(10);    
+    }
+
+    public void displayVendingFeaturesMenu(){
+        System.out.println("\n-------Vending Features-------");
+        System.out.println("[1] Insert Payment");
+        System.out.println("[2] Order Item");
+        System.out.println("[3] Receive Change");
+        System.out.println("[4] Return to Test Menu");
     }
 
     //Vending Features
