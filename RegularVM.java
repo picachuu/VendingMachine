@@ -355,19 +355,4 @@ public class RegularVM {
         Item toAdd = new Item(name, price,calories, stock); 
         slot.set(index, toAdd);
     }
-
-    /**
-     * Loops through the ArrayList to find the first empty slot it can find
-     * @return the index of the empty slot
-     */
-    public int checkEmpty()
-    {
-        int emptyIndex = -1;
-        for (int i = 0; i < slot.size() && emptyIndex == -1; i++)
-        {
-            if (slot.get(i).getStock() == 0 )
-                emptyIndex = i;
-        }
-        return emptyIndex;
-    }
 }
