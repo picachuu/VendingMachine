@@ -37,7 +37,10 @@ public class VMFactory {
                                 vm.recordStock();
                                 break;
                             case 2:
-                                System.out.println("\n!: Sorry! This feature is not yet available.");
+                                willLoop2 = true;       
+                                System.out.println("\nSpecial Vending Machine successfully created!\n");
+                                vm = new SpecialVM();
+                                vm.recordStock();
                                 break;
                             case 3:
                                 willLoop2 = true;
