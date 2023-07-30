@@ -105,6 +105,10 @@ public class VMFactory {
                                                 break;
 
                                             case 2:
+                                                if (vm instanceof RegularVM)
+                                                    ((RegularVM)vm).displayItems();
+                                                else
+                                                    ((SpecialVM)vm).displayItems();
                                                 vm.displayItems();
                                                 System.out.print("\nPlease enter item number: ");
                                                 

@@ -4,8 +4,8 @@
  * The class "Item" has 4 attributes: name, calories, price, stock;
  */
 public class Item {
-    private String name;
-    private double calories, price;
+    protected String name;
+    protected double calories, price;
     
     /**
      * This method is the constructor that requests for the following
