@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.*;
 
 /**
@@ -16,6 +13,7 @@ public class RegularVM {
     Map<Integer, Item> slotRecord = new LinkedHashMap<Integer, Item>();
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();    
     protected cashRegister cashRegister;
+    protected int Slotlimit = 9;
     /**
      * A constructor that creates a regular vending machine.
      * 
@@ -24,6 +22,11 @@ public class RegularVM {
      * Money inside the machine is also created.
     */
     public RegularVM(){
+        StartSlots();
+        cashRegister = new cashRegister(10);    
+    }
+
+    public void StartSlots(){
         Item itemOne = new Item("Pepperoni", 53, 136);
         Item itemTwo = new Item("Ham", 69, 40);
         Item itemThree = new Item("Sausage", 55, 210);
@@ -33,7 +36,6 @@ public class RegularVM {
         Item itemSeven = new Item("Jalapenos", 45, 12.3);
         Item itemEight = new Item("Mushroom", 43, 10.2);
         Item itemNine = new Item("Olives", 37, 13.2);
-        //slot = new ArrayList<>();
         slotRecord.put(0,itemOne);
         slotRecord.put(1,itemTwo);
         slotRecord.put(2,itemThree);
@@ -43,7 +45,7 @@ public class RegularVM {
         slotRecord.put(6,itemSeven);
         slotRecord.put(7,itemEight);
         slotRecord.put(8,itemNine);
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < Slotlimit; i++) {
             for (int j = 0; j < 10; j++) {
                 if (slotList.size() <= i) {
                     slotList.add(new ArrayList<Item>());
@@ -52,9 +54,7 @@ public class RegularVM {
             }
         }
         
-        cashRegister = new cashRegister(10);    
     }
-
     public void displayVendingFeaturesMenu(){
         System.out.println("\n-------Vending Features-------");
         System.out.println("[1] Insert Payment");
@@ -87,7 +87,7 @@ public class RegularVM {
         System.out.printf("%10s%19s%18s", "Name", "Price", "Calories\n");
         System.out.println("-----------------------------------------------");
         
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < Slotlimit; i++)
         {
             
             if (slotList.get(i).size() > 0)
@@ -169,9 +169,9 @@ public class RegularVM {
         System.out.println("--------------------------------------------");
         System.out.printf("%10s%19s%13s", "Name", "Price", "Stock\n");
         System.out.println("--------------------------------------------");
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < slotList.size(); i++)
         {
-            if(i < 9)
+            if(i < slotList.size())
                 System.out.printf("%d.) %-17s%8.2f%s%10d\n", i+1, slotRecord.get(i).getName(),slotRecord.get(i).getPrice(), "P", slotList.get(i).size());
             else
                 System.out.printf("%d.) %-17s%7.2f%s%10d\n", i+1, slotRecord.get(i).getName(),slotRecord.get(i).getPrice(), "P", slotList.get(i).size());
@@ -265,11 +265,16 @@ public class RegularVM {
         System.out.println("-----------------------------------------------");
         System.out.printf("%10s%22s%16s", "Name", "Starting Stock", "Current Stock\n");
         System.out.println("-----------------------------------------------");
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < slotList.size(); i++)
         {
+            if (Slotlimit == 10 && i == 0)   
+                    System.out.printf("%d.) %s\n", i+1, slotRecord.get(i).getName());
+            else
+            {
             System.out.printf("%d.) %-17s%6s%13d\n", i+1, slotRecord.get(i).getName(), stockRecordMap.get(slotRecord.get(i).getName()), slotList.get(i).size());
             totalStart += stockRecordMap.get(slotRecord.get(i).getName());
             totalEnd += slotList.get(i).size();
+            }
         }
         System.out.println("-----------------------------------------------");
         System.out.printf("Total: %20d%13d\n", totalStart, totalEnd);
@@ -278,14 +283,19 @@ public class RegularVM {
         System.out.printf("%10s%22s%16s\n", "Name", "Quantity Sold", "Earnings");
         System.out.println("-----------------------------------------------");
         int amtsold;
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < slotList.size(); i++)
         {
             amtsold = stockRecordMap.get(slotRecord.get(i).getName()) - slotList.get(i).size();
             totalEarnings += amtsold * slotRecord.get(i).getPrice();
+            if (Slotlimit == 10 && i == 0)   
+                    System.out.printf("%d.) %s\n", i+1, slotRecord.get(i).getName());
+            else
             System.out.printf("%d.) %-17s%6d%15s%.2f\n", i+1, slotRecord.get(i).getName(), amtsold, "P",amtsold * slotRecord.get(i).getPrice() );
         }
         System.out.println("-----------------------------------------------");
         System.out.printf("Total Earnings (since last restocking):%3s%.2f\n", " P", totalEarnings);
+        if (Slotlimit ==10)
+            System.out.printf("Please note that Custom pizza earnings includes total earnings from items 11-15\n");
         System.out.println("-----------------------------------------------");
     }
 
@@ -312,7 +322,7 @@ public class RegularVM {
      */
     public void recordStock()
     {
-        for (int i=0; i < 9; i++) {
+        for (int i=0; i < slotList.size(); i++) {
         stockRecordMap.put(slotRecord.get(i).getName(), slotList.get(i).size());
         }
     }
@@ -342,7 +352,7 @@ public class RegularVM {
     public int checkEmpty()
     {
         int emptyIndex = -1;
-        for (int i = 0; i < 9 && emptyIndex == -1; i++)
+        for (int i = 0; i < Slotlimit && emptyIndex == -1; i++)
         {
             if (slotList.get(i).size() == 0 )
                 emptyIndex = i;
