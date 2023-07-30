@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.*;
 
 /**
- * Javadoc documentation by Niccolo G. Jimenez and Jannica S. Lim
+ * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim
  * The class is a blueprint to create an object, the class "RegularVM" creates a regular vending machine
  * The class "RegularVM" has 5 attributes: slot, balance, totalIncome, stockRecord, money;
  */
