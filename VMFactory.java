@@ -4,7 +4,7 @@ public class VMFactory {
 
     public static void main(String[] args) {
         RegularVM vm = null;
-        //MView view = new VMView();
+        //VMView view = new VMView();
         Scanner sc = new Scanner(System.in);
 
         boolean willLoop = false;        
