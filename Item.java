@@ -6,32 +6,18 @@
 public class Item {
     protected String name;
     protected double calories, price;
-    
-    /**
-     * This method is the constructor that requests for the following
-     * @param name name of the item
-     * @param price price of the item
-     * @param calories calories of the item
-     * @param stock stock of the item
-     */
-    public Item(String name, double price, double calories)
+    protected int type; // Type will categorize what type of item it is 0 = Dough, 1 = Toppings/Standalone, 2 = Ingredients
+                        // 3 = Custom Pizza
+
+    public Item(String name, double price, double calories, int type)
     {
         this.name = name;
         this.price = price;
         this.calories = calories;
+        this.type = type;
+    }
 
-    }
-    /**
-     * This method is the construtor that will request for the following
-     * @param name name of the item
-     * @param calories calories of the item
-     * @param stock stock of the item
-     */
-    public Item(String name, double calories)
-    {
-        this.name = name;
-        this.calories = calories;
-    }
+
     /**
      * This method changes the price of the item given the following
      * @param newPrice the new price of the item
@@ -40,12 +26,6 @@ public class Item {
     {
         this.price = newPrice;
     }
-
-    /**
-     * This item removes stock from the item
-     * @param removefromStock amount of stock to be removed
-     * @return boolean value if stock was removed successfully
-     */
 
     /**
      * This method gets the name of the item
@@ -72,8 +52,11 @@ public class Item {
         return this.price;
     }
     /**
-     * This method gets the stock of the item
-     * @return Integer containing the stock of the current item
+     * This method gets the type of the item
+     * @return Integer containing the type of the current item
      */
- 
+    public int getType()
+    {
+        return this.type;
+    }
 }

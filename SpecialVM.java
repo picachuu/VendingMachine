@@ -1,7 +1,10 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class SpecialVM extends RegularVM {
-
+     Map<Integer, Item> extraItems = new LinkedHashMap<Integer, Item>();
 
 
     public SpecialVM(){
@@ -11,22 +14,22 @@ public class SpecialVM extends RegularVM {
     }
     @Override
     public void StartSlots(){
-        Item itemOne = new Pizza("Custom Pizza", 0, 0);
-        Item itemTwo = new Item("Pepperoni", 53, 136);
-        Item itemThree = new Item("Ham", 69, 40);
-        Item itemFour = new Item("Sausage", 55, 210);
-        Item itemFive = new Item("BBQ Chicken", 55, 215);
-        Item itemSix = new Item("Mozarella", 40, 85);
-        Item itemSeven = new Item("Parmesan", 50, 42);
-        Item itemEight = new Item("Jalapenos", 45, 12.3);
-        Item itemNine = new Item("Mushroom", 43, 10.2);
-        Item itemTen = new Item("Olives", 37, 13.2);
+        Pizza itemOne = new Pizza();
+        Item itemTwo = new Item("Pepperoni", 53, 136, 1);
+        Item itemThree = new Item("Bacon", 69, 40, 1);
+        Item itemFour = new Item("Onions", 55, 210, 1);
+        Item itemFive = new Item("Mozarella", 55, 215, 1);
+        Item itemSix = new Item("Olives", 40, 85, 1);
         // Items not shown in the menu (Only sold with Pizza)
-        Item itemEleven = new Item( "Tomato Sauce", 20, 30);
-        Item itemTwelve = new Item("Cheese Sauce", 20, 50);
-        Item itemThirteen = new Item("Cream Sauce", 20, 55);
-        Item itemFourteen = new Item("Pesto Sauce", 20, 20);
-        Item itemFifteen = new Item("Dough", 100, 200);
+        Item itemSeven = new Item( "Tomato Sauce", 20, 30, 2);
+        Item itemEight = new Item("Cheese Sauce", 20, 50, 2);
+        Item itemNine = new Item("Pesto Sauce", 20, 20, 2);
+        Item itemTen = new Item("Dough", 100, 200, 2);
+        // Extra Items
+        // Item itemEleven = new Item("Parmesan", 50, 42);
+        // Item itemTwelve = new Item("Jalapenos", 45, 12.3);
+        // Item itemThirteen = new Item("Mushroom", 43, 10.2);
+        // Item itemFourteen = new Item("Olives", 37, 13.2);
         slotRecord.put(0,itemOne);
         slotRecord.put(1,itemTwo);
         slotRecord.put(2,itemThree);
@@ -37,14 +40,12 @@ public class SpecialVM extends RegularVM {
         slotRecord.put(7,itemEight);
         slotRecord.put(8,itemNine);
         slotRecord.put(9,itemTen);
-
-        slotRecord.put(10,itemEleven);
-        slotRecord.put(11,itemTwelve);
-        slotRecord.put(12,itemThirteen);
-        slotRecord.put(13,itemFourteen);
-        slotRecord.put(14,itemFifteen);
-
-        for (int i = 0; i < 15; i++) {
+        // Extra Items
+        /* extraItems.put(0,itemEleven);
+        extraItems.put(1,itemTwelve);
+        extraItems.put(2,itemThirteen);
+        extraItems.put(3,itemFourteen); */
+        for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (slotList.size() <= i) {
                     slotList.add(new ArrayList<Item>());
@@ -52,41 +53,68 @@ public class SpecialVM extends RegularVM {
                 slotList.get(i).add(slotRecord.get(i));
             }
         }
-    }
-    /* public void displayVendingFeaturesMenu(){
-        System.out.println("\n-------Vending Features-------");
-        System.out.println("[1] Insert Payment");
-        System.out.println("[2] Order Item");
-        System.out.println("[3] Order Custom Item");
-        System.out.println("[4] Receive Change");
-        System.out.println("[5] Return to Test Menu");
-    } */
-    @Override
-    public void displayItems(){
 
+    }
+    
+    public void displayItems(int type, int key)
+    {
         System.out.printf("%26s", "Items\n");
         System.out.println("-----------------------------------------------");
         System.out.printf("%10s%19s%18s", "Name", "Price", "Calories\n");
         System.out.println("-----------------------------------------------");
         
-        for (int i = 0; i < Slotlimit; i++)
+        for (int i = 0; i < 10; i++)
         {
-            
-            if (slotList.get(i).size() > 0)
-
-                if(i < 10)
-                    if(i ==0)
-                    System.out.printf("%d.) %s\n", i+1, slotRecord.get(i).getName());
-                    else
-                    System.out.printf("%d.) %-17s%8.2f%s%12.1fkcal\n", i+1, slotRecord.get(i).getName(), slotRecord.get(i).getPrice(), "P", slotRecord.get(i).getCalories());
-                else
-                    System.out.printf("%d.) %-17s%5.2f%s%11.1fkcal\n", i+1, slotRecord.get(i).getName(), slotRecord.get(i).getPrice(), "P", slotRecord.get(i).getCalories());
-            else
-                System.out.printf("%d.) %-24sNOT AVAILABLE\n", i+1, slotRecord.get(i).getName());
-                
+             if (slotRecord.get(i).getType() == type)    
+                {
+                if (slotList.get(i).size() > 0)
+                    {
+                        System.out.printf("%d .) %-17s%8.2f%s%12.1fkcal\n", i+1, slotRecord.get(i).getName(), slotRecord.get(i).getPrice(), "P", slotRecord.get(i).getCalories()); 
+                    }
+                else 
+                    System.out.printf("%d.) %-24sNOT AVAILABLE\n", i+1, slotRecord.get(i).getName()); 
+                }
+            else if (key == 1 && i == 0)
+                    System.out.printf("%d.) %s\n", i+1, slotRecord.get(i).getName()); 
         }
     }
+    
+   public boolean addIngredient(Pizza custom, int index)
+   {
+    boolean flag = false;
+       if (slotList.get(index).size() > 0)
+       {
+           custom.addIngredient(slotRecord.get(index));
+           //slotList.get(index).remove(0);
+           flag = true;
+       }
+       else
+       {
+           System.out.println("\nSorry, we ran out of " + slotRecord.get(index).getName() + "\n");
+       }
+    return flag;
+   }
+  
+    
+    public void displayPrep(Pizza custom)
+    {
+        System.out.println("Your Pizza is being prepared");
+        System.out.println("Dough is being kneaded\n");
+        System.out.println(custom.getIngredients().get(1).getName() + " is being spread\n");
+        for (int i =2; i < 7; i++)
+        {
+            System.out.println("Topping " + custom.getIngredients().get(i).getName() + " is being added\n");
+        }
+        System.out.println("Pizza is being baked in the oven...\n");
+        System.out.println("Pizza is ready to be served\n");
 
+    }
+
+    public void OrderPizza()
+    {
+
+    }
+   
    /*  @Override
     public void recordStock()
     {
