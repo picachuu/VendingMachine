@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class VMFactory {
@@ -69,7 +70,7 @@ public class VMFactory {
                             System.out.print("Input: ");
                             int nTestChoice = sc.nextInt();
 
-                            System.out.print("\033[H\033[2J");
+                            //System.out.print("\033[H\033[2J");
                             switch(nTestChoice){
                                 case 1:
                                     boolean willLoop4 = false;
@@ -79,7 +80,7 @@ public class VMFactory {
                                         System.out.print("Input: ");
                                         int nVenChoice = sc.nextInt();
 
-                                        System.out.print("\033[H\033[2J");
+                                        //System.out.print("\033[H\033[2J");
                                         switch(nVenChoice){
                                             case 1:
                                                 System.out.println("We accept the following: ");
@@ -106,25 +107,105 @@ public class VMFactory {
                                                 break;
 
                                             case 2:
-                                                if (vm instanceof RegularVM)
-                                                    ((RegularVM)vm).displayItems();
-                                                else
-                                                    ((SpecialVM)vm).displayItems();
-                                                vm.displayItems();
-                                                System.out.print("\nPlease enter item number: ");
-                                                
                                                 boolean willLoop5 = false;
-                                                do{
-                                                    int selOrder = sc.nextInt() - 1;
-                                                    if(selOrder >=0 && selOrder <= 8){
-                                                        willLoop5 = true;
-                                                        vm.orderItem(selOrder);
-                                                    }   
-                                                    else
+                                                    
+                                                    if (vm instanceof SpecialVM)
+                                                    {
+                                                    ((SpecialVM)vm).displayItems(1,1);
+                                                    ArrayList<Integer> index = new ArrayList<Integer>();
+                                                    System.out.print("\nPlease enter item number: ");
+                                                    do
+                                                    {
+                                                        int selOrder = sc.nextInt() - 1;
+                                                        if (vm.slotRecord.get(selOrder).getType()== 3)
+                                                        {
+                                                            Pizza order = new Pizza();
+                                                            System.out.println("Dough is being prepared! (PHP100)\n");
+                                                            if(((SpecialVM)vm).addIngredient(order, 9))
+                                                            {
+                                                                index.add(selOrder);
+                                                                System.out.println("Dough is ready!\n");
+                                                                ((SpecialVM)vm).displayItems(2,0);
+                                                                System.out.println("\nPlease choose a sauce: ");
+                                                                selOrder = sc.nextInt() - 1;
+                                                                if(((SpecialVM)vm).addIngredient(order, selOrder))
+                                                                {
+                                                                    order.TotalPrice();
+                                                                    System.out.printf("\nCurrent Price: P%.2f\n", order.getPrice());
+                                                                    index.add(selOrder);
+                                                                    boolean looper;
+                                                                    int counter = 5;
+                                                                    do
+                                                                    {
+                                                                        looper = true;
+                                                                        System.out.printf("\nWhat toppings would you like to add [%d]: ", counter);
+                                                                        System.out.println("0.) Done");
+                                                                        ((SpecialVM)vm).displayItems(1,0);
+                                                                        selOrder = sc.nextInt() - 1;
+                                                                        if(selOrder == -1)
+                                                                            looper = false;
+                                                                        else if(((SpecialVM)vm).addIngredient(order, selOrder) && selOrder <= 8)
+                                                                        {
+                                                                            order.TotalPrice();
+                                                                            System.out.printf("\nCurrent Price: P%.2f\n", order.getPrice());
+                                                                            index.add(selOrder);
+                                                                            counter--;
+                                                                        }
+                                                                        else
+                                                                            System.out.println("\n!: Sorry, that is not option. Please re-enter input: ");
+                                                                    }while(looper && counter > 0);
+                                                                    order.TotalPrice();
+                                                                    order.TotalCalories();
+                                                                    System.out.printf("\nYour order will cost: P%.2f\n", order.getPrice());
+                                                                    System.out.printf("\nTotal Calories: %.1fkcal\n", order.getCalories());
+                                                                    if(vm.getBalance() >= order.getPrice())
+                                                                    {
+                                                                        ((SpecialVM)vm).orderIngredient(order.getPrice(), index);
+                                                                        ((SpecialVM)vm).displayPrep(order);
+                                                                        //vm.orderItem(selOrder);
+                                                                        willLoop5 = true;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        System.out.println("\nSorry, you don't have enough money.");
+                                                                        System.out.println("\nTransaction Cancelled.");
+                                                                        willLoop5 = true;
+                                                                    }
+                                                                }
+                                                                else
+                                                                    System.out.println("\n!: Sorry, that is not option. Please re-enter input: ");
+                                                            }
+                                                            else
+                                                                System.out.println("\n!: Sorry, that is not option. Please re-enter input: ");
+                                                        }
+                                                        else if (vm.slotRecord.get(selOrder).getType() == 1)
+                                                            if(selOrder >=0 && vm.slotRecord.size() >= selOrder){
+                                                            willLoop5 = true;
+                                                            vm.orderItem(selOrder);
+                                                            }
+                                                        else
+                                                            System.out.printf("\n!: Sorry, that is not option. Please re-enter input: ");
+                                                    
+                                                    }while(!willLoop5);
+                                                    
+                                                    }
+                                                    else if (vm instanceof RegularVM)
+                                                    {
+                                                        vm.displayItems();
+                                                        System.out.print("\nPlease enter item number: ");
+                                                        do
+                                                        {
+                                                            int selOrder = sc.nextInt() - 1;
+                                                            if(selOrder >=0 && selOrder <= 8){
+                                                            willLoop5 = true;
+                                                            vm.orderItem(selOrder);
+                                                        }   
+                                                        else
                                                         System.out.printf("\n!: Sorry, that is not option. Please re-enter input: ");
-                                                }while(!willLoop5);
+                                                        }while(!willLoop5);
+                                                        
+                                                    }
                                                 break;
-
                                             case 3:
                                                 vm.receiveChange();
                                                 break;
@@ -162,8 +243,10 @@ public class VMFactory {
                                                 System.out.print("\033[H\033[2J");
 
                                                 do{
-                                                    
-                                                    vm.maintDisplayItems();
+                                                    if (vm instanceof SpecialVM)                                                                
+                                                        ((SpecialVM)vm).maintDisplayItems(0);
+                                                    else
+                                                        vm.maintDisplayItems();
                                                     System.out.println("\n-------Stocking Options-------");
                                                     System.out.println("[1] Restock items");
                                                     System.out.println("[2] Stock New Items");
@@ -174,17 +257,21 @@ public class VMFactory {
                                                     
                                                     switch(restockChoice){
                                                         case 1: 
-                                                            do{                                                               
-                                                                vm.maintDisplayItems();
-
+                                                            do{   
+                                                                if (vm instanceof SpecialVM)                                                                
+                                                                    ((SpecialVM)vm).maintDisplayItems(0);
+                                                                else
+                                                                    vm.maintDisplayItems();
                                                                 do{
-                                                                    System.out.print("\nPlease enter item number (Enter 10 to exit): ");
+                                                                    System.out.printf("\nPlease enter item number (Enter %d to exit): ", vm.slotList.size() + 1);
                                                                     choice = sc.nextInt();
-                                                                    if (choice > 10)
-                                                                        System.out.println("Please enter item a number between 1-10!");
-                                                                }while(choice > 10);
+                                                                    if (choice == 1)
+                                                                        System.out.printf("\nSorry, you can't restock this item!\n");
+                                                                    else if (choice > vm.slotList.size() + 1 || choice < 1)
+                                                                        System.out.printf("\nPlease enter item a number between 1-%d!\n", vm.slotList.size() + 1);
+                                                                }while(choice > vm.slotList.size() + 1 || choice < 2);
                                                                 
-                                                                if (choice != 10){
+                                                                if (choice != vm.slotList.size() + 1){
                                                                     index = choice - 1 ;
                                                                     System.out.printf("Please enter amount to restock: ");
                                                                     int toRestock = sc.nextInt();
@@ -199,6 +286,29 @@ public class VMFactory {
                                                             break;
 
                                                         case 2:
+                                                            if (vm instanceof SpecialVM)
+                                                            {
+                                                                ((SpecialVM)vm).maintDisplayItems(1);
+                                                                boolean looper3 = true;
+                                                                int toReplace, replaceWith, newStock;
+                                                                do
+                                                                {
+                                                                System.out.print("\nPlease enter item to replace: ");
+                                                                toReplace = sc.nextInt() - 1;
+                                                                if (!vm.slotRecord.get(toReplace).getName().equals("Dough") && !vm.slotRecord.get(toReplace).getName().equals("Pizza"))
+                                                                    looper3 = false;
+                                                                else
+                                                                    System.out.printf("\n!: Sorry, %s cannot be replaced. Please re-enter input: ", vm.slotRecord.get(toReplace).getName());
+                                                                }while (looper3);
+                                                                System.out.print("\nPlease enter item to replace with: "); 
+                                                                replaceWith = sc.nextInt() - 1;
+                                                                ((SpecialVM)vm).replaceItem(toReplace, replaceWith);
+                                                                System.out.print("\nPlease enter stock of new item: "); 
+                                                                newStock = sc.nextInt();
+                                                                ((SpecialVM)vm).restockItem(toReplace, newStock);
+                                                            }    
+                                                            else
+                                                            {                                                            
                                                                 boolean looper3 = true;
                                                                 double newPrice =0;
                                                                 int newStock;
@@ -230,6 +340,7 @@ public class VMFactory {
                                                                 vm.addItem(newSlot, newName, newPrice, newCal, newStock);
                                                                 System.out.print("\033[H\033[2J");
                                                                 System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n\n", newName, newStock);
+                                                            }
                                                                 break;
                                                         case 3:
                                                             //System.out.println("Exiting Stocking Options...\nReturning to Maintenance Features");
