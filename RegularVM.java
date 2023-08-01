@@ -9,6 +9,7 @@ public class RegularVM {
 
     protected double balance;
     protected double totalIncome;
+    Map<Integer, Item> extraItems = new LinkedHashMap<Integer, Item>();
     protected List<List<Item>> slotList = new ArrayList<List<Item>>();
     Map<Integer, Item> slotRecord = new LinkedHashMap<Integer, Item>();
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();    
@@ -97,7 +98,6 @@ public class RegularVM {
                     System.out.printf("%d.) %-17s%5.2f%s%11.1fkcal\n", i+1, slotRecord.get(i).getName(), slotRecord.get(i).getPrice(), "P", slotRecord.get(i).getCalories());
             else
                 System.out.printf("%d.) %-24sNOT AVAILABLE\n", i+1, slotRecord.get(i).getName());
-                
         }
     }
 
@@ -170,12 +170,7 @@ public class RegularVM {
         System.out.printf("%10s%19s%13s", "Name", "Price", "Stock\n");
         System.out.println("--------------------------------------------");
         for (int i = 0; i < slotList.size(); i++)
-        {
-            if(i < slotList.size())
                 System.out.printf("%d.) %-17s%8.2f%s%10d\n", i+1, slotRecord.get(i).getName(),slotRecord.get(i).getPrice(), "P", slotList.get(i).size());
-            else
-                System.out.printf("%d.) %-17s%7.2f%s%10d\n", i+1, slotRecord.get(i).getName(),slotRecord.get(i).getPrice(), "P", slotList.get(i).size());
-        }
     }
     
     /**
