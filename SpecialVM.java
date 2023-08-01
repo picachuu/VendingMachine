@@ -1,14 +1,10 @@
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
+
 
 public class SpecialVM extends RegularVM {
-    Map<Integer, Item> extraItems = new LinkedHashMap<Integer, Item>();
     Map<String, Integer> FreqMap = new LinkedHashMap<String, Integer>();
 
     public SpecialVM(){
@@ -30,10 +26,10 @@ public class SpecialVM extends RegularVM {
         Item itemNine = new Item("Pesto Sauce", 20, 20, 2);
         Item itemTen = new Item("Dough", 100, 200, 0);
         // Extra Items
-        // Item itemEleven = new Item("Parmesan", 50, 42);
-        // Item itemTwelve = new Item("Jalapenos", 45, 12.3);
-        // Item itemThirteen = new Item("Mushroom", 43, 10.2);
-        // Item itemFourteen = new Item("Olives", 37, 13.2);
+        Item itemEleven = new Item("Parmesan", 50, 42);
+        Item itemTwelve = new Item("Jalapenos", 45, 12.3);
+        Item itemThirteen = new Item("Mushroom", 43, 10.2);
+        Item itemFourteen = new Item("Olives", 37, 13.2);
         slotRecord.put(0,itemOne);
         slotRecord.put(1,itemTwo);
         slotRecord.put(2,itemThree);
@@ -45,10 +41,10 @@ public class SpecialVM extends RegularVM {
         slotRecord.put(8,itemNine);
         slotRecord.put(9,itemTen);
         // Extra Items
-        /* extraItems.put(0,itemEleven);
+        extraItems.put(0,itemEleven);
         extraItems.put(1,itemTwelve);
         extraItems.put(2,itemThirteen);
-        extraItems.put(3,itemFourteen); */
+        extraItems.put(3,itemFourteen); 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (slotList.size() <= i) {
@@ -83,8 +79,37 @@ public class SpecialVM extends RegularVM {
         }
     }
     
-   public boolean addIngredient(Pizza custom, int index)
-   {
+    public void maintDisplayItems(int key){
+        System.out.printf("%25s", "Items\n");
+        System.out.println("--------------------------------------------");
+        System.out.printf("%10s%19s%13s", "Name", "Price", "Stock\n");
+        System.out.println("--------------------------------------------");
+        for (int i = 0; i < slotList.size(); i++)
+        {
+            if (i == 0)
+                System.out.printf("%d.) %s\n", i+1, slotRecord.get(i).getName()); 
+            else
+                System.out.printf("%d.) %-17s%8.2f%s%10d\n", i+1, slotRecord.get(i).getName(),slotRecord.get(i).getPrice(), "P", slotList.get(i).size());
+        }
+        if (key == 1 )
+        {
+            System.out.println("--------------------------------------------");
+            System.out.printf("%19s", "Extra Items\n");
+            System.out.println("--------------------------------------------");
+            System.out.printf("%10s%19s%13s", "Name", "Price", "Stock\n");
+            for (int i = 0; i < extraItems.size(); i++)
+                System.out.printf("%d.) %-17s%8.2f%s\n", i+1, extraItems.get(i).getName(),extraItems.get(i).getPrice(), "P");
+        }
+    }
+    public void replaceItem(int toReplace, int replaceWith)
+    {
+        Item container = slotRecord.get(toReplace); 
+        slotRecord.put(toReplace, extraItems.get(replaceWith));
+        extraItems.put(replaceWith, container);
+    }
+
+    public boolean addIngredient(Pizza custom, int index)
+    {
     boolean flag = false;
        if (slotList.get(index).size() > 0)
        { 
@@ -97,9 +122,9 @@ public class SpecialVM extends RegularVM {
            System.out.println("\nSorry, we ran out of " + slotRecord.get(index).getName() + "\n");
        }
     return flag;
-   }
+    }
   
-    
+
     public void displayPrep(Pizza custom)
     {
         int counter = 0;

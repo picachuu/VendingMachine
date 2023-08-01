@@ -243,8 +243,10 @@ public class VMFactory {
                                                 System.out.print("\033[H\033[2J");
 
                                                 do{
-                                                    
-                                                    vm.maintDisplayItems();
+                                                    if (vm instanceof SpecialVM)                                                                
+                                                        ((SpecialVM)vm).maintDisplayItems(0);
+                                                    else
+                                                        vm.maintDisplayItems();
                                                     System.out.println("\n-------Stocking Options-------");
                                                     System.out.println("[1] Restock items");
                                                     System.out.println("[2] Stock New Items");
@@ -255,17 +257,21 @@ public class VMFactory {
                                                     
                                                     switch(restockChoice){
                                                         case 1: 
-                                                            do{                                                               
-                                                                vm.maintDisplayItems();
-
+                                                            do{   
+                                                                if (vm instanceof SpecialVM)                                                                
+                                                                    ((SpecialVM)vm).maintDisplayItems(0);
+                                                                else
+                                                                    vm.maintDisplayItems();
                                                                 do{
-                                                                    System.out.print("\nPlease enter item number (Enter 10 to exit): ");
+                                                                    System.out.printf("\nPlease enter item number (Enter %d to exit): ", vm.slotList.size() + 1);
                                                                     choice = sc.nextInt();
-                                                                    if (choice > 10)
-                                                                        System.out.println("Please enter item a number between 1-10!");
-                                                                }while(choice > 10);
+                                                                    if (choice == 1)
+                                                                        System.out.printf("\nSorry, you can't restock this item!\n");
+                                                                    else if (choice > vm.slotList.size() + 1 || choice < 1)
+                                                                        System.out.printf("\nPlease enter item a number between 1-%d!\n", vm.slotList.size() + 1);
+                                                                }while(choice > vm.slotList.size() + 1 || choice < 2);
                                                                 
-                                                                if (choice != 10){
+                                                                if (choice != vm.slotList.size() + 1){
                                                                     index = choice - 1 ;
                                                                     System.out.printf("Please enter amount to restock: ");
                                                                     int toRestock = sc.nextInt();
@@ -280,6 +286,29 @@ public class VMFactory {
                                                             break;
 
                                                         case 2:
+                                                            if (vm instanceof SpecialVM)
+                                                            {
+                                                                ((SpecialVM)vm).maintDisplayItems(1);
+                                                                boolean looper3 = true;
+                                                                int toReplace, replaceWith, newStock;
+                                                                do
+                                                                {
+                                                                System.out.print("\nPlease enter item to replace: ");
+                                                                toReplace = sc.nextInt() - 1;
+                                                                if (!vm.slotRecord.get(toReplace).getName().equals("Dough") && !vm.slotRecord.get(toReplace).getName().equals("Pizza"))
+                                                                    looper3 = false;
+                                                                else
+                                                                    System.out.printf("\n!: Sorry, %s cannot be replaced. Please re-enter input: ", vm.slotRecord.get(toReplace).getName());
+                                                                }while (looper3);
+                                                                System.out.print("\nPlease enter item to replace with: "); 
+                                                                replaceWith = sc.nextInt() - 1;
+                                                                ((SpecialVM)vm).replaceItem(toReplace, replaceWith);
+                                                                System.out.print("\nPlease enter stock of new item: "); 
+                                                                newStock = sc.nextInt();
+                                                                ((SpecialVM)vm).restockItem(toReplace, newStock);
+                                                            }    
+                                                            else
+                                                            {                                                            
                                                                 boolean looper3 = true;
                                                                 double newPrice =0;
                                                                 int newStock;
@@ -311,6 +340,7 @@ public class VMFactory {
                                                                 vm.addItem(newSlot, newName, newPrice, newCal, newStock);
                                                                 System.out.print("\033[H\033[2J");
                                                                 System.out.printf("\n Item: %s has been Stocked by: %d successfully.\n\n", newName, newStock);
+                                                            }
                                                                 break;
                                                         case 3:
                                                             //System.out.println("Exiting Stocking Options...\nReturning to Maintenance Features");
