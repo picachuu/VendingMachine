@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class VMFactory {
+    int nCreateChoice = 0;
 
     public static void main(String[] args) {
         RegularVM vm = null;
@@ -344,5 +345,9 @@ public class VMFactory {
             }
         }while(!willLoop);
         sc.close();
+    }
+
+    public void setnCreateChoice(int choice){
+        this.nCreateChoice = choice;
     }
 }
