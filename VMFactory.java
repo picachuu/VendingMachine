@@ -70,7 +70,7 @@ public class VMFactory {
                             System.out.print("Input: ");
                             int nTestChoice = sc.nextInt();
 
-                            System.out.print("\033[H\033[2J");
+                            //System.out.print("\033[H\033[2J");
                             switch(nTestChoice){
                                 case 1:
                                     boolean willLoop4 = false;
@@ -80,7 +80,7 @@ public class VMFactory {
                                         System.out.print("Input: ");
                                         int nVenChoice = sc.nextInt();
 
-                                        System.out.print("\033[H\033[2J");
+                                        //System.out.print("\033[H\033[2J");
                                         switch(nVenChoice){
                                             case 1:
                                                 System.out.println("We accept the following: ");
@@ -139,8 +139,8 @@ public class VMFactory {
                                                                     {
                                                                         looper = true;
                                                                         System.out.printf("\nWhat toppings would you like to add [%d]: ", counter);
+                                                                        System.out.println("0.) Done");
                                                                         ((SpecialVM)vm).displayItems(1,0);
-                                                                        System.out.println("[0] Done");
                                                                         selOrder = sc.nextInt() - 1;
                                                                         if(selOrder == -1)
                                                                             looper = false;
@@ -160,14 +160,16 @@ public class VMFactory {
                                                                     System.out.printf("\nTotal Calories: %.1fkcal\n", order.getCalories());
                                                                     if(vm.getBalance() >= order.getPrice())
                                                                     {
-                                                                       for(int i = 0; i < index.size(); i++)
-                                                                            vm.orderItem(index.get(i));
+                                                                        ((SpecialVM)vm).orderIngredient(order.getPrice(), index);
+                                                                        ((SpecialVM)vm).displayPrep(order);
                                                                         //vm.orderItem(selOrder);
+                                                                        willLoop5 = true;
                                                                     }
                                                                     else
                                                                     {
                                                                         System.out.println("\nSorry, you don't have enough money.");
                                                                         System.out.println("\nTransaction Cancelled.");
+                                                                        willLoop5 = true;
                                                                     }
                                                                 }
                                                                 else
@@ -177,12 +179,14 @@ public class VMFactory {
                                                                 System.out.println("\n!: Sorry, that is not option. Please re-enter input: ");
                                                         }
                                                         else if (vm.slotRecord.get(selOrder).getType() == 1)
+                                                            if(selOrder >=0 && vm.slotRecord.size() >= selOrder){
+                                                            willLoop5 = true;
                                                             vm.orderItem(selOrder);
+                                                            }
                                                         else
                                                             System.out.printf("\n!: Sorry, that is not option. Please re-enter input: ");
                                                     
                                                     }while(!willLoop5);
-                                                    
                                                     
                                                     }
                                                     else if (vm instanceof RegularVM)
@@ -201,8 +205,7 @@ public class VMFactory {
                                                         }while(!willLoop5);
                                                         
                                                     }
-                                                    break;
-
+                                                break;
                                             case 3:
                                                 vm.receiveChange();
                                                 break;

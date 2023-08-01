@@ -17,7 +17,11 @@ public class Item {
         this.type = type;
     }
 
-
+    public Item(String name, double price, double calories){
+        this.name = name;
+        this.price = price;
+        this.calories = calories;
+    }
     /**
      * This method changes the price of the item given the following
      * @param newPrice the new price of the item
