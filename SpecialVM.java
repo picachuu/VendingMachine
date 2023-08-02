@@ -105,6 +105,7 @@ public class SpecialVM extends RegularVM {
     public void replaceItem(int toReplace, int replaceWith)
     {
         Item container = slotRecord.get(toReplace); 
+        slotList.get(toReplace).clear();
         slotRecord.put(toReplace, extraItems.get(replaceWith));
         extraItems.put(replaceWith, container);
     }
@@ -199,6 +200,8 @@ public class SpecialVM extends RegularVM {
     public Pizza getPizza() {
         return this.itemOne;
     }
+
+
     
    /*  @Override
     public void recordStock()
