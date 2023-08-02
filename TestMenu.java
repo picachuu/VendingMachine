@@ -693,41 +693,22 @@ public class TestMenu extends javax.swing.JFrame {
         maintTestPrice1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestPrice1.setText("P56.00");
         maintTestPrice1.setToolTipText(null);
-        maintTestPrice1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestPrice1ActionPerformed(evt);
-            }
-        });
 
         maintTestQuantity1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
         maintTestQuantity1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestQuantity1.setText("60");
         maintTestQuantity1.setToolTipText(null);
-        maintTestQuantity1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestQuantity1ActionPerformed(evt);
-            }
-        });
 
         maintTestQuantity2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
         maintTestQuantity2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestQuantity2.setText("60");
         maintTestQuantity2.setToolTipText(null);
-        maintTestQuantity2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestQuantity2ActionPerformed(evt);
-            }
-        });
 
         maintTestPrice2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.##"))));
         maintTestPrice2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestPrice2.setText("P56.00");
         maintTestPrice2.setToolTipText(null);
-        maintTestPrice2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestPrice2ActionPerformed(evt);
-            }
-        });
+
 
         maintTestlabel2.setBackground(new java.awt.Color(51, 51, 51));
         maintTestlabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
@@ -739,21 +720,12 @@ public class TestMenu extends javax.swing.JFrame {
         maintTestQuantity3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestQuantity3.setText("60");
         maintTestQuantity3.setToolTipText(null);
-        maintTestQuantity3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestQuantity3ActionPerformed(evt);
-            }
-        });
+
 
         maintTestPrice3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.##"))));
         maintTestPrice3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestPrice3.setText("P56.00");
         maintTestPrice3.setToolTipText(null);
-        maintTestPrice3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestPrice3ActionPerformed(evt);
-            }
-        });
 
         maintTestlabel3.setBackground(new java.awt.Color(51, 51, 51));
         maintTestlabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
@@ -765,21 +737,11 @@ public class TestMenu extends javax.swing.JFrame {
         maintTestQuantity4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestQuantity4.setText("60");
         maintTestQuantity4.setToolTipText(null);
-        maintTestQuantity4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestQuantity4ActionPerformed(evt);
-            }
-        });
 
         maintTestPrice5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.##"))));
         maintTestPrice5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestPrice5.setText("P56.00");
         maintTestPrice5.setToolTipText(null);
-        maintTestPrice5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestPrice5ActionPerformed(evt);
-            }
-        });
 
         maintTestlabel4.setBackground(new java.awt.Color(51, 51, 51));
         maintTestlabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
@@ -791,21 +753,11 @@ public class TestMenu extends javax.swing.JFrame {
         maintTestQuantity5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestQuantity5.setText("60");
         maintTestQuantity5.setToolTipText(null);
-        maintTestQuantity5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestQuantity5ActionPerformed(evt);
-            }
-        });
 
         maintTestPrice6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.##"))));
         maintTestPrice6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestPrice6.setText("P56.00");
         maintTestPrice6.setToolTipText(null);
-        maintTestPrice6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestPrice6ActionPerformed(evt);
-            }
-        });
 
         maintTestlabel5.setBackground(new java.awt.Color(51, 51, 51));
         maintTestlabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
@@ -817,21 +769,11 @@ public class TestMenu extends javax.swing.JFrame {
         maintTestQuantity6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestQuantity6.setText("60");
         maintTestQuantity6.setToolTipText(null);
-        maintTestQuantity6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestQuantity6ActionPerformed(evt);
-            }
-        });
 
         maintTestPrice7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.##"))));
         maintTestPrice7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestPrice7.setText("P56.00");
         maintTestPrice7.setToolTipText(null);
-        maintTestPrice7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestPrice7ActionPerformed(evt);
-            }
-        });
 
         maintTestlabel6.setBackground(new java.awt.Color(51, 51, 51));
         maintTestlabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
@@ -843,21 +785,11 @@ public class TestMenu extends javax.swing.JFrame {
         maintTestQuantity7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestQuantity7.setText("60");
         maintTestQuantity7.setToolTipText(null);
-        maintTestQuantity7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestQuantity7ActionPerformed(evt);
-            }
-        });
 
         maintTestPrice8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.##"))));
         maintTestPrice8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestPrice8.setText("P56.00");
         maintTestPrice8.setToolTipText(null);
-        maintTestPrice8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestPrice8ActionPerformed(evt);
-            }
-        });
 
         maintTestlabel7.setBackground(new java.awt.Color(51, 51, 51));
         maintTestlabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
@@ -875,61 +807,31 @@ public class TestMenu extends javax.swing.JFrame {
         maintTestPrice9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestPrice9.setText("P56.00");
         maintTestPrice9.setToolTipText(null);
-        maintTestPrice9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestPrice9ActionPerformed(evt);
-            }
-        });
 
         maintTestQuantity8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
         maintTestQuantity8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestQuantity8.setText("60");
         maintTestQuantity8.setToolTipText(null);
-        maintTestQuantity8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestQuantity8ActionPerformed(evt);
-            }
-        });
 
         maintTestQuantity10.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
         maintTestQuantity10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestQuantity10.setText("60");
         maintTestQuantity10.setToolTipText(null);
-        maintTestQuantity10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestQuantity10ActionPerformed(evt);
-            }
-        });
 
         maintTestQuantity9.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
         maintTestQuantity9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestQuantity9.setText("60");
         maintTestQuantity9.setToolTipText(null);
-        maintTestQuantity9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestQuantity9ActionPerformed(evt);
-            }
-        });
 
         maintTestPrice10.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.##"))));
         maintTestPrice10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestPrice10.setText("P56.00");
         maintTestPrice10.setToolTipText(null);
-        maintTestPrice10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestPrice10ActionPerformed(evt);
-            }
-        });
 
         maintTestPrice11.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.##"))));
         maintTestPrice11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maintTestPrice11.setText("P56.00");
         maintTestPrice11.setToolTipText(null);
-        maintTestPrice11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintTestPrice11ActionPerformed(evt);
-            }
-        });
 
         maintTestlabel10.setBackground(new java.awt.Color(51, 51, 51));
         maintTestlabel10.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
@@ -1139,11 +1041,6 @@ public class TestMenu extends javax.swing.JFrame {
         jFormattedTextField23.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
         jFormattedTextField23.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jFormattedTextField23.setToolTipText(null);
-        jFormattedTextField23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField23ActionPerformed(evt);
-            }
-        });
 
         jLabel47.setBackground(new java.awt.Color(17, 105, 226));
         jLabel47.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
@@ -1162,20 +1059,10 @@ public class TestMenu extends javax.swing.JFrame {
         jFormattedTextField24.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.##"))));
         jFormattedTextField24.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jFormattedTextField24.setToolTipText(null);
-        jFormattedTextField24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField24ActionPerformed(evt);
-            }
-        });
 
         jFormattedTextField25.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
         jFormattedTextField25.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jFormattedTextField25.setToolTipText(null);
-        jFormattedTextField25.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField25ActionPerformed(evt);
-            }
-        });
 
         jLabel49.setBackground(new java.awt.Color(17, 105, 226));
         jLabel49.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
@@ -1190,11 +1077,6 @@ public class TestMenu extends javax.swing.JFrame {
         cRegularVMbtn10.setMaximumSize(new java.awt.Dimension(63, 24));
         cRegularVMbtn10.setMinimumSize(new java.awt.Dimension(63, 24));
         cRegularVMbtn10.setPreferredSize(new java.awt.Dimension(63, 24));
-        cRegularVMbtn10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cRegularVMbtn10ActionPerformed(evt);
-            }
-        });
 
         jComboBox1.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         jComboBox1.setMaximumRowCount(4);
@@ -1283,22 +1165,12 @@ public class TestMenu extends javax.swing.JFrame {
         cSpecialVMbtn2.setText("Manage Money");
         cSpecialVMbtn2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(17, 105, 226)));
         cSpecialVMbtn2.setPreferredSize(new java.awt.Dimension(250, 40));
-        cSpecialVMbtn2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cSpecialVMbtn2ActionPerformed(evt);
-            }
-        });
 
         cRegularVMbtn11.setBackground(new java.awt.Color(17, 105, 226));
         cRegularVMbtn11.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         cRegularVMbtn11.setForeground(new java.awt.Color(255, 255, 255));
         cRegularVMbtn11.setText("Print Summary of Transactions");
         cRegularVMbtn11.setPreferredSize(new java.awt.Dimension(250, 40));
-        cRegularVMbtn11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cRegularVMbtn11ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1505,6 +1377,14 @@ public class TestMenu extends javax.swing.JFrame {
         this.maintQuantityList.get(index).setVisible(visibility);
     }
 
+    public void setMaintPriceVisibility(int index, boolean visibility) {
+        this.maintPriceList.get(index).setVisible(visibility);
+    }
+
+    public void setMaintQuantityVisibility(int index, boolean visibility) {
+        this.maintQuantityList.get(index).setVisible(visibility);
+    }
+
     public double getPriceField(int index) {
         return Double.valueOf(this.maintPriceList.get(index).getText());
     }
@@ -1515,6 +1395,10 @@ public class TestMenu extends javax.swing.JFrame {
 
     public void setPriceLabelText(String text, int index) {
         this.priceList.get(index).setText(text);
+    }
+
+    public void setPriceLabelVisibility(int index, boolean visibility) {
+        this.priceList.get(index).setVisible(visibility);
     }
 
     public int getOrderBTNIndex(JButton button) {
@@ -1607,127 +1491,13 @@ public class TestMenu extends javax.swing.JFrame {
         this.jFormattedTextField25.setText("");
     }
 
+    public void manageMoneyBtnActionPerformed(ActionListener actionListener) {
+        this.cSpecialVMbtn2.addActionListener(actionListener);
+    }
 
-    private void maintTestPrice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestPrice1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestPrice1ActionPerformed
-
-    private void maintTestQuantity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestQuantity1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestQuantity1ActionPerformed
-
-    private void maintTestQuantity2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestQuantity2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestQuantity2ActionPerformed
-
-    private void maintTestPrice2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestPrice2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestPrice2ActionPerformed
-
-    private void maintTestQuantity3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestQuantity3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestQuantity3ActionPerformed
-
-    private void maintTestPrice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestPrice3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestPrice3ActionPerformed
-
-    private void maintTestQuantity4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestQuantity4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestQuantity4ActionPerformed
-
-    private void maintTestPrice5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestPrice5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestPrice5ActionPerformed
-
-    private void maintTestQuantity5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestQuantity5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestQuantity5ActionPerformed
-
-    private void maintTestPrice6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestPrice6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestPrice6ActionPerformed
-
-    private void maintTestQuantity6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestQuantity6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestQuantity6ActionPerformed
-
-    private void maintTestPrice7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestPrice7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestPrice7ActionPerformed
-
-    private void maintTestQuantity7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestQuantity7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestQuantity7ActionPerformed
-
-    private void maintTestPrice8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestPrice8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestPrice8ActionPerformed
-
-    private void maintTestPrice9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestPrice9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestPrice9ActionPerformed
-
-    private void maintTestQuantity8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestQuantity8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestQuantity8ActionPerformed
-
-    private void maintTestQuantity10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestQuantity10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestQuantity10ActionPerformed
-
-    private void maintTestQuantity9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestQuantity9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestQuantity9ActionPerformed
-
-    private void maintTestPrice10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestPrice10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestPrice10ActionPerformed
-
-    private void maintTestPrice11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintTestPrice11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maintTestPrice11ActionPerformed
-
-    private void jFormattedTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField23ActionPerformed
-
-    private void jFormattedTextField24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField24ActionPerformed
-
-    private void jFormattedTextField25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField25ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField25ActionPerformed
-
-    private void cRegularVMbtn10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cRegularVMbtn10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cRegularVMbtn10ActionPerformed
-
-    private void cSpecialVMbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSpecialVMbtn2ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        ManageMoney moneyview = new ManageMoney();        
-        moneyview.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_cSpecialVMbtn2ActionPerformed
-
-    private void cRegularVMbtn11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cRegularVMbtn11ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        PrintSummary summaryview = new PrintSummary();        
-        summaryview.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_cRegularVMbtn11ActionPerformed
-
-    private void orderbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderbtn1ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        PizzaMake pizzamake = new PizzaMake();        
-        pizzamake.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_orderbtn1ActionPerformed
-
+    public void printSummaryBtnActionPerformed(ActionListener actionListener) {
+        this.cRegularVMbtn11.addActionListener(actionListener);
+    }
 
     // Variables declaration
     private javax.swing.JButton Maintbtn;

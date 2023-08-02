@@ -213,13 +213,17 @@ public class RegularVM {
     /**
      * Dispenses all money in denominations currently inside the machine.
      */
-    public void collectMoney()
+    public String collectMoney()
     {
-        System.out.printf("\nTotal money held is P%.2f\n\n", cashRegister.getTotal());
+        String msg = "";
+
+        msg += String.format("\nTotal money held is P%.2f\n\n", cashRegister.getTotal());
         if(cashRegister.getTotal() != 0)
-            cashRegister.dispenseAll();
+            msg += cashRegister.dispenseAll();
         else
-            System.out.println("No money to dispense.");
+            msg += ("\nNo money to dispense.");
+
+        return msg;
     }
 
     /**
@@ -228,26 +232,28 @@ public class RegularVM {
      * @param val value of money denomination
      * @param amt number of bills or coins to add
      */
-    public void replenishMoney(int val, int amt){
+    public String replenishMoney(int val, int amt){
         cashRegister.addMoney(val, amt);
-        System.out.printf("\nSuccessfully added %d P%d bills/coins.\n", amt, val);                                                        
+        return String.format("\nSuccessfully added %d P%d bills/coin.\n", amt, val);                                                        
     }
 
     /**
      * Prints the number of each denomination currently in the machine.
      */
-    public void viewDenominations(){
-        System.out.print("\033[H\033[2J");
-        System.out.println("\nMachine currently has");
-        System.out.printf("\n%d P500 bills...", cashRegister.getFiveHundred());
-        System.out.printf("\n%d P200 bills...", cashRegister.getTwoHundred());
-        System.out.printf("\n%d P100 bills...", cashRegister.getHundred());
-        System.out.printf("\n%d P50 bills...", cashRegister.getFifty());
-        System.out.printf("\n%d P20 bills...", cashRegister.getTwenty());
-        System.out.printf("\n%d P10 bills...", cashRegister.getTen());
-        System.out.printf("\n%d P5 bills...", cashRegister.getFive());
-        System.out.printf("\n%d P1 bills...\n", cashRegister.getOne());
-        System.out.printf("\ncoming to a total of P%.2f.\n", cashRegister.getTotal());
+    public String viewDenominations(){
+        String msg = "";
+        msg += String.format("\nMachine currently has");
+        msg += String.format("\n%d P500 bills...", cashRegister.getFiveHundred());
+        msg += String.format("\n%d P200 bills...", cashRegister.getTwoHundred());
+        msg += String.format("\n%d P100 bills...", cashRegister.getHundred());
+        msg += String.format("\n%d P50 bills...", cashRegister.getFifty());
+        msg += String.format("\n%d P20 bills...", cashRegister.getTwenty());
+        msg += String.format("\n%d P10 coins...", cashRegister.getTen());
+        msg += String.format("\n%d P5 coins...", cashRegister.getFive());
+        msg += String.format("\n%d P1 coins...\n", cashRegister.getOne());
+        msg += String.format("\ncoming to a total of P%.2f.\n", cashRegister.getTotal());
+
+        return msg; 
     }
 
     /**
@@ -283,6 +289,7 @@ public class RegularVM {
         {
             amtsold = stockRecordMap.get(slotRecord.get(i).getName()) - slotList.get(i).size();
             totalEarnings += amtsold * slotRecord.get(i).getPrice();
+            
             if (Slotlimit == 10 && i == 0)   
                     System.out.printf("%d.) %s\n", i+1, slotRecord.get(i).getName());
             else

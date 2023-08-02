@@ -159,9 +159,13 @@ public class VMController {
             @Override
             public void actionPerformed(ActionEvent e) {
                     int index = Integer.valueOf(e.getActionCommand());
-                    //testMenu.clearVendTestArea();
-                    testMenu.addVendTestArea(vmFactory.getVM().orderItem(index));
-                    testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
+                    if (index == 0 && vmFactory.getVM() instanceof SpecialVM) {
+                        testMenu.setVisible(false);
+                        pizzaMake.setVisible(true);
+                    } else {
+                        testMenu.addVendTestArea(vmFactory.getVM().orderItem(index));
+                        testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
+                    }
             }
         });
 
@@ -225,10 +229,162 @@ public class VMController {
                 refreshTestScreen();
             }
         });
+
+        //Print Summary
+        this.testMenu.printSummaryBtnActionPerformed(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                testMenu.setVisible(false);
+
+                if (vmFactory.getVM() instanceof SpecialVM) {
+                    printSummary.setLabelVisibility(9, true);
+                } else {
+                    printSummary.setLabelVisibility(9, false);
+                    printSummary.setLabelVisibility(8, false);
+                }
+
+                int totalEarnings = 0;
+                int totalStartingStock = 0;
+                int totalCurrentStock = 0;
+
+                for (int i = 0; i < vmFactory.getVM().slotList.size(); i++) {
+                    String name = i + 1 + ".) " + vmFactory.getVM().slotRecord.get(i).getName();
+                    printSummary.setSummaryLabel(i, name);
+                    String stockname = vmFactory.getVM().slotRecord.get(i).getName();
+
+                    int startingstock = vmFactory.getVM().stockRecordMap.get(stockname);
+                    totalStartingStock += startingstock;
+                    printSummary.setStartingStockLabel(i, startingstock);
+
+                    int currentstock = vmFactory.getVM().slotList.get(i).size();
+                    totalCurrentStock += currentstock;
+                    printSummary.setCurrentStockLabel(i, currentstock);
+
+                    int amtsold = vmFactory.getVM().stockRecordMap.get(stockname) - vmFactory.getVM().slotList.get(i).size();
+                    printSummary.setQuantitySoldLabel(i, amtsold);
+                    int earnings = amtsold * (int)vmFactory.getVM().slotRecord.get(i).getPrice();
+                    totalEarnings += earnings;
+                    printSummary.setEarningsLabel(i, earnings);
+                }
+
+                printSummary.setStartingStockLabel(10, totalStartingStock);
+                printSummary.setCurrentStockLabel(10, totalCurrentStock);
+                printSummary.setQuantitySoldLabel(10, totalStartingStock - totalCurrentStock);
+                printSummary.setEarningsLabel(10, Integer.toString(totalEarnings) + ".00");
+                
+                printSummary.setVisible(true);
+            }
+        });
+
+        this.printSummary.ReturnbtnActionPerformed(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                printSummary.setVisible(false);
+                testMenu.setVisible(true);
+            }
+        });
+
+        //Manage Money
+        this.testMenu.manageMoneyBtnActionPerformed(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                testMenu.setVisible(false);
+                manageMoney.clearTextArea();
+                manageMoney.setVisible(true);
+            }
+        });
+
+        this.manageMoney.setOnePesoReplenishBTN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.addTextArea(vmFactory.getVM().replenishMoney(1, 1));
+            }
+        });
+
+        this.manageMoney.setFivePesoReplenishBTN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.addTextArea(vmFactory.getVM().replenishMoney(5, 1));
+            }
+        });
+
+        this.manageMoney.setTenPesoReplenishBTN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.addTextArea(vmFactory.getVM().replenishMoney(10, 1));
+            }
+        });
+
+        this.manageMoney.setTwentyPesoReplenishBTN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.addTextArea(vmFactory.getVM().replenishMoney(20, 1));
+            }
+        });
+
+        this.manageMoney.setFiftyPesoReplenishBTN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.addTextArea(vmFactory.getVM().replenishMoney(50, 1));
+            }
+        });
+
+        this.manageMoney.setHundredPesoReplenishBTN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.addTextArea(vmFactory.getVM().replenishMoney(100, 1));
+            }
+        });
+
+        this.manageMoney.setTwoHundredPesoReplenishBTN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.addTextArea(vmFactory.getVM().replenishMoney(200, 1));
+            }
+        });
+
+        this.manageMoney.setFiveHundredPesoReplenishBTN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.addTextArea(vmFactory.getVM().replenishMoney(500, 1));
+            }
+        });
+
+        this.manageMoney.ViewDenominations(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.clearTextArea();
+                manageMoney.addTextArea(vmFactory.getVM().viewDenominations());
+            }
+        });
+
+        this.manageMoney.setCollectAllBTN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.clearTextArea();
+                manageMoney.addTextArea(vmFactory.getVM().collectMoney());
+            }
+        });
+
+        this.manageMoney.ReturnbtnActionPerformed(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manageMoney.setVisible(false);
+                testMenu.setVisible(true);
+            }
+        });
+
+        //Pizza Make
+        this.pizzaMake.ReturnbtnActionPerformed(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pizzaMake.setVisible(false);
+                testMenu.setVisible(true);
+            }
+        });
     }
 
-
-
+    //Methods
     public void refreshTestScreen(){
             testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
                     testMenu.clearVendTestArea();
@@ -252,7 +408,7 @@ public class VMController {
                                 if(vmFactory.getVM().slotList.get(i).size() == 0) {
                                     testMenu.setOrderBTNText("Empty", i);
                                     testMenu.setPriceLabelText(" ", i);
-                                    testMenu.setToolTipText("", i);
+                                    testMenu.setToolTipText(null, i);
                                 } else{
                                 testMenu.setOrderBTNText(vmFactory.getVM().slotRecord.get(i).getName(), i);
                                 String msg = String.format("P%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
@@ -260,13 +416,15 @@ public class VMController {
                                 String msg2 = String.format("Calories:%.1fkcal", vmFactory.getVM().slotRecord.get(i).getCalories());
                                 testMenu.setToolTipText(msg2, i);
                                 }
-                            } else 
+                            } else {
                                 testMenu.setBtnVisibility(false, i);
+                                testMenu.setPriceLabelVisibility(i, false);
+                            }
                         else {
                             if(vmFactory.getVM().slotList.get(i).size() == 0) {
                                     testMenu.setOrderBTNText("Empty", i);
                                     testMenu.setPriceLabelText(" ", i);
-                                    testMenu.setToolTipText("", i);
+                                    testMenu.setToolTipText(null, i);
                                 } else{
                                 testMenu.setOrderBTNText(vmFactory.getVM().slotRecord.get(i).getName(), i);
                                 String msg = String.format("P%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
@@ -284,6 +442,12 @@ public class VMController {
                         testMenu.setMaintTestPriceText(price, i);
                         String quantity = String.format("%d", vmFactory.getVM().slotList.get(i).size());
                         testMenu.setMaintTestQuantityText(quantity, i);
+                        if(vmFactory.getVM() instanceof SpecialVM)
+                        if (vmFactory.getVM().slotRecord.get(i).getType() == 3) {
+                            testMenu.setPriceLabelText(" ", i);
+                            testMenu.setMaintPriceVisibility(i, false);
+                            testMenu.setMaintQuantityVisibility(i, false);
+                        }
                     }
         }
 }
