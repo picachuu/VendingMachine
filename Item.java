@@ -82,6 +82,10 @@ public class Item {
         return this.type;
     }
 
+    /**
+     * This method gets the file path for the image of the item
+     * @return String containing the file path of the image of the item
+     */
     public String getImage()
     {
         return this.image;
