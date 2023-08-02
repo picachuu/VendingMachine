@@ -1,4 +1,5 @@
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
 
 public class CreateMenu extends javax.swing.JFrame {
 
@@ -49,11 +50,6 @@ public class CreateMenu extends javax.swing.JFrame {
         Returnbtn.setBackground(new java.awt.Color(243, 245, 249));
         Returnbtn.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         Returnbtn.setText("Return to Main Menu");
-        Returnbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReturnbtnActionPerformed(evt);
-            }
-        });
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setPreferredSize(new java.awt.Dimension(350, 50));
@@ -64,11 +60,11 @@ public class CreateMenu extends javax.swing.JFrame {
         cSpecialVMbtn2.setText("Special Vending Machine");
         cSpecialVMbtn2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(17, 105, 226)));
         cSpecialVMbtn2.setPreferredSize(new java.awt.Dimension(250, 40));
-        cSpecialVMbtn2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cSpecialVMbtn2ActionPerformed(evt);
+        /*cSpecialVMbtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionListener actionListener) {
+                cSpecialVMbtn2ActionPerformed(actionListener);
             }
-        });
+        });*/
         jPanel10.add(cSpecialVMbtn2);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
@@ -79,11 +75,11 @@ public class CreateMenu extends javax.swing.JFrame {
         cRegularVMbtn2.setForeground(new java.awt.Color(255, 255, 255));
         cRegularVMbtn2.setText("Regular Vending Machine");
         cRegularVMbtn2.setPreferredSize(new java.awt.Dimension(250, 40));
-        cRegularVMbtn2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cRegularVMbtn2ActionPerformed(evt);
-            }
-        });
+       /* cRegularVMbtn2.addActionListener(new java.awt.event.ActionListener() {
+            //public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cRegularVMbtn2ActionPerformed(ActionListener);
+          //  }
+        });*/
         jPanel11.add(cRegularVMbtn2);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -120,10 +116,12 @@ public class CreateMenu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        cRegularVMbtn1.setBackground(new java.awt.Color(255, 255, 255));
         cRegularVMbtn1.setForeground(new java.awt.Color(255, 255, 255));
         cRegularVMbtn1.setIcon(new ImageIcon("resources/regularmachine.png"));
         cRegularVMbtn1.setBorder(null);
 
+        cSpecialVMbtn1.setBackground(new java.awt.Color(255, 255, 255));
         cSpecialVMbtn1.setForeground(new java.awt.Color(255, 255, 255));
         cSpecialVMbtn1.setIcon(new ImageIcon("resources/specialmachine.png"));
         cSpecialVMbtn1.setBorder(null);
@@ -186,21 +184,21 @@ public class CreateMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
  
-    private void ReturnbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbtnActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        VMView main = new VMView();        
-        main.setVisible(true);
-        this.dispose();
+    public void ReturnbtnActionPerformed(ActionListener actionListener) {//GEN-FIRST:event_ReturnbtnActionPerformed
+        this.Returnbtn.addActionListener(actionListener);
     }//GEN-LAST:event_ReturnbtnActionPerformed
 
-    private void cSpecialVMbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSpecialVMbtn2ActionPerformed
-        // TODO add your handling code here:
+    public void cSpecialVMbtn2ActionPerformed(ActionListener actionListener) {//GEN-FIRST:event_cSpecialVMbtn2ActionPerformed
+        this.cSpecialVMbtn2.addActionListener(actionListener);
     }//GEN-LAST:event_cSpecialVMbtn2ActionPerformed
 
-    private void cRegularVMbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cRegularVMbtn2ActionPerformed
-        // TODO add your handling code here:
+    public void cRegularVMbtn2ActionPerformed(ActionListener actionListener) {//GEN-FIRST:event_cRegularVMbtn2ActionPerformed
+        this.cRegularVMbtn2.addActionListener(actionListener);
     }//GEN-LAST:event_cRegularVMbtn2ActionPerformed
+
+    public void setcSpecialVMbtn1Text(String text) {
+        this.cSpecialVMbtn1.setText(text);
+    }
 
     // Variables declaration
     private javax.swing.JButton Returnbtn;
