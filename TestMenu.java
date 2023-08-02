@@ -1390,7 +1390,7 @@ public class TestMenu extends javax.swing.JFrame {
     }
 
     public int getQuantityField(int index) {
-        return Integer.valueOf(this.maintQuantityList.get(index).getText());
+        return java.lang.Math.abs(Integer.valueOf(this.maintQuantityList.get(index).getText()));
     }
 
     public void setPriceLabelText(String text, int index) {

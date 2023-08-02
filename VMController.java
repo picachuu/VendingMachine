@@ -180,8 +180,8 @@ public class VMController {
                 for(int i = 0; i < vmFactory.getVM().slotRecord.size(); i++) {
                         vmFactory.getVM().setPrice(i, testMenu.getPriceField(i));
                         if(testMenu.getQuantityField(i) <= 20) {
-                            int add = testMenu.getQuantityField(i) - vmFactory.getVM().slotList.get(i).size();
-                            vmFactory.getVM().restockItem(i, add);
+                            int setTo = testMenu.getQuantityField(i);
+                            vmFactory.getVM().restockItem(i, setTo);
                         }
                         else{
                             error = true;
@@ -220,7 +220,7 @@ public class VMController {
                     if(testMenu.getNewItemSlotNumber() > 0 && testMenu.getNewItemSlotNumber() <= 8)
                     {
                         int index = testMenu.getNewItemSlotNumber() - 1;
-                        vmFactory.getVM().addItem(index, testMenu.getNewItemName(), testMenu.getNewItemPrice(), testMenu.getNewItemCalories(), 0);
+                        vmFactory.getVM().addItem(index, testMenu.getNewItemName(), testMenu.getNewItemPrice(), testMenu.getNewItemCalories(), 10);
                     } else {
                         vmView.displayErrorMessage("Invalid slot number.");
                     }
