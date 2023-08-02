@@ -346,10 +346,12 @@ public class RegularVM {
     {
         Item toAdd = new Item(name, price,calories); 
         slotRecord.put(index, toAdd);
+        stockRecordMap.put(toAdd.getName(), index);
         for (int i = 0; i < stock; i++)
         {
             slotList.get(index).add(toAdd);
         }
+
     }
 
     /**
