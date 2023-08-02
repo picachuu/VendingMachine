@@ -5,8 +5,8 @@ import java.util.Map.Entry;
 
 
 public class SpecialVM extends RegularVM {
-    Map<String, Integer> FreqMap = new LinkedHashMap<String, Integer>();
-    Pizza itemOne;
+    protected Map<String, Integer> FreqMap = new LinkedHashMap<String, Integer>();
+    protected Pizza itemOne;
 
     public SpecialVM(){
     }
@@ -198,13 +198,4 @@ public class SpecialVM extends RegularVM {
         return this.itemOne;
     }
 
-
-    
-   /*  @Override
-    public void recordStock()
-    {
-        for (int i=1; i < 15; i++) {
-        stockRecordMap.put(slotRecord.get(i).getName(), slotList.get(i).size());
-        }
-    } */
 }
