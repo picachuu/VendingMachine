@@ -8,7 +8,17 @@ public class Item {
     protected double calories, price;
     protected int type; // Type will categorize what type of item it is 0 = Dough, 1 = Toppings/Standalone, 2 = Ingredients
                         // 3 = Custom Pizza
-                        
+                        protected String image;
+
+
+    public Item(String name, double price, double calories, int type, String image)
+    {
+        this.name = name;
+        this.price = price;
+        this.calories = calories;
+        this.image = image;
+        this.type = type;
+    }
 
     public Item(String name, double price, double calories, int type)
     {
@@ -16,6 +26,13 @@ public class Item {
         this.price = price;
         this.calories = calories;
         this.type = type;
+    }
+
+    public Item(String name, double price, double calories, String image){
+        this.name = name;
+        this.price = price;
+        this.image = image;
+        this.calories = calories;
     }
 
     public Item(String name, double price, double calories){
@@ -63,5 +80,10 @@ public class Item {
     public int getType()
     {
         return this.type;
+    }
+
+    public String getImage()
+    {
+        return this.image;
     }
 }

@@ -13,7 +13,6 @@ public class ManageMoney extends javax.swing.JFrame {
     /**
      * This method is called from within the constructor to initialize the form.
      */
-    @SuppressWarnings("unchecked")
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
@@ -387,42 +386,6 @@ public class ManageMoney extends javax.swing.JFrame {
     public void ViewDenominations(ActionListener actionListener) {
         this.Returnbtn1.addActionListener(actionListener);
     }
-
-    private void collectAllBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectAllBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_collectAllBTNActionPerformed
-
-    private void onePesoReplenishBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onePesoReplenishBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_onePesoReplenishBTNActionPerformed
-
-    private void fivePesoReplenishBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fivePesoReplenishBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fivePesoReplenishBTNActionPerformed
-
-    private void tenPesoReplenishBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenPesoReplenishBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tenPesoReplenishBTNActionPerformed
-
-    private void twentyPesoReplenishBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twentyPesoReplenishBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_twentyPesoReplenishBTNActionPerformed
-
-    private void fiftyPesoReplenishBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiftyPesoReplenishBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fiftyPesoReplenishBTNActionPerformed
-
-    private void hundredPesoReplenishBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hundredPesoReplenishBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hundredPesoReplenishBTNActionPerformed
-
-    private void twohundPesoReplenishBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twohundPesoReplenishBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_twohundPesoReplenishBTNActionPerformed
-
-    private void fivehundPesoReplenishBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fivehundPesoReplenishBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fivehundPesoReplenishBTNActionPerformed
 
     // Variables declaration
     private javax.swing.JButton Returnbtn;

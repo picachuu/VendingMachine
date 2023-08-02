@@ -13,21 +13,21 @@ public class SpecialVM extends RegularVM {
     @Override
     public void StartSlots(){
         itemOne = new Pizza();
-        Item itemTwo = new Item("Pepperoni", 53, 136, 1);
-        Item itemThree = new Item("Bacon", 69, 40, 1);
-        Item itemFour = new Item("Onions", 55, 210, 1);
-        Item itemFive = new Item("Mozarella", 55, 215, 1);
-        Item itemSix = new Item("Olives", 40, 85, 1);
+        Item itemTwo = new Item("Pepperoni", 53, 136, 1, "resources/pizzapepperoni.png");
+        Item itemThree = new Item("Bacon", 69, 40, 1, "resources/pizzabacon.png");
+        Item itemFour = new Item("Onions", 55, 210, 1, "resources/pizzaonions.png");
+        Item itemFive = new Item("Mozarella", 55, 215, 1, "resources/pizzacheese.png");
+        Item itemSix = new Item("Olives", 40, 85, 1, "resources/pizzaolives.png");
         // Items not shown in the menu (Only sold with Pizza)
-        Item itemSeven = new Item( "Tomato Sauce", 20, 30, 2);
-        Item itemEight = new Item("Cheese Sauce", 20, 50, 2);
-        Item itemNine = new Item("Pesto Sauce", 20, 20, 2);
+        Item itemSeven = new Item( "Tomato Sauce", 20, 30, 2, "resources/pizzatomatosauce.png");
+        Item itemEight = new Item("Cheese Sauce", 20, 50, 2, "resources/pizzacheesesauce.png");
+        Item itemNine = new Item("Pesto Sauce", 20, 20, 2, "resources/pizzapesto.png");
         Item itemTen = new Item("Dough", 100, 200, 0);
         // Extra Items
-        Item itemEleven = new Item("Egg", 50, 42);
-        Item itemTwelve = new Item("Tomato", 45, 12.3);
-        Item itemThirteen = new Item("Bell Peppers", 43, 10.2);
-        Item itemFourteen = new Item("Basil", 37, 13.2);
+        Item itemEleven = new Item("Egg", 50, 42, "resources/pizzaegg.png");
+        Item itemTwelve = new Item("Tomato", 45, 12.3, "resources/pizzatomato.png");
+        Item itemThirteen = new Item("Bell Peppers", 43, 10.2, "resources/pizzabellpeppers.png");
+        Item itemFourteen = new Item("Basil", 37, 13.2, "resources/pizzabasil.png");
         slotRecord.put(0,itemOne);
         slotRecord.put(1,itemTwo);
         slotRecord.put(2,itemThree);
@@ -103,7 +103,7 @@ public class SpecialVM extends RegularVM {
     {
         Item container = slotRecord.get(toReplace); 
         slotList.get(toReplace).clear();
-        stockRecordMap.put(extraItems.get(replaceWith).getName(), toReplace);
+        stockRecordMap.put(extraItems.get(replaceWith).getName(), 0);
         slotRecord.put(toReplace, extraItems.get(replaceWith));
         extraItems.put(replaceWith, container);
         

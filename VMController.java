@@ -1,8 +1,5 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
-
-import javax.swing.Action;
 
 public class VMController {
     private VMView vmView;
@@ -164,6 +161,10 @@ public class VMController {
                     if (index == 0 && vmFactory.getVM() instanceof SpecialVM && vmFactory.getVM().slotList.get(9).size() > 0) {
                         testMenu.setVisible(false);
                         pizzaMake.clearTextArea();
+                        for (int i = 1; i < 14; i++){
+                            pizzaMake.setPizzaIcon(i, "resources/Blank.png");
+                        }
+
                         //instantiate buttons
                         for(int i = 0; i < 8; i++) {
                             int j = i + 1;
@@ -193,9 +194,11 @@ public class VMController {
 
                         pizzaMake.addTextArea("Dough is being prepared!\n(PHP100)\n");
                         if(((SpecialVM)vmFactory.getVM()).addIngredient(((SpecialVM)vmFactory.getVM()).getPizza(), 9)) {
+                            pizzaMake.setPizzaIcon(index, vmFactory.getVM().slotRecord.get(index).getImage());
                             pizzaMake.addTextArea("\nDough is ready!\n");
-                        
-                        pizzaMake.setVisible(true);
+                            pizzaMake.setPizzaIcon(0, "resources/pizzabase.png");
+                            pizzaMake.setPizzaIcon(13, "resources/Blank.png");
+                            pizzaMake.setVisible(true);
                     }} else if (index == 0 && vmFactory.getVM() instanceof SpecialVM){
                         vmView.displayErrorMessage("Dough is out of stock!");
                         } else {
@@ -229,6 +232,7 @@ public class VMController {
                     vmView.displayErrorMessage(errormsg);
                 
                 refreshTestScreen();
+                vmFactory.getVM().recordStock();
             }
         });
 
@@ -461,6 +465,8 @@ public class VMController {
                 if(vmFactory.getVM().getBalance() >= ((SpecialVM)vmFactory.getVM()).getPizza().getPrice()) {
                     pizzaMake.addTextArea(((SpecialVM)vmFactory.getVM()).orderIngredient(((SpecialVM)vmFactory.getVM()).getPizza().getPrice(), ((SpecialVM)vmFactory.getVM()).getPizza().getIngredients()));
                     pizzaMake.addTextArea(((SpecialVM)vmFactory.getVM()).displayPrep(((SpecialVM)vmFactory.getVM()).getPizza()));
+                    pizzaMake.setPizzaIcon(0, "resources/Blank.png");
+                    pizzaMake.setPizzaIcon(13, "resources/boxed.png");
                 } else {
                     String error = String.format("\nSorry, you don't have \nenough money to buy this.\nPlease return \nto the menu.\n");
                     pizzaMake.addTextArea(error);
