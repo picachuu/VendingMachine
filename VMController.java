@@ -495,7 +495,7 @@ public class VMController {
 
                     for(int i = 0; i < 8; i++) {
                         if(vmFactory.getVM() instanceof SpecialVM)
-                            if(vmFactory.getVM().slotRecord.get(i).getType() == 1 || vmFactory.getVM().slotRecord.get(i).getType() == 3) {                        
+                            if(vmFactory.getVM().slotRecord.get(i).getType() != 0 || vmFactory.getVM().slotRecord.get(i).getType() != 2) {                        
                                 if(vmFactory.getVM().slotList.get(i).size() == 0) {
                                     testMenu.setOrderBTNText("Empty", i);
                                     testMenu.setPriceLabelText(" ", i);

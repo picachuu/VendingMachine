@@ -474,7 +474,7 @@ public class PizzaMake extends javax.swing.JFrame {
         jPanel4.setLayout(new javax.swing.OverlayLayout(jPanel4));
 
         pizzaBoxedIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaBoxedIMG.setIcon(new ImageIcon("resources/boxed.png"));
+        pizzaBoxedIMG.setIcon(new ImageIcon("resources/Blank.png"));
         jPanel4.add(pizzaBoxedIMG);
 
         pizzaBellPeppersIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -629,6 +629,22 @@ public class PizzaMake extends javax.swing.JFrame {
         labellist.add(jLabel21);
         labellist.add(jLabel22);
 
+        imglist = new ArrayList<JLabel>();
+        imglist.add(pizzaBaseIMG);                  //0
+        imglist.add(pizzaTomatoSauceIMG);           //1
+        imglist.add(pizzaPestoIMG);                 //2
+        imglist.add(pizzaCheeseSauceIMG);           //3
+        imglist.add(pizzaOnionsIMG);                //4
+        imglist.add(pizzaBaconIMG);                 //5
+        imglist.add(pizzaCheeseIMG);                //6
+        imglist.add(pizzaPepperoniIMG);             //7
+        imglist.add(pizzaOlivesIMG);                //8
+        imglist.add(pizzaEggIMG);                   //9
+        imglist.add(pizzaTomatoIMG);                //10
+        imglist.add(pizzaBasilIMG);                 //11
+        imglist.add(pizzaBellPeppersIMG);           //12
+        imglist.add(pizzaBoxedIMG);                 //13
+
         getContentPane().add(vendcard);
 
         pack();
@@ -674,7 +690,10 @@ public class PizzaMake extends javax.swing.JFrame {
     public void setIngredientButtonIcon(int index, String file) {
         this.buttonList.get(index).setIcon(new ImageIcon(file));
     }
- 
+
+    public void setPizzaIcon(int index, String file) {
+        this.imglist.get(index).setIcon(new ImageIcon(file));
+    }
     public void addTextArea(String text) {
         this.makePizzaVMText.append(text);
     }   
@@ -750,5 +769,6 @@ public class PizzaMake extends javax.swing.JFrame {
     private List<JButton> buttonList;
     private List<JLabel> labellist;
     private List<JLabel> pricelabelList;
+    private List<JLabel> imglist;
     // End of variables declaration                   
 }
