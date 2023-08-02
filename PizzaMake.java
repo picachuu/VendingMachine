@@ -710,6 +710,17 @@ public class PizzaMake extends javax.swing.JFrame {
         this.completeBTN.addActionListener(actionListener);
     }
 
+    public void buttonsEnabler(boolean enable){
+        this.pepperoniBTN.setEnabled(enable);
+        this.baconBTN.setEnabled(enable);
+        this.onionsBTN.setEnabled(enable);
+        this.cheeseBTN.setEnabled(enable);
+        this.olivesBTN.setEnabled(enable);
+        this.tomatoSauceBTN.setEnabled(enable);
+        this.pestoSauceBTN.setEnabled(enable);
+        this.cheeseSauceBTN.setEnabled(enable);
+    }
+
     // Variables declaration                   
     private javax.swing.JButton Maintbtn;
     private javax.swing.JButton Returnbtn1;

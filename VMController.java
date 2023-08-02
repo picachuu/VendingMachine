@@ -148,9 +148,9 @@ public class VMController {
         this.testMenu.cancelOrderBTNActionPerfomed(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    testMenu.clearVendTestArea();
-                    testMenu.addVendTestArea(vmFactory.getVM().receiveChange());
-                    testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
+                testMenu.clearVendTestArea();
+                testMenu.addVendTestArea(vmFactory.getVM().receiveChange());
+                testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
             }
         });
 
@@ -194,10 +194,10 @@ public class VMController {
 
                         pizzaMake.addTextArea("Dough is being prepared!\n(PHP100)\n");
                         if(((SpecialVM)vmFactory.getVM()).addIngredient(((SpecialVM)vmFactory.getVM()).getPizza(), 9)) {
-                            pizzaMake.setPizzaIcon(index, vmFactory.getVM().slotRecord.get(index).getImage());
                             pizzaMake.addTextArea("\nDough is ready!\n");
                             pizzaMake.setPizzaIcon(0, "resources/pizzabase.png");
                             pizzaMake.setPizzaIcon(13, "resources/Blank.png");
+                            pizzaMake.buttonsEnabler(true);
                             pizzaMake.setVisible(true);
                     }} else if (index == 0 && vmFactory.getVM() instanceof SpecialVM){
                         vmView.displayErrorMessage("Dough is out of stock!");
@@ -436,6 +436,7 @@ public class VMController {
             public void actionPerformed(ActionEvent e) {
                     int index = Integer.valueOf(e.getActionCommand()) + 1;
                     if(((SpecialVM)vmFactory.getVM()).addIngredient(((SpecialVM)vmFactory.getVM()).getPizza(), index)) {
+                        pizzaMake.setPizzaIcon(index + 1, vmFactory.getVM().slotRecord.get(index).getImage());
                         String add = String.format(vmFactory.getVM().slotRecord.get(index).getName() + " added.\n");
                         pizzaMake.addTextArea("\n" + add);
                         ((SpecialVM)vmFactory.getVM()).getPizza().TotalCalories();
@@ -455,6 +456,7 @@ public class VMController {
         this.pizzaMake.completeBTN(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                pizzaMake.buttonsEnabler(false);
                 ((SpecialVM)vmFactory.getVM()).getPizza().TotalCalories();
                 ((SpecialVM)vmFactory.getVM()).getPizza().TotalPrice();
                 String price = String.format("\n\nYour order will cost: \nP%.2f\n", ((SpecialVM)vmFactory.getVM()).getPizza().getPrice());
@@ -465,7 +467,9 @@ public class VMController {
                 if(vmFactory.getVM().getBalance() >= ((SpecialVM)vmFactory.getVM()).getPizza().getPrice()) {
                     pizzaMake.addTextArea(((SpecialVM)vmFactory.getVM()).orderIngredient(((SpecialVM)vmFactory.getVM()).getPizza().getPrice(), ((SpecialVM)vmFactory.getVM()).getPizza().getIngredients()));
                     pizzaMake.addTextArea(((SpecialVM)vmFactory.getVM()).displayPrep(((SpecialVM)vmFactory.getVM()).getPizza()));
-                    pizzaMake.setPizzaIcon(0, "resources/Blank.png");
+                    for (int i = 0; i < 13; i++){
+                        pizzaMake.setPizzaIcon(i, "resources/Blank.png");
+                        }
                     pizzaMake.setPizzaIcon(13, "resources/boxed.png");
                 } else {
                     String error = String.format("\nSorry, you don't have \nenough money to buy this.\nPlease return \nto the menu.\n");
