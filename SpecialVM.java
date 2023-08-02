@@ -5,13 +5,10 @@ import java.util.Map.Entry;
 
 
 public class SpecialVM extends RegularVM {
-    Map<String, Integer> FreqMap = new LinkedHashMap<String, Integer>();
-    Pizza itemOne;
+    protected Map<String, Integer> FreqMap = new LinkedHashMap<String, Integer>();
+    protected Pizza itemOne;
 
     public SpecialVM(){
-        super.Slotlimit = 10;
-        
-
     }
     @Override
     public void StartSlots(){
@@ -46,7 +43,7 @@ public class SpecialVM extends RegularVM {
         extraItems.put(1,itemTwelve);
         extraItems.put(2,itemThirteen);
         extraItems.put(3,itemFourteen); 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < slotRecord.size(); i++) {
             for (int j = 0; j < 10; j++) {
                 if (slotList.size() <= i) {
                     slotList.add(new ArrayList<Item>());
@@ -105,6 +102,7 @@ public class SpecialVM extends RegularVM {
     public void replaceItem(int toReplace, int replaceWith)
     {
         Item container = slotRecord.get(toReplace); 
+        slotList.get(toReplace).clear();
         slotRecord.put(toReplace, extraItems.get(replaceWith));
         extraItems.put(replaceWith, container);
     }
@@ -199,12 +197,5 @@ public class SpecialVM extends RegularVM {
     public Pizza getPizza() {
         return this.itemOne;
     }
-    
-   /*  @Override
-    public void recordStock()
-    {
-        for (int i=1; i < 15; i++) {
-        stockRecordMap.put(slotRecord.get(i).getName(), slotList.get(i).size());
-        }
-    } */
+
 }
