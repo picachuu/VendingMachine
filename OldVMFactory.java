@@ -306,6 +306,8 @@ public class OldVMFactory {
                                                                 System.out.print("\nPlease enter stock of new item: "); 
                                                                 newStock = sc.nextInt();
                                                                 ((SpecialVM)vm).restockItem(toReplace, newStock);
+                                                                for (int p =0; p < vm.slotList.get(toReplace).size(); p++)
+                                                                    System.out.printf("\n%s ", vm.slotList.get(toReplace).get(p).getName()); 
                                                             }    
                                                             else
                                                             {                                                            
