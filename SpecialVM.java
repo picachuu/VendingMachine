@@ -103,8 +103,10 @@ public class SpecialVM extends RegularVM {
     {
         Item container = slotRecord.get(toReplace); 
         slotList.get(toReplace).clear();
+        stockRecordMap.put(extraItems.get(replaceWith).getName(), toReplace);
         slotRecord.put(toReplace, extraItems.get(replaceWith));
         extraItems.put(replaceWith, container);
+        
     }
 
     public boolean addIngredient(Pizza custom, int index)
