@@ -3,14 +3,27 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-
+/**
+ * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim
+ * The class is a blueprint to create an object, the class "SpecialVM" creates a Special vending machine
+ * The class "SpecialVM" has 4 attributes: slotRecord, balance, FreqMap, itemOne;
+ */
 public class SpecialVM extends RegularVM {
     protected Map<String, Integer> FreqMap = new LinkedHashMap<String, Integer>();
     protected Pizza itemOne;
-
+/**
+ * This method creates a Special Vending Machine
+ */
     public SpecialVM(){
     }
     @Override
+    /*
+     * This method starts the slots of the vending machine
+     * @return void
+     * @param none
+     * @throws none
+     * @see RegularVM
+     */
     public void StartSlots(){
         itemOne = new Pizza();
         Item itemTwo = new Item("Pepperoni", 53, 136, 1, "resources/pizzapepperoni.png");
@@ -53,7 +66,12 @@ public class SpecialVM extends RegularVM {
         }
 
     }
-    
+    /**
+     * This method displays the items in the vending machine
+     * @return void 
+     * @param type takes the Item type
+     * @param key takes the key of whether to print Pizza or not
+     */
     public void displayItems(int type, int key)
     {
         System.out.printf("%26s", "Items\n");
@@ -76,7 +94,11 @@ public class SpecialVM extends RegularVM {
                     System.out.printf("%d.) %s\n", i+1, slotRecord.get(i).getName()); 
         }
     }
-    
+    /**
+     * This method displays the items in the vending machine in maintenance view
+     * @return void
+     * @param key takes the key of whether to print Pizza or not
+     */
     public void maintDisplayItems(int key){
         System.out.printf("%25s", "Items\n");
         System.out.println("--------------------------------------------");
@@ -99,6 +121,12 @@ public class SpecialVM extends RegularVM {
                 System.out.printf("%d.) %-17s%8.2f%s\n", i+1, extraItems.get(i).getName(),extraItems.get(i).getPrice(), "P");
         }
     }
+    /**
+     * This method displays the items in the vending machine
+     * @return void
+     * @param toReplace takes index of item to be replaced
+     * @param replaceWith takes index of item to replace with
+     */
     public void replaceItem(int toReplace, int replaceWith)
     {
         Item container = slotRecord.get(toReplace); 
@@ -108,7 +136,13 @@ public class SpecialVM extends RegularVM {
         extraItems.put(replaceWith, container);
         
     }
-
+    /**
+     * This method adds an item to a given Pizza
+     * @return boolean return if adding of item was successful
+     * @param custom takes the Pizza object to add toppings to
+     * @param index takes the index of the item/topping to be added
+     * @return
+     */
     public boolean addIngredient(Pizza custom, int index)
     {
     boolean flag = false;
@@ -124,7 +158,11 @@ public class SpecialVM extends RegularVM {
     return flag;
     }
   
-
+    /**
+     * This method displays the prepartion the pizza will go through
+     * @param custom the pizza to be prepared 
+     * @return
+     */
     public String displayPrep(Pizza custom)
     {
         String prep = "";
@@ -167,7 +205,10 @@ public class SpecialVM extends RegularVM {
 
         return prep;
     }
-
+    /**
+     * This method counts the frequency of an ingredient in the pizza being prepared
+     * @param toInsert
+     */
     private void count(Item toInsert)
     {
         if (FreqMap.containsKey(toInsert.getName()))
@@ -175,7 +216,12 @@ public class SpecialVM extends RegularVM {
         else
             FreqMap.put(toInsert.getName(), 1);
     }
-
+    /**
+     * This method is used to order ingredients that are in the pizza
+     * @param Price
+     * @param Index
+     * @return
+     */
     public String orderIngredient(double Price, ArrayList<Item> Index)
     {
         String msg = "";
@@ -195,7 +241,10 @@ public class SpecialVM extends RegularVM {
         }
         return msg;
     }
-
+    /**
+     * This method is used to return / get itemOne which is Pizza
+     * @return Pizza 
+     */
     public Pizza getPizza() {
         return this.itemOne;
     }
