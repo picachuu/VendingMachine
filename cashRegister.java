@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim
+ * The class instantiates a cash register meant to be in a vending machine.
+ * It holds different denominations of money.
+ */
 public class cashRegister {
     List<List<Money>> Denom = new ArrayList<List<Money>>();
 
@@ -48,6 +53,12 @@ public class cashRegister {
         Denom.add(fiveHundredStock);    
     }
 
+    /**
+     * Gets the index of a specific denomination
+     * 
+     * @param denomination money denomination inputted
+     * @return index of money denomination
+     */
     public int getIndex(int denomination){
         int index = -1;
 
@@ -81,6 +92,12 @@ public class cashRegister {
         return index;
     }
 
+    /**
+     * Gets the money object of a specific denomination
+     * 
+     * @param denomination money denomination inputted
+     * @return money object of denomination
+     */
     public Money getMoney(int denomination){
         Money selectMoney = null;
 
@@ -114,19 +131,31 @@ public class cashRegister {
         return selectMoney;
     }
 
-    //Adds money to the stock of the inputted denomination
+    /**
+     * Adds money to the stock of the inputted denomination
+     * @param denomination selected denomination to add to
+     * @param amount amount of denominations to add
+     */
     public void addMoney(int denomination, int amount){ 
         for(int i = 0; i < amount; i++)
             Denom.get(getIndex(denomination)).add(getMoney(denomination));
     }
 
-    //Removes money from the stock of the inputted denomination
+    /**
+     * Removes money from the stock of the inputted denomination
+     * @param denomination selected denomination to remove from
+     * @param amount amount of denominations to remove
+     */
     public void removeMoney(int denomination, int amount){
         for(int i = 0; i < amount; i++)
             Denom.get(getIndex(denomination)).remove(0);
     }
 
-    //Checks if the machine has enough money denominations to dispense inputted amount
+    /**
+     * Checks if the machine has enough money denominations to dispense inputted amount
+     * @param money value of money to check
+     * @return true if machine has enough money, false if not
+     */
     public boolean checkAvail(double money){
         boolean verdict = false;
         int amt = (int)money / 500;
@@ -156,7 +185,11 @@ public class cashRegister {
         return verdict;
     }
 
-    //Dispenses money from the machine
+    /**
+     * Dispenses money from the machine
+     * @param money value of money to dispense
+     * @return string of machine messages dispensing money
+     */
     public String dispenseMoney(double money){
         String msg = "";
         String fiveh = "", twoh = "", oneh = "", 
@@ -265,38 +298,74 @@ public class cashRegister {
         return msg;
     }
 
+    /**
+     * Returns the number of one peso coins in the machine
+     * @return number of one peso coins in the machine
+     */
     public int getOne(){
         return Denom.get(0).size();
     }
 
+    /**
+     * Returns the number of five peso coins in the machine
+     * @return number of five peso coins in the machine
+     */
     public int getFive(){
         return Denom.get(1).size();
     }
 
+    /**
+     * Returns the number of ten peso coins in the machine
+     * @return number of ten peso coins in the machine
+     */
     public int getTen(){
         return Denom.get(2).size();
     }
 
+    /**
+     * Returns the number of twenty peso bills in the machine
+     * @return number of twenty peso bills in the machine
+     */
     public int getTwenty(){
         return Denom.get(3).size();
     }
 
+    /**
+     * Returns the number of fifty peso bills in the machine
+     * @return number of fifty peso bills in the machine
+     */
     public int getFifty(){
         return Denom.get(4).size();
     }
 
+    /**
+     * Returns the number of one hundred peso bills in the machine
+     * @return number of one hundred peso bills in the machine
+     */
     public int getHundred(){
         return Denom.get(5).size();
     }
 
+    /**
+     * Returns the number of two hundred peso bills in the machine
+     * @return number of two hundred peso bills in the machine
+     */
     public int getTwoHundred(){
         return Denom.get(6).size();
     }
 
+    /**
+     * Returns the number of five hundred peso bills in the machine
+     * @return number of five hundred peso bills in the machine
+     */
     public int getFiveHundred(){
         return Denom.get(7).size();
     }
 
+    /**
+     * Returns the total amount of money in the machine
+     * @return total amount of money in the machine
+     */
     public double getTotal(){
         double total = 0;
         total += Denom.get(0).size();
@@ -310,6 +379,9 @@ public class cashRegister {
         return total;
     }
 
+    /**
+     * Removes all stocks of money in machine
+     */
     public void flush(){
         Denom.get(0).clear();
         Denom.get(1).clear();
@@ -321,6 +393,10 @@ public class cashRegister {
         Denom.get(7).clear();
     }
 
+    /**
+     * Displays messages of dispensing all money in the machine
+     * @return string messages of dispensing all money in the machine
+     */
     public String dispenseAll() {
         String msg = "";
 
