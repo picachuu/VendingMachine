@@ -63,7 +63,7 @@ public class SpecialVM extends RegularVM {
         System.out.printf("%10s%19s%18s", "Name", "Price", "Calories\n");
         System.out.println("-----------------------------------------------");
         
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < slotList.size(); i++)
         {
              if (slotRecord.get(i).getType() == type)    
                 {
