@@ -9,6 +9,6 @@ public class MCOMain {
         VMFactory vmFactory = new VMFactory();
 
         VMController vmController = new VMController(vmView, createMenu, testMenu, manageMoney, 
-                                                printSummary, pizzaMake, vmFactory);
+                                                    printSummary, pizzaMake, vmFactory);
     }
 }
