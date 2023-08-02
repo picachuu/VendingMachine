@@ -14,7 +14,6 @@ public class RegularVM {
     Map<Integer, Item> slotRecord = new LinkedHashMap<Integer, Item>();
     Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();    
     protected cashRegister cashRegister;
-    protected int Slotlimit = 9;
     /**
      * A constructor that creates a regular vending machine.
      * 
