@@ -9,9 +9,7 @@ public class SpecialVM extends RegularVM {
     Pizza itemOne;
 
     public SpecialVM(){
-        
     }
-
     @Override
     public void StartSlots(){
         itemOne = new Pizza();

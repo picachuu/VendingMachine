@@ -87,7 +87,7 @@ public class RegularVM {
         System.out.printf("%10s%19s%18s", "Name", "Price", "Calories\n");
         System.out.println("-----------------------------------------------");
         
-        for (int i = 0; i < Slotlimit; i++)
+        for (int i = 0; i < slotRecord.size(); i++)
         {
             
             if (slotList.get(i).size() > 0)
@@ -122,7 +122,8 @@ public class RegularVM {
                 balance -= slotRecord.get(selOrder).getPrice();
                 
                 msg += String.format("Dispensing " + slotRecord.get(selOrder).getName() + "...");
-                msg += String.format("\nThank you for your purchase!\n\n");
+                msg += String.format("\nThank you for your purchase!\n\n", balance);
+                //msg += receiveChange();
                 }
                 else{
                     msg += String.format("!: Sorry, this machine does not have \nenough change to return.\n");   
@@ -274,7 +275,7 @@ public class RegularVM {
         System.out.println("-----------------------------------------------");
         for (int i = 0; i < slotList.size(); i++)
         {
-            if (Slotlimit == 10 && i == 0)   
+            if (slotRecord.size() == 10 && i == 0)   
                     System.out.printf("%d.) %s\n", i+1, slotRecord.get(i).getName());
             else
             {
@@ -295,14 +296,14 @@ public class RegularVM {
             amtsold = stockRecordMap.get(slotRecord.get(i).getName()) - slotList.get(i).size();
             totalEarnings += amtsold * slotRecord.get(i).getPrice();
             
-            if (Slotlimit == 10 && i == 0)   
+            if (slotRecord.size() == 10 && i == 0)   
                     System.out.printf("%d.) %s\n", i+1, slotRecord.get(i).getName());
             else
             System.out.printf("%d.) %-17s%6d%15s%.2f\n", i+1, slotRecord.get(i).getName(), amtsold, "P",amtsold * slotRecord.get(i).getPrice() );
         }
         System.out.println("-----------------------------------------------");
         System.out.printf("Total Earnings (since last restocking):%3s%.2f\n", " P", totalEarnings);
-        if (Slotlimit ==10)
+        if (slotRecord.size() ==10)
             System.out.printf("Please note that Custom pizza earnings includes total earnings from items 11-15\n");
         System.out.println("-----------------------------------------------");
     }
@@ -366,7 +367,7 @@ public class RegularVM {
     public int checkEmpty()
     {
         int emptyIndex = -1;
-        for (int i = 0; i < Slotlimit && emptyIndex == -1; i++)
+        for (int i = 0; i < slotRecord.size() && emptyIndex == -1; i++)
         {
             if (slotList.get(i).size() == 0 )
                 emptyIndex = i;
