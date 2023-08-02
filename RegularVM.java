@@ -46,7 +46,7 @@ public class RegularVM {
         slotRecord.put(6,itemSeven);
         slotRecord.put(7,itemEight);
         slotRecord.put(8,itemNine);
-        for (int i = 0; i < Slotlimit; i++) {
+        for (int i = 0; i < slotRecord.size(); i++) {
             for (int j = 0; j < 10; j++) {
                 if (slotList.size() <= i) {
                     slotList.add(new ArrayList<Item>());

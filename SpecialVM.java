@@ -46,7 +46,7 @@ public class SpecialVM extends RegularVM {
         extraItems.put(1,itemTwelve);
         extraItems.put(2,itemThirteen);
         extraItems.put(3,itemFourteen); 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < slotRecord.size(); i++) {
             for (int j = 0; j < 10; j++) {
                 if (slotList.size() <= i) {
                     slotList.add(new ArrayList<Item>());
