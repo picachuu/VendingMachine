@@ -321,16 +321,28 @@ public class cashRegister {
         Denom.get(7).clear();
     }
 
-    public void dispenseAll(){
-        System.out.printf("Dispensing %d P500 bill/s...\n", Denom.get(7).size());
-        System.out.printf("Dispensing %d P200 bill/s...\n", Denom.get(6).size());
-        System.out.printf("Dispensing %d P100 bill/s...\n", Denom.get(5).size());
-        System.out.printf("Dispensing %d P50 bill/s...\n", Denom.get(4).size());
-        System.out.printf("Dispensing %d P20 bill/s...\n", Denom.get(3).size());
-        System.out.printf("Dispensing %d P10 coin/s...\n", Denom.get(2).size());
-        System.out.printf("Dispensing %d P5 coin/s...\n", Denom.get(1).size());
-        System.out.printf("Dispensing %d P1 coin/s...\n", Denom.get(0).size());
-        System.out.printf("\nPlease collect, thank you!\n\n");
+    public String dispenseAll() {
+        String msg = "";
+
+        if(Denom.get(7).size() > 0)
+            msg += String.format("Dispensing %d P500 bill/s...\n", Denom.get(7).size());
+        if(Denom.get(6).size() > 0)
+            msg += String.format("Dispensing %d P200 bill/s...\n", Denom.get(6).size());
+        if(Denom.get(5).size() > 0)
+            msg += String.format("Dispensing %d P100 bill/s...\n", Denom.get(5).size());
+        if(Denom.get(4).size() > 0)
+            msg += String.format("Dispensing %d P50 bill/s...\n", Denom.get(4).size());
+        if(Denom.get(3).size() > 0)
+            msg += String.format("Dispensing %d P20 bill/s...\n", Denom.get(3).size());
+        if(Denom.get(2).size() > 0)
+            msg += String.format("Dispensing %d P10 coin/s...\n", Denom.get(2).size());
+        if(Denom.get(1).size() > 0)
+            msg += String.format("Dispensing %d P5 coin/s...\n", Denom.get(1).size());
+        if(Denom.get(0).size() > 0)
+            msg += String.format("Dispensing %d P1 coin/s...\n", Denom.get(0).size());
+        msg += String.format("\nPlease collect, thank you!\n\n");
         flush();
+
+        return msg;
     }
 }
