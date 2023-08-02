@@ -129,7 +129,7 @@ public class SpecialVM extends RegularVM {
     {
         String prep = "";
         int counter = 0;
-        prep += "\nYour Pizza is \nbeing prepared.\n";
+        prep += "Your Pizza is \nbeing prepared.\n";
         prep += "\nDough is being kneaded...\n";
         for (int j =0 ; j < custom.getIngredients().size(); j++)
         {

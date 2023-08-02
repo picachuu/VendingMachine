@@ -599,6 +599,8 @@ public class PizzaMake extends javax.swing.JFrame {
                 .addGap(0, 199, Short.MAX_VALUE))
         );
 
+        jProgressBar1.setVisible(false);
+
         buttonList = new ArrayList<JButton>();
         buttonList.add(pepperoniBTN);
         buttonList.add(baconBTN);

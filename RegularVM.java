@@ -9,10 +9,10 @@ public class RegularVM {
 
     protected double balance;
     protected double totalIncome;
-    Map<Integer, Item> extraItems = new LinkedHashMap<Integer, Item>();
+    protected Map<Integer, Item> extraItems = new LinkedHashMap<Integer, Item>();
     protected List<List<Item>> slotList = new ArrayList<List<Item>>();
-    Map<Integer, Item> slotRecord = new LinkedHashMap<Integer, Item>();
-    Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();    
+    protected Map<Integer, Item> slotRecord = new LinkedHashMap<Integer, Item>();
+    protected Map<String,Integer> stockRecordMap = new LinkedHashMap<String,Integer>();    
     protected cashRegister cashRegister;
     protected int Slotlimit = 9;
     /**
@@ -183,11 +183,11 @@ public class RegularVM {
     public void restockItem(int index, int amount){
         if (slotList.get(index).size() < amount && amount < 21)
         {
-            for (int i = 0; i < amount; i++)
+            for (int i = slotList.get(index).size(); i < amount; i++)
             {
                 slotList.get(index).add(slotRecord.get(index));
             }
-            System.out.printf("\nItem: %s stock has been set to: %d successfully.\n\n", slotRecord.get(index).getName(), amount);
+            System.out.printf("\nItem: %s stock has been set to: %d successfully.", slotRecord.get(index).getName(), amount);
         }
         else if (slotList.get(index).size() > amount )
         {
@@ -195,7 +195,7 @@ public class RegularVM {
             {
                 slotList.get(index).remove(slotRecord.get(index));
             }
-            System.out.printf("\nItem: %s stock has been set to: %d successfully.\n\n", slotRecord.get(index).getName(), amount);
+            System.out.printf("\nItem: %s stock has been set to: %d successfully.", slotRecord.get(index).getName(), amount);
         }
         
 

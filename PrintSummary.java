@@ -764,8 +764,11 @@ public class PrintSummary extends javax.swing.JFrame {
         pack();
     }
 
-    public void setLabelVisibility(int index, boolean visibility) {
+    public void setNameLabelVisibility(int index, boolean visibility) {
         summaryLabels.get(index).setVisible(visibility);
+    }
+
+    public void setLabelVisibility(int index, boolean visibility) {
         startingStockLabels.get(index).setVisible(visibility);
         currentStockLabels.get(index).setVisible(visibility);
         quantitySoldLabels.get(index).setVisible(visibility);

@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.Action;
 
@@ -179,7 +180,7 @@ public class VMController {
                                         pizzaMake.setIngredientPriceLabel(i, msg);
                                         String msg2 = String.format("Calories: %.1fkcal", vmFactory.getVM().slotRecord.get(j).getCalories());
                                         pizzaMake.setToolTipText(i, msg2);
-                                        String icon = "resoucres/" + vmFactory.getVM().slotRecord.get(j).getName() + ".png";
+                                        String icon = "resources/" + vmFactory.getVM().slotRecord.get(j).getName() + ".png";
                                         pizzaMake.setIngredientButtonIcon(i, icon);
                                     } else if (i >= 5){
                                         pizzaMake.setButtonText(i, vmFactory.getVM().slotRecord.get(j).getName());
@@ -195,13 +196,11 @@ public class VMController {
                             pizzaMake.addTextArea("\nDough is ready!\n");
                         
                         pizzaMake.setVisible(true);
-                    }} else {
-                        if (vmFactory.getVM() instanceof SpecialVM)
-                            vmView.displayErrorMessage("Dough is out of stock!");
-                        else {
+                    }} else if (index == 0 && vmFactory.getVM() instanceof SpecialVM){
+                        vmView.displayErrorMessage("Dough is out of stock!");
+                        } else {
                         testMenu.addVendTestArea(vmFactory.getVM().orderItem(index));
                         testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
-                        }
                     }
             }
         });
@@ -217,7 +216,7 @@ public class VMController {
                 for(int i = 0; i < vmFactory.getVM().slotRecord.size(); i++) {
                         vmFactory.getVM().setPrice(i, testMenu.getPriceField(i));
                         if(testMenu.getQuantityField(i) <= 20) {
-                            int setTo = testMenu.getQuantityField(i);
+                            int setTo = testMenu.getQuantityField(i); 
                             vmFactory.getVM().restockItem(i, setTo);
                         }
                         else{
@@ -242,14 +241,13 @@ public class VMController {
                     {
                         int found = -1;
 
-                    for (int i = 0; i < vmFactory.getVM().slotRecord.size(); i++) {
-                        System.out.println(testMenu.getReplaceItem().equals(vmFactory.getVM().extraItems.get(i).getName()));
+                    for (int i = 0; i < vmFactory.getVM().extraItems.size(); i++) {
                         if (testMenu.getReplaceItem().equals(vmFactory.getVM().extraItems.get(i).getName())) {
                             found = i;
                         }
-                        ((SpecialVM)vmFactory.getVM()).replaceItem(testMenu.getNewItemSlotNumber() - 1, found);
 
                     }
+                    ((SpecialVM)vmFactory.getVM()).replaceItem(testMenu.getNewItemSlotNumber() - 1, found);
                 } else {
                     vmView.displayErrorMessage("Invalid slot number.");
                 }}
@@ -274,9 +272,12 @@ public class VMController {
                 testMenu.setVisible(false);
 
                 if (vmFactory.getVM() instanceof SpecialVM) {
+                    printSummary.setNameLabelVisibility(9, true);
                     printSummary.setLabelVisibility(9, true);
                 } else {
+                    printSummary.setNameLabelVisibility(9, false);
                     printSummary.setLabelVisibility(9, false);
+                    printSummary.setNameLabelVisibility(8, false);
                     printSummary.setLabelVisibility(8, false);
                 }
 
@@ -285,6 +286,9 @@ public class VMController {
                 int totalCurrentStock = 0;
 
                 for (int i = 0; i < vmFactory.getVM().slotList.size(); i++) {
+                    if (vmFactory.getVM().slotRecord.get(i).getName().equals("Pizza")){
+                        printSummary.setLabelVisibility(i, false);
+                    }
                     String name = i + 1 + ".) " + vmFactory.getVM().slotRecord.get(i).getName();
                     printSummary.setSummaryLabel(i, name);
                     String stockname = vmFactory.getVM().slotRecord.get(i).getName();
@@ -467,8 +471,9 @@ public class VMController {
 
     //Methods
     public void refreshTestScreen(){
+        
             testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
-                    testMenu.clearVendTestArea();
+            testMenu.clearVendTestArea();
                     if (!(vmFactory.getVM() instanceof SpecialVM)) {
                         testMenu.setMaintLabelVisibility(9, false);
                         testMenu.setMaintLabelVisibility(8, false);
@@ -480,6 +485,11 @@ public class VMController {
                         testMenu.setMaintLabelVisibility(8, true);
                         testMenu.setComboVisibility(true);
                         testMenu.hideStockMenu();
+                        String extra[] = new String[4];
+                        for (int i =0; i < 4; i++) {
+                            extra[i] = vmFactory.getVM().extraItems.get(i).getName();
+                        }
+                        testMenu.setComboChoices(extra);
                     }
 
 

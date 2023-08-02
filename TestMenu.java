@@ -1080,8 +1080,6 @@ public class TestMenu extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         jComboBox1.setMaximumRowCount(4);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Parmesan", "Jalapenos", "Mushroom", "Olives " }));
-
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -1497,6 +1495,10 @@ public class TestMenu extends javax.swing.JFrame {
 
     public void printSummaryBtnActionPerformed(ActionListener actionListener) {
         this.cRegularVMbtn11.addActionListener(actionListener);
+    }
+
+    public void setComboChoices(String[] choices) {
+        this.jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(choices));
     }
 
     // Variables declaration
