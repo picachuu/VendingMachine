@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim
  * The class instantiates a cash register meant to be in a vending machine.
  * It holds different denominations of money.
  */

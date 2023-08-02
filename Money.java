@@ -11,6 +11,10 @@ public class Money {
         this.value = value;
     }
 
+    /**
+     * A method that returns the value of the money.
+     * @return the value of the money.
+     */
     public int getValue(){
         return value;
     }

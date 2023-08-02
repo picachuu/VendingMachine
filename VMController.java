@@ -1,6 +1,9 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This is a controller class to connect between the views and model classes.
+ */
 public class VMController {
     private VMView vmView;
     private CreateMenu createMenu;
@@ -480,6 +483,10 @@ public class VMController {
     }
 
     //Methods
+
+    /**
+     * this refreshes all elements in the test menu screen
+     */
     public void refreshTestScreen(){
         
             testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
