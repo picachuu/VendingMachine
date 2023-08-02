@@ -8,6 +8,7 @@ public class Item {
     protected double calories, price;
     protected int type; // Type will categorize what type of item it is 0 = Dough, 1 = Toppings/Standalone, 2 = Ingredients
                         // 3 = Custom Pizza
+                        
 
     public Item(String name, double price, double calories, int type)
     {
