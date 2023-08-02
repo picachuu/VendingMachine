@@ -1,6 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Action;
+
 public class VMController {
     private VMView vmView;
     private CreateMenu createMenu;
@@ -10,7 +12,6 @@ public class VMController {
     private PizzaMake pizzaMake;
     private VMFactory vmFactory;
 
-    //public VMController(VMView vmView, VMFactory vmFactory) {
     public VMController(VMView vmView, CreateMenu createMenu, TestMenu testMenu, ManageMoney manageMoney, 
                         PrintSummary printSummary, PizzaMake pizzaMake, VMFactory vmFactory) {
 
@@ -159,12 +160,48 @@ public class VMController {
             @Override
             public void actionPerformed(ActionEvent e) {
                     int index = Integer.valueOf(e.getActionCommand());
-                    if (index == 0 && vmFactory.getVM() instanceof SpecialVM) {
+                    if (index == 0 && vmFactory.getVM() instanceof SpecialVM && vmFactory.getVM().slotList.get(9).size() > 0) {
                         testMenu.setVisible(false);
+                        pizzaMake.clearTextArea();
+                        //instantiate buttons
+                        for(int i = 0; i < 8; i++) {
+                            int j = i + 1;
+                            if(vmFactory.getVM().slotRecord.get(j).getType() == 1 || vmFactory.getVM().slotRecord.get(j).getType() == 2) {                  
+                                if(vmFactory.getVM().slotList.get(i).size() == 0) {
+                                    pizzaMake.setIngredientLabel(i, "Empty");
+                                    pizzaMake.setIngredientButtonIcon(i, null);
+                                    pizzaMake.setIngredientPriceLabel(i, "");
+                                    pizzaMake.setToolTipText(i, null);
+                                } else{
+                                    if(i < 5){
+                                        pizzaMake.setIngredientLabel(i, vmFactory.getVM().slotRecord.get(j).getName());
+                                        String msg = String.format("P%.2f", vmFactory.getVM().slotRecord.get(j).getPrice());
+                                        pizzaMake.setIngredientPriceLabel(i, msg);
+                                        String msg2 = String.format("Calories: %.1fkcal", vmFactory.getVM().slotRecord.get(j).getCalories());
+                                        pizzaMake.setToolTipText(i, msg2);
+                                        String icon = "resoucres/" + vmFactory.getVM().slotRecord.get(j).getName() + ".png";
+                                        pizzaMake.setIngredientButtonIcon(i, icon);
+                                    } else if (i >= 5){
+                                        pizzaMake.setButtonText(i, vmFactory.getVM().slotRecord.get(j).getName());
+                                        String msg2 = String.format("Calories: %.1fkcal  Price: %.2f", vmFactory.getVM().slotRecord.get(j).getCalories(), vmFactory.getVM().slotRecord.get(j).getPrice());
+                                        pizzaMake.setToolTipText(i, msg2);
+                                    }
+                                }
+                            }
+                        }
+
+                        pizzaMake.addTextArea("Dough is being prepared!\n(PHP100)\n");
+                        if(((SpecialVM)vmFactory.getVM()).addIngredient(((SpecialVM)vmFactory.getVM()).getPizza(), 9)) {
+                            pizzaMake.addTextArea("\nDough is ready!\n");
+                        
                         pizzaMake.setVisible(true);
-                    } else {
+                    }} else {
+                        if (vmFactory.getVM() instanceof SpecialVM)
+                            vmView.displayErrorMessage("Dough is out of stock!");
+                        else {
                         testMenu.addVendTestArea(vmFactory.getVM().orderItem(index));
                         testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
+                        }
                     }
             }
         });
@@ -201,7 +238,7 @@ public class VMController {
             public void actionPerformed(ActionEvent e) {
                 
                 if (vmFactory.getVM() instanceof SpecialVM) {
-                    if(testMenu.getNewItemSlotNumber() > 0 && testMenu.getNewItemSlotNumber() <= 8)
+                    if(testMenu.getNewItemSlotNumber() > 1 && testMenu.getNewItemSlotNumber() <= 8)
                     {
                         int found = -1;
 
@@ -280,6 +317,7 @@ public class VMController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 printSummary.setVisible(false);
+                refreshTestScreen();
                 testMenu.setVisible(true);
             }
         });
@@ -370,6 +408,7 @@ public class VMController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 manageMoney.setVisible(false);
+                refreshTestScreen();
                 testMenu.setVisible(true);
             }
         });
@@ -379,7 +418,49 @@ public class VMController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pizzaMake.setVisible(false);
+                refreshTestScreen();
                 testMenu.setVisible(true);
+            }
+        });
+
+        this.pizzaMake.setIngredientBtn(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    int index = Integer.valueOf(e.getActionCommand()) + 1;
+                    if(((SpecialVM)vmFactory.getVM()).addIngredient(((SpecialVM)vmFactory.getVM()).getPizza(), index)) {
+                        String add = String.format(vmFactory.getVM().slotRecord.get(index).getName() + " added.\n");
+                        pizzaMake.addTextArea("\n" + add);
+                        ((SpecialVM)vmFactory.getVM()).getPizza().TotalCalories();
+                        ((SpecialVM)vmFactory.getVM()).getPizza().TotalPrice();
+                        String price = String.format("\nCurrent Price: %.2f\n", ((SpecialVM)vmFactory.getVM()).getPizza().getPrice());
+                        String calories = String.format("Current Calories: %.1fkcal calories\n", ((SpecialVM)vmFactory.getVM()).getPizza().getCalories());
+                        pizzaMake.addTextArea(price);
+                        pizzaMake.addTextArea(calories);
+                    } else {
+                        String error = String.format("Sorry, we ran out of " + vmFactory.getVM().slotRecord.get(index).getName() + ".\n");
+                        pizzaMake.addTextArea(error);
+                    }
+            
+            }
+        });
+
+        this.pizzaMake.completeBTN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ((SpecialVM)vmFactory.getVM()).getPizza().TotalCalories();
+                ((SpecialVM)vmFactory.getVM()).getPizza().TotalPrice();
+                String price = String.format("\n\nYour order will cost: \nP%.2f\n", ((SpecialVM)vmFactory.getVM()).getPizza().getPrice());
+                String calories = String.format("Your order will have: \n%.1fkcal calories\n", ((SpecialVM)vmFactory.getVM()).getPizza().getCalories());
+                pizzaMake.addTextArea(price);
+                pizzaMake.addTextArea(calories);
+
+                if(vmFactory.getVM().getBalance() >= ((SpecialVM)vmFactory.getVM()).getPizza().getPrice()) {
+                    pizzaMake.addTextArea(((SpecialVM)vmFactory.getVM()).orderIngredient(((SpecialVM)vmFactory.getVM()).getPizza().getPrice(), ((SpecialVM)vmFactory.getVM()).getPizza().getIngredients()));
+                    pizzaMake.addTextArea(((SpecialVM)vmFactory.getVM()).displayPrep(((SpecialVM)vmFactory.getVM()).getPizza()));
+                } else {
+                    String error = String.format("\nSorry, you don't have \nenough money to buy this.\nPlease return \nto the menu.\n");
+                    pizzaMake.addTextArea(error);
+                }     
             }
         });
     }

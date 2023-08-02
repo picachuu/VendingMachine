@@ -1,6 +1,7 @@
-import java.awt.*;    
 import javax.swing.*;
-import java.awt.event.*;    
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;    
 
 public class PizzaMake extends javax.swing.JFrame {
 
@@ -13,7 +14,7 @@ public class PizzaMake extends javax.swing.JFrame {
 
     /**
      * This method is called from within the constructor to initialize the form.
-     */
+     */                         
     private void initComponents() {
 
         vendcard = new javax.swing.JPanel();
@@ -57,6 +58,10 @@ public class PizzaMake extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         pizzaBoxedIMG = new javax.swing.JLabel();
+        pizzaBellPeppersIMG = new javax.swing.JLabel();
+        pizzaBasilIMG = new javax.swing.JLabel();
+        pizzaTomatoIMG = new javax.swing.JLabel();
+        pizzaEggIMG = new javax.swing.JLabel();
         pizzaOlivesIMG = new javax.swing.JLabel();
         pizzaPepperoniIMG = new javax.swing.JLabel();
         pizzaCheeseIMG = new javax.swing.JLabel();
@@ -69,8 +74,8 @@ public class PizzaMake extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1200, 500));
-        setPreferredSize(new java.awt.Dimension(1200, 530));
+        setMinimumSize(new java.awt.Dimension(1180, 500));
+        setPreferredSize(new java.awt.Dimension(1180, 530));
         getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
         vendcard.setBackground(new java.awt.Color(255, 255, 255));
@@ -118,11 +123,6 @@ public class PizzaMake extends javax.swing.JFrame {
         completeBTN.setMaximumSize(new java.awt.Dimension(63, 24));
         completeBTN.setMinimumSize(new java.awt.Dimension(63, 24));
         completeBTN.setPreferredSize(new java.awt.Dimension(63, 24));
-        completeBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                completeBTNActionPerformed(evt);
-            }
-        });
 
         pepperoniBTN.setBackground(new java.awt.Color(242, 242, 242));
         pepperoniBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
@@ -203,7 +203,6 @@ public class PizzaMake extends javax.swing.JFrame {
         makePizzaVMText.setColumns(20);
         makePizzaVMText.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         makePizzaVMText.setRows(5);
-        makePizzaVMText.setText("poggers\n");
         jScrollPane1.setViewportView(makePizzaVMText);
 
         jLabel7.setBackground(new java.awt.Color(17, 105, 226));
@@ -369,37 +368,21 @@ public class PizzaMake extends javax.swing.JFrame {
         pestoSauceBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         pestoSauceBTN.setText("Pesto Sauce");
         pestoSauceBTN.setToolTipText("Calories: Stock:");
-        pestoSauceBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pestoSauceBTNActionPerformed(evt);
-            }
-        });
 
         tomatoSauceBTN.setBackground(new java.awt.Color(242, 242, 242));
         tomatoSauceBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         tomatoSauceBTN.setText("Tomato Sauce");
         tomatoSauceBTN.setToolTipText("Calories: Stock:");
-        tomatoSauceBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tomatoSauceBTNActionPerformed(evt);
-            }
-        });
 
         cheeseSauceBTN.setBackground(new java.awt.Color(242, 242, 242));
         cheeseSauceBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         cheeseSauceBTN.setText("Cheese Sauce");
         cheeseSauceBTN.setToolTipText("Calories: Stock:");
-        cheeseSauceBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cheeseSauceBTNActionPerformed(evt);
-            }
-        });
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("P20.00");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -455,11 +438,6 @@ public class PizzaMake extends javax.swing.JFrame {
         Maintbtn.setForeground(new java.awt.Color(17, 105, 226));
         Maintbtn.setText("Maintenance Features");
         Maintbtn.setPreferredSize(new java.awt.Dimension(250, 40));
-        Maintbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MaintbtnActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -498,6 +476,26 @@ public class PizzaMake extends javax.swing.JFrame {
         pizzaBoxedIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pizzaBoxedIMG.setIcon(new ImageIcon("resources/boxed.png"));
         jPanel4.add(pizzaBoxedIMG);
+
+        pizzaBellPeppersIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pizzaBellPeppersIMG.setIcon(new ImageIcon("resources/pizzaolives.png"));
+        pizzaBellPeppersIMG.setAlignmentX(0.1F);
+        jPanel4.add(pizzaBellPeppersIMG);
+
+        pizzaBasilIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pizzaBasilIMG.setIcon(new ImageIcon("resources/pizzaolives.png"));
+        pizzaBasilIMG.setAlignmentX(0.1F);
+        jPanel4.add(pizzaBasilIMG);
+
+        pizzaTomatoIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pizzaTomatoIMG.setIcon(new ImageIcon("resources/pizzaolives.png"));
+        pizzaTomatoIMG.setAlignmentX(0.1F);
+        jPanel4.add(pizzaTomatoIMG);
+
+        pizzaEggIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pizzaEggIMG.setIcon(new ImageIcon("resources/pizzaolives.png"));
+        pizzaEggIMG.setAlignmentX(0.1F);
+        jPanel4.add(pizzaEggIMG);
 
         pizzaOlivesIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pizzaOlivesIMG.setIcon(new ImageIcon("resources/pizzaolives.png"));
@@ -601,6 +599,34 @@ public class PizzaMake extends javax.swing.JFrame {
                 .addGap(0, 199, Short.MAX_VALUE))
         );
 
+        buttonList = new ArrayList<JButton>();
+        buttonList.add(pepperoniBTN);
+        buttonList.add(baconBTN);
+        buttonList.add(onionsBTN);
+        buttonList.add(cheeseBTN);
+        buttonList.add(olivesBTN);
+        buttonList.add(tomatoSauceBTN); //5
+        buttonList.add(pestoSauceBTN); //6 
+        buttonList.add(cheeseSauceBTN); //7
+
+        for (int index = 0; index < 8; index++) {
+            buttonList.get(index).setActionCommand(Integer.toString(index));
+        }
+
+        pricelabelList = new ArrayList<JLabel>();
+        pricelabelList.add(jLabel11);
+        pricelabelList.add(jLabel12);
+        pricelabelList.add(jLabel14);
+        pricelabelList.add(jLabel13);
+        pricelabelList.add(jLabel15);
+
+        labellist = new ArrayList<JLabel>();
+        labellist.add(jLabel18);
+        labellist.add(jLabel19);
+        labellist.add(jLabel20);
+        labellist.add(jLabel21);
+        labellist.add(jLabel22);
+
         getContentPane().add(vendcard);
 
         pack();
@@ -610,29 +636,60 @@ public class PizzaMake extends javax.swing.JFrame {
         this.Returnbtn1.addActionListener(actionListener);
     }
 
-    private void MaintbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaintbtnActionPerformed
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_MaintbtnActionPerformed
+    public void setSauceBtn(ActionListener actionListener) {
+        this.pestoSauceBTN.addActionListener(actionListener);
+        this.tomatoSauceBTN.addActionListener(actionListener);
+        this.cheeseSauceBTN.addActionListener(actionListener);
+    }
 
-    private void completeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeBTNActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_completeBTNActionPerformed
+    public void setIngredientBtn(ActionListener actionListener) {
+        this.pepperoniBTN.addActionListener(actionListener);
+        this.baconBTN.addActionListener(actionListener);
+        this.onionsBTN.addActionListener(actionListener);
+        this.cheeseBTN.addActionListener(actionListener);
+        this.olivesBTN.addActionListener(actionListener);
+        this.tomatoSauceBTN.addActionListener(actionListener);
+        this.pestoSauceBTN.addActionListener(actionListener);
+        this.cheeseSauceBTN.addActionListener(actionListener);
+    }
 
-    private void pestoSauceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pestoSauceBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pestoSauceBTNActionPerformed
+    public void setIngredientLabel(int index, String label) {
+        this.labellist.get(index).setText(label);
+    }
 
-    private void tomatoSauceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tomatoSauceBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tomatoSauceBTNActionPerformed
+    public void setIngredientPriceLabel(int index, String price) {
+        this.pricelabelList.get(index).setText(price);
+    }
 
-    private void cheeseSauceBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cheeseSauceBTNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cheeseSauceBTNActionPerformed
+    public void setToolTipText(int index, String text) {
+        this.buttonList.get(index).setToolTipText(text);
+    }
 
-    // Variables declaration
+    public void setButtonText(int index, String text) {
+        this.buttonList.get(index).setText(text);
+    }
+
+    public void setIngredientButtonIcon(int index, String file) {
+        this.buttonList.get(index).setIcon(new ImageIcon(file));
+    }
+ 
+    public void addTextArea(String text) {
+        this.makePizzaVMText.append(text);
+    }   
+
+    public void clearTextArea() {
+        this.makePizzaVMText.setText("");
+    }
+    
+    public void setProgressBar(int value) {
+        this.jProgressBar1.setValue(value);
+    }
+    
+    public void completeBTN(ActionListener actionListener) {
+        this.completeBTN.addActionListener(actionListener);
+    }
+
+    // Variables declaration                   
     private javax.swing.JButton Maintbtn;
     private javax.swing.JButton Returnbtn1;
     private javax.swing.JButton baconBTN;
@@ -674,15 +731,22 @@ public class PizzaMake extends javax.swing.JFrame {
     private javax.swing.JButton pestoSauceBTN;
     private javax.swing.JLabel pizzaBaconIMG;
     private javax.swing.JLabel pizzaBaseIMG;
+    private javax.swing.JLabel pizzaBasilIMG;
+    private javax.swing.JLabel pizzaBellPeppersIMG;
     private javax.swing.JLabel pizzaBoxedIMG;
     private javax.swing.JLabel pizzaCheeseIMG;
     private javax.swing.JLabel pizzaCheeseSauceIMG;
+    private javax.swing.JLabel pizzaEggIMG;
     private javax.swing.JLabel pizzaOlivesIMG;
     private javax.swing.JLabel pizzaOnionsIMG;
     private javax.swing.JLabel pizzaPepperoniIMG;
     private javax.swing.JLabel pizzaPestoIMG;
+    private javax.swing.JLabel pizzaTomatoIMG;
     private javax.swing.JLabel pizzaTomatoSauceIMG;
     private javax.swing.JButton tomatoSauceBTN;
     private javax.swing.JPanel vendcard;
-    // End of variables declaration
+    private List<JButton> buttonList;
+    private List<JLabel> labellist;
+    private List<JLabel> pricelabelList;
+    // End of variables declaration                   
 }

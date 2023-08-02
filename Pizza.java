@@ -1,11 +1,12 @@
 import java.util.*;
 
 public class Pizza extends Item {    
-    protected ArrayList<Item> ingredients = new ArrayList<Item>();
+    protected ArrayList<Item> ingredients;
     
     
     public Pizza() {
         super("Pizza", 0, 0, 3);
+        ingredients = new ArrayList<Item>();
     }
 
     public void addIngredient(Item item) {
@@ -26,7 +27,7 @@ public class Pizza extends Item {
         }
 
     public ArrayList<Item> getIngredients() {
-        return ingredients;
+        return this.ingredients;
     }
 
     public void TotalCalories() {

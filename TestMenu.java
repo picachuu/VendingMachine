@@ -1386,7 +1386,7 @@ public class TestMenu extends javax.swing.JFrame {
     }
 
     public double getPriceField(int index) {
-        return Double.valueOf(this.maintPriceList.get(index).getText());
+        return java.lang.Math.abs(Double.valueOf(this.maintPriceList.get(index).getText()));
     }
 
     public int getQuantityField(int index) {

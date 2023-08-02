@@ -1,6 +1,6 @@
 public class VMFactory {
-    RegularVM vm;
-    boolean isSPecial;
+    private RegularVM vm;
+    private boolean isSPecial;
 
     public VMFactory() {
         isSPecial = false;

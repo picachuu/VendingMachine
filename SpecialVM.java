@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 
 public class SpecialVM extends RegularVM {
     Map<String, Integer> FreqMap = new LinkedHashMap<String, Integer>();
+    Pizza itemOne;
 
     public SpecialVM(){
         super.Slotlimit = 10;
@@ -14,7 +15,7 @@ public class SpecialVM extends RegularVM {
     }
     @Override
     public void StartSlots(){
-        Pizza itemOne = new Pizza();
+        itemOne = new Pizza();
         Item itemTwo = new Item("Pepperoni", 53, 136, 1);
         Item itemThree = new Item("Bacon", 69, 40, 1);
         Item itemFour = new Item("Onions", 55, 210, 1);
@@ -26,10 +27,10 @@ public class SpecialVM extends RegularVM {
         Item itemNine = new Item("Pesto Sauce", 20, 20, 2);
         Item itemTen = new Item("Dough", 100, 200, 0);
         // Extra Items
-        Item itemEleven = new Item("Parmesan", 50, 42);
-        Item itemTwelve = new Item("Jalapenos", 45, 12.3);
-        Item itemThirteen = new Item("Mushroom", 43, 10.2);
-        Item itemFourteen = new Item("Olives", 37, 13.2);
+        Item itemEleven = new Item("Egg", 50, 42);
+        Item itemTwelve = new Item("Tomato", 45, 12.3);
+        Item itemThirteen = new Item("Bell Peppers", 43, 10.2);
+        Item itemFourteen = new Item("Basil", 37, 13.2);
         slotRecord.put(0,itemOne);
         slotRecord.put(1,itemTwo);
         slotRecord.put(2,itemThree);
@@ -114,7 +115,6 @@ public class SpecialVM extends RegularVM {
        if (slotList.get(index).size() > 0)
        { 
            custom.addIngredient(slotRecord.get(index));
-           //slotList.get(index).remove(0);
            flag = true;
        }
        else
@@ -125,19 +125,20 @@ public class SpecialVM extends RegularVM {
     }
   
 
-    public void displayPrep(Pizza custom)
+    public String displayPrep(Pizza custom)
     {
+        String prep = "";
         int counter = 0;
-        System.out.println("Your Pizza is being prepared");
-        System.out.println("Dough is being kneaded");
+        prep += "\nYour Pizza is \nbeing prepared.\n";
+        prep += "\nDough is being kneaded...\n";
         for (int j =0 ; j < custom.getIngredients().size(); j++)
         {
             if (custom.getIngredients().get(j).getType() == 2)
             {
-                System.out.println( custom.getIngredients().get(j).getName() + " is being spread\n");
+                prep += String.format(custom.getIngredients().get(j).getName() + " \nis being spread...\n");
             }
         }
-        System.out.println("Toppings being added: ");
+        prep += String.format("Toppings being added: ");
         for (int i = 0; i < custom.getIngredients().size(); i++)
         {
             if (custom.getIngredients().get(i).getType() == 1)
@@ -147,23 +148,24 @@ public class SpecialVM extends RegularVM {
         {
             if (counter == 0)
             {
-                System.out.printf(entry.getValue() + " " + entry.getKey());
+                prep += "\n" + entry.getValue() + " " + entry.getKey();
                 counter++;
             }
             else if (counter == FreqMap.size() - 1)
             {
-                System.out.printf(" and " + entry.getValue() + " " + entry.getKey());
+                prep += " and " + "\n" + entry.getValue() + " " + entry.getKey();
                 counter++;
             }
             else
             {
-                System.out.printf(" , " + entry.getValue() + " " + entry.getKey());
+                prep += " , " + entry.getValue() + " " + entry.getKey();
                 counter++;
             }
         }
-        System.out.println("\nPizza is being baked in the oven...\n");
-        System.out.println("Pizza is ready to be served\n");
+        prep += "\n\nPizza is being baked \nin the oven...\n";
+        prep += "\nPizza is ready to \nbe served!\nDispensing...\nEnjoy!\nPlease return to\nthe menu";
 
+        return prep;
     }
 
     private void count(Item toInsert)
@@ -174,26 +176,30 @@ public class SpecialVM extends RegularVM {
             FreqMap.put(toInsert.getName(), 1);
     }
 
-    public void orderIngredient(double Price, ArrayList<Integer> Index)
+    public String orderIngredient(double Price, ArrayList<Item> Index)
     {
+        String msg = "";
         if(cashRegister.checkAvail(balance - Price)){
             for (int i = 0; i < Index.size(); i++)
             {
-                slotList.get(Index.get(i)).remove(0);
+                slotList.remove(Index);
             }
             balance -= Price;
-            receiveChange();
+            msg += receiveChange();
         }
         else{
-            System.out.print("\033[H\033[2J");
-            System.out.println("!: Sorry, this machine does not have enough change to return.");   
-            System.out.println("Cancelling transaction..."); 
-            System.out.println("Returning money...");   
-            receiveChange();                  
+            msg += "\nSorry, this machine does not \nhave enough change \nto return.";   
+            msg += "\nCancelling transaction..."; 
+            msg += "\nReturning money...";   
+            msg += receiveChange();                  
         }
+        return msg;
+    }
+
+    public Pizza getPizza() {
+        return this.itemOne;
     }
     
-   
    /*  @Override
     public void recordStock()
     {
