@@ -9,10 +9,9 @@ public class SpecialVM extends RegularVM {
     Pizza itemOne;
 
     public SpecialVM(){
-        super.Slotlimit = 10;
         
-
     }
+
     @Override
     public void StartSlots(){
         itemOne = new Pizza();
