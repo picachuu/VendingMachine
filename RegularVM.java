@@ -178,20 +178,27 @@ public class RegularVM {
      * Restocks selected item by adding inputted number to current stock.
      * 
      * @param index index of the selected item to restock
-     * @param amount amount to add to stock of selected item
+     * @param amount amount of stock of selected item
      */
     public void restockItem(int index, int amount){
-
-        if (slotList.get(index).size() + amount <= 20)
+        if (slotList.get(index).size() < amount && amount < 21)
         {
             for (int i = 0; i < amount; i++)
             {
                 slotList.get(index).add(slotRecord.get(index));
             }
-            System.out.printf("\nItem: %s has been restocked by: %d successfully.\n\n", slotRecord.get(index).getName(), amount);
+            System.out.printf("\nItem: %s stock has been set to: %d successfully.\n\n", slotRecord.get(index).getName(), amount);
         }
-        else
-            System.out.printf("\n!: Restock amount exceeds slot capacity (20)\n\n");
+        else if (slotList.get(index).size() > amount )
+        {
+            for (int i = slotList.get(index).size(); i > amount; i--)
+            {
+                slotList.get(index).remove(slotRecord.get(index));
+            }
+            System.out.printf("\nItem: %s stock has been set to: %d successfully.\n\n", slotRecord.get(index).getName(), amount);
+        }
+        
+
     }
 
     /**
@@ -345,10 +352,12 @@ public class RegularVM {
     {
         Item toAdd = new Item(name, price,calories); 
         slotRecord.put(index, toAdd);
+        stockRecordMap.put(toAdd.getName(), index);
         for (int i = 0; i < stock; i++)
         {
             slotList.get(index).add(toAdd);
         }
+
     }
 
     /**
