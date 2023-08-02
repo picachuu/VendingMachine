@@ -8,8 +8,7 @@ public class MCOMain {
         PizzaMake pizzaMake = new PizzaMake();
         VMFactory vmFactory = new VMFactory();
 
-    VMController vmController = new VMController(vmView, createMenu, testMenu, manageMoney, 
+        VMController vmController = new VMController(vmView, createMenu, testMenu, manageMoney, 
                                                 printSummary, pizzaMake, vmFactory);
-    //VMController vmController = new VMController(vmView, vmFactory);
     }
 }

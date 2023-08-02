@@ -1,5 +1,8 @@
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class VMView extends javax.swing.JFrame {
 
@@ -64,11 +67,6 @@ public class VMView extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jButton2.setText("CCPROG3");
         jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -112,11 +110,7 @@ public class VMView extends javax.swing.JFrame {
         CreateVMbtn.setForeground(new java.awt.Color(255, 255, 255));
         CreateVMbtn.setText("Create a Vending Machine");
         CreateVMbtn.setPreferredSize(new java.awt.Dimension(250, 30));
-        /*CreateVMbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateVMbtnActionPerformed(evt);
-            }
-        });*/
+
         jPanel4.add(CreateVMbtn);
 
         jPanel1.add(jPanel4);
@@ -128,11 +122,7 @@ public class VMView extends javax.swing.JFrame {
         TestVMbtn.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         TestVMbtn.setText("Test a Vending Machine");
         TestVMbtn.setPreferredSize(new java.awt.Dimension(250, 30));
-        /*TestVMbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TestVMbtnActionPerformed(evt);
-            }
-        });*/
+
         jPanel7.add(TestVMbtn);
 
         jPanel1.add(jPanel7);
@@ -182,25 +172,25 @@ public class VMView extends javax.swing.JFrame {
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
         setVisible(true);
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void EXitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXitbtnActionPerformed
-        // TODO add your handling code here:
+    private void EXitbtnActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
-    }//GEN-LAST:event_EXitbtnActionPerformed
- 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        System.exit(0);
+    }
 
-    public void TestVMbtnActionPerformed(ActionListener actionListener) {//GEN-FIRST:event_TestVMbtnActionPerformed
+    public void TestVMbtnActionPerformed(ActionListener actionListener) {
         this.TestVMbtn.addActionListener(actionListener);
-
-    }//GEN-LAST:event_TestVMbtnActionPerformed
+    }
 
     public void CreateVMbtnActionPerformed(ActionListener actionListener) {                                               
         this.CreateVMbtn.addActionListener(actionListener);
     }    
+
+    public void displayErrorMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(new JFrame(), errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
     // Variables declaration
     private javax.swing.JButton CreateVMbtn;
     private javax.swing.JButton EXitbtn;

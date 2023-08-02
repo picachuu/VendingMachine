@@ -31,7 +31,7 @@ public class RegularVM {
         Item itemOne = new Item("Pepperoni", 53, 136);
         Item itemTwo = new Item("Ham", 69, 40);
         Item itemThree = new Item("Sausage", 55, 210);
-        Item itemFour = new Item("BBQ Chicken", 55, 215);
+        Item itemFour = new Item("Chicken", 55, 215);
         Item itemFive = new Item("Mozarella", 40, 85);
         Item itemSix = new Item("Parmesan", 50, 42);
         Item itemSeven = new Item("Jalapenos", 45, 12.3);
@@ -109,7 +109,8 @@ public class RegularVM {
      * 
      * @param selOrder index of selected item to order
      */
-    public void orderItem(int selOrder) {
+    public String orderItem(int selOrder) {
+        String msg = "";
 
         //if selected item is available
         if(slotList.get(selOrder).size() > 0)
@@ -121,41 +122,42 @@ public class RegularVM {
                 slotList.get(selOrder).remove(slotList.get(selOrder).size()-1);
                 balance -= slotRecord.get(selOrder).getPrice();
                 
-                System.out.print("\033[H\033[2J");
-                System.out.println("\nDispensing " + slotRecord.get(selOrder).getName() + "...");
-                System.out.printf("Thank you for your purchase!\n\n", balance);
-                receiveChange();
+                msg += String.format("Dispensing " + slotRecord.get(selOrder).getName() + "...");
+                msg += String.format("\nThank you for your purchase!\n\n", balance);
+                //msg += receiveChange();
                 }
                 else{
-                    System.out.print("\033[H\033[2J");
-                    System.out.println("!: Sorry, this machine does not have enough change to return.");   
-                    System.out.println("Cancelling transaction..."); 
-                    System.out.println("Returning money...");   
-                    receiveChange();                  
+                    msg += String.format("!: Sorry, this machine does not have \nenough change to return.\n");   
+                    msg += String.format("\nCancelling transaction..."); 
+                    msg += String.format("\nReturning money...\n");   
+                    msg += receiveChange();                  
                 }
             }
             else{
-                System.out.print("\033[H\033[2J");
-                System.out.println("\n!: Sorry, you do not have enough balance.\n"); 
+                msg += String.format("!: Sorry, you do not have enough\nbalance.\n\n"); 
             }
         else
         {
-            System.out.print("\033[H\033[2J");
-            System.out.println("\n!: Sorry, that item is out of stock.\n");
+            msg += String.format("\n!: Sorry, that item is out of stock.\n");
         } 
+
+        return msg;
     }
     
     /**
      * Dispenses customer's current balance after purchase deductions.
      */
-    public void receiveChange(){
-        if(balance > 0){
-            System.out.printf("\nYour change is P%.2f.\n\n", balance);
-            cashRegister.dispenseMoney(balance);
+    public String receiveChange(){
+            String msg = "";
+            
+            if(balance == 0)
+                msg += "You have no change to dispense.";
+            else{
+                msg += String.format("Your change is P%.2f.\n\n", balance);
+                msg += cashRegister.dispenseMoney(balance);
+            }
             balance = 0;
-        }
-        else
-            System.out.println("You have no change to receive.\n");
+            return msg;
     }
 
     //Maintenance Features
@@ -205,8 +207,7 @@ public class RegularVM {
         {
             slotList.get(index).get(i).changePrice(newPrice);
         }
-        System.out.print("\033[H\033[2J");
-        System.out.printf("Price of: %s has been changed to %.2f\n\n", slotRecord.get(index).getName(), newPrice);
+        System.out.printf("\nItem: %s has been set to P%.2f successfully.\n\n", slotRecord.get(index).getName(), newPrice);
     }
     
     /**
@@ -312,6 +313,10 @@ public class RegularVM {
         return this.balance;
     }
 
+    public void clearBalance(){
+        this.balance = 0;
+    }
+
     /**
      * Records the stock to a hashmap
      */
@@ -330,7 +335,7 @@ public class RegularVM {
      * @param calories calories of the new item
      * @param stock stock to be set of the new item
      */
-    public void addItem(int index,String name, double price, double calories, int stock)
+    public void addItem(int index, String name, double price, double calories, int stock)
     {
         Item toAdd = new Item(name, price,calories); 
         slotRecord.put(index, toAdd);

@@ -157,7 +157,10 @@ public class cashRegister {
     }
 
     //Dispenses money from the machine
-    public void dispenseMoney(double money){
+    public String dispenseMoney(double money){
+        String msg = "";
+        String fiveh = "", twoh = "", oneh = "", 
+               fifty = "", twenty = "", ten = "", five = "", one = "";
         int amt = (int) money;
         int left =(int) money;
         
@@ -167,8 +170,10 @@ public class cashRegister {
                 Denom.get(7).remove(0);
                 left -= 500;
             }
-            if (amt > 0)
-                System.out.printf("Dispensing %d P500 bill/s...\n", amt);
+            if (amt > 1)
+                fiveh = String.format("Dispensing %d P500 bills...\n", amt);
+            else if (amt == 1)
+                fiveh = String.format("Dispensing %d P500 bill...\n", amt);
         }
 
         amt = left / 200;
@@ -177,8 +182,10 @@ public class cashRegister {
                 Denom.get(6).remove(0);
                 left -= 200;
             }
-            if (amt > 0)
-                System.out.printf("Dispensing %d P200 bill/s...\n", amt);
+            if (amt > 1)
+                twoh = String.format("Dispensing %d P200 bills...\n", amt);
+            else if (amt == 1)
+                twoh = String.format("Dispensing %d P200 bill...\n", amt);
         }
 
         amt = left / 100;
@@ -187,8 +194,10 @@ public class cashRegister {
                 Denom.get(5).remove(0);
                 left -= 100;
             }
-            if (amt > 0)
-                System.out.printf("Dispensing %d P100 bill/s...\n", amt);
+            if (amt > 1)
+                oneh = String.format("Dispensing %d P100 bills...\n", amt);
+            else if (amt == 1)
+                oneh = String.format("Dispensing %d P100 bill...\n", amt);
         }
 
         amt = left / 50;
@@ -197,8 +206,10 @@ public class cashRegister {
                 Denom.get(4).remove(0);
                 left -= 50;
             }
-            if (amt > 0)
-                System.out.printf("Dispensing %d P50 bill/s...\n", amt);
+            if (amt > 1)
+                fifty = String.format("Dispensing %d P50 bills...\n", amt);
+            else if (amt == 1)
+                fifty = String.format("Dispensing %d P50 bill...\n", amt);
         }
 
         amt = left / 20;
@@ -207,8 +218,10 @@ public class cashRegister {
                 Denom.get(3).remove(0);
                 left -= 20;
             }
-            if (amt > 0)
-                System.out.printf("Dispensing %d P20 bill/s...\n", amt);
+            if (amt > 1)
+                twenty = String.format("Dispensing %d P20 bills...\n", amt);
+            else if (amt == 1)
+                twenty = String.format("Dispensing %d P20 bill...\n", amt);
         }
 
         amt = left / 10;
@@ -217,8 +230,10 @@ public class cashRegister {
                 Denom.get(2).remove(0);
                 left -= 10;
             }
-            if (amt > 0)
-                System.out.printf("Dispensing %d P10 coin/s...\n", amt);
+            if (amt > 1)
+                ten = String.format("Dispensing %d P10 coins...\n", amt);
+            else if (amt == 1)
+                ten = String.format("Dispensing %d P10 coin...\n", amt);
         }
 
         amt = left / 5;
@@ -227,8 +242,10 @@ public class cashRegister {
                 Denom.get(1).remove(0);
                 left -= 5;
             }
-            if (amt > 0)
-                System.out.printf("Dispensing %d P5 coin/s...\n", amt);
+            if (amt > 1)
+               five = String.format("Dispensing %d P5 coins...\n", amt);
+            else if (amt == 1)
+                five = String.format("Dispensing %d P5 coin...\n", amt);
         }
 
         amt = left;
@@ -237,12 +254,15 @@ public class cashRegister {
                 Denom.get(0).remove(0);
                 left -= 1;
             }
-            if (amt > 0)
-                System.out.printf("Dispensing %d P1 coin/s...\n", amt);
+            if (amt > 1)
+                one = String.format("Dispensing %d P1 coins...\n", amt);
+            else if (amt == 1)
+                one = String.format("Dispensing %d P1 coin...\n", amt);
         }
 
-        System.out.printf("\nPlease collect, thank you!\n\n");
-        System.out.println();
+        msg = fiveh + twoh + oneh + fifty + twenty + ten + five + one + "\nPlease collect, thank you!\n\n\n";
+
+        return msg;
     }
 
     public int getOne(){

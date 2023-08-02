@@ -104,7 +104,7 @@ public class PizzaMake extends javax.swing.JFrame {
         baconBTN.setBackground(new java.awt.Color(242, 242, 242));
         baconBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         baconBTN.setIcon(new ImageIcon("resources/bacon.png"));
-        baconBTN.setToolTipText("Calories: 40   Stock:");
+        baconBTN.setToolTipText("Calories: 40");
 
         jLabel12.setBackground(new java.awt.Color(17, 105, 226));
         jLabel12.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
@@ -128,7 +128,7 @@ public class PizzaMake extends javax.swing.JFrame {
         pepperoniBTN.setBackground(new java.awt.Color(242, 242, 242));
         pepperoniBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         pepperoniBTN.setIcon(new ImageIcon("resources/pepperoni.png"));
-        pepperoniBTN.setToolTipText("Calories: 136   Stock:");
+        pepperoniBTN.setToolTipText("Calories: 136");
 
         jLabel18.setBackground(new java.awt.Color(17, 105, 226));
         jLabel18.setFont(new java.awt.Font("Leelawadee UI", 2, 14)); // NOI18N
@@ -145,7 +145,7 @@ public class PizzaMake extends javax.swing.JFrame {
         cheeseBTN.setBackground(new java.awt.Color(242, 242, 242));
         cheeseBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         cheeseBTN.setIcon(new ImageIcon("resources/cheese.png"));
-        cheeseBTN.setToolTipText("Calories: 215   Stock:");
+        cheeseBTN.setToolTipText("Calories: 215");
 
         jLabel13.setBackground(new java.awt.Color(17, 105, 226));
         jLabel13.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
@@ -162,7 +162,7 @@ public class PizzaMake extends javax.swing.JFrame {
         onionsBTN.setBackground(new java.awt.Color(242, 242, 242));
         onionsBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         onionsBTN.setIcon(new ImageIcon("resources/onion.png"));
-        onionsBTN.setToolTipText("Calories: 210   Stock:");
+        onionsBTN.setToolTipText("Calories: 210");
 
         jLabel20.setBackground(new java.awt.Color(17, 105, 226));
         jLabel20.setFont(new java.awt.Font("Leelawadee UI", 2, 14)); // NOI18N
@@ -179,7 +179,7 @@ public class PizzaMake extends javax.swing.JFrame {
         olivesBTN.setBackground(new java.awt.Color(242, 242, 242));
         olivesBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         olivesBTN.setIcon(new ImageIcon("resources/olives.png"));
-        olivesBTN.setToolTipText("Calories: 85   Stock:");
+        olivesBTN.setToolTipText("Calories: 85");
 
         jLabel15.setBackground(new java.awt.Color(17, 105, 226));
         jLabel15.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
@@ -374,7 +374,7 @@ public class PizzaMake extends javax.swing.JFrame {
         pestoSauceBTN.setBackground(new java.awt.Color(242, 242, 242));
         pestoSauceBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         pestoSauceBTN.setText("Pesto Sauce");
-        pestoSauceBTN.setToolTipText("Calories: Stock:");
+        pestoSauceBTN.setToolTipText("Calories: 20");
         pestoSauceBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pestoSauceBTNActionPerformed(evt);
@@ -384,7 +384,7 @@ public class PizzaMake extends javax.swing.JFrame {
         tomatoSauceBTN.setBackground(new java.awt.Color(242, 242, 242));
         tomatoSauceBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         tomatoSauceBTN.setText("Tomato Sauce");
-        tomatoSauceBTN.setToolTipText("Calories: Stock:");
+        tomatoSauceBTN.setToolTipText("Calories: 30");
         tomatoSauceBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tomatoSauceBTNActionPerformed(evt);
@@ -394,7 +394,7 @@ public class PizzaMake extends javax.swing.JFrame {
         cheeseSauceBTN.setBackground(new java.awt.Color(242, 242, 242));
         cheeseSauceBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
         cheeseSauceBTN.setText("Cheese Sauce");
-        cheeseSauceBTN.setToolTipText("Calories: Stock:");
+        cheeseSauceBTN.setToolTipText("Calories: 50");
         cheeseSauceBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cheeseSauceBTNActionPerformed(evt);
