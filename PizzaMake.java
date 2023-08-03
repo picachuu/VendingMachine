@@ -1,4 +1,3 @@
-package MCO2_Lim_Jimenez;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;

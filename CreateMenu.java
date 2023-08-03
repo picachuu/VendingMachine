@@ -1,4 +1,3 @@
-package MCO2_Lim_Jimenez;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 

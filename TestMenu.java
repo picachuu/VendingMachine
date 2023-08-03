@@ -1,4 +1,3 @@
-package MCO2_Lim_Jimenez;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;

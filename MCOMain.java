@@ -1,4 +1,3 @@
-package MCO2_Lim_Jimenez;
 /**
  * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim.
  * MCOMain is the main class of the program.

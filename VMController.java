@@ -1,4 +1,3 @@
-package MCO2_Lim_Jimenez;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

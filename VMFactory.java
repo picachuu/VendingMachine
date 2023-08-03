@@ -1,4 +1,3 @@
-package MCO2_Lim_Jimenez;
 /**
  * VMFactory class is a factory class that creates a RegularVM or a SpecialVM
  */

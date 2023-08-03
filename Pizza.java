@@ -1,4 +1,3 @@
-package MCO2_Lim_Jimenez;
 import java.util.*;
 /**
  * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim
