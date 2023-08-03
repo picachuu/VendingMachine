@@ -118,7 +118,6 @@ public class RegularVM {
                 
                 msg += String.format("Dispensing " + slotRecord.get(selOrder).getName() + "...");
                 msg += String.format("\nThank you for your purchase!\n\n", balance);
-                msg += receiveChange() + "\n";
                 }
                 else{
                     msg += String.format("!: Sorry, this machine does not have \nenough change to return.\n");   

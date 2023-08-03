@@ -40,7 +40,7 @@ public class VMController {
                     vmView.displayErrorMessage("Please create a vending machine first!");
                 } else {
                     vmView.setVisible(false);
-                    refreshTestScreen();           
+                    refreshTestScreen(true);           
                     testMenu.setVisible(true);
                 }
             }
@@ -186,6 +186,7 @@ public class VMController {
                         testMenu.addVendTestArea(vmFactory.getVM().orderItem(index));
                         testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
                     }
+                    refreshTestScreen(false);
             }
         });
 
@@ -212,7 +213,7 @@ public class VMController {
                 if(error)
                     vmView.displayErrorMessage(errormsg);
                 refreshPizzaMakeScreen();
-                refreshTestScreen();
+                refreshTestScreen(true);
                 vmFactory.getVM().recordStock();
             }
         });
@@ -249,7 +250,7 @@ public class VMController {
                     }
                 }
                 testMenu.clearStockFields();
-                refreshTestScreen();
+                refreshTestScreen(true);
             }
         });
 
@@ -309,7 +310,7 @@ public class VMController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 printSummary.setVisible(false);
-                refreshTestScreen();
+                refreshTestScreen(true);
                 testMenu.setVisible(true);
             }
         });
@@ -400,7 +401,7 @@ public class VMController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 manageMoney.setVisible(false);
-                refreshTestScreen();
+                refreshTestScreen(true);
                 testMenu.setVisible(true);
             }
         });
@@ -410,7 +411,7 @@ public class VMController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pizzaMake.setVisible(false);
-                refreshTestScreen();
+                refreshTestScreen(true);
                 testMenu.setVisible(true);
             }
         });
@@ -459,6 +460,7 @@ public class VMController {
                     for (int i = 0; i < 11; i++)
                         pizzaMake.setPizzaIcon(i, "resources/Blank.png");
                     pizzaMake.setPizzaIcon(10, "resources/boxed.png");
+                    vmFactory.getVM().receiveChange();
                 } else {
                     String error = String.format("\nSorry, you don't have \nenough money to buy this.\nPlease return \nto the menu.\n");
                     pizzaMake.addTextArea(error);
@@ -472,76 +474,77 @@ public class VMController {
     /**
      * this refreshes all elements in the test menu screen
      */
-    public void refreshTestScreen(){
+    public void refreshTestScreen(boolean clear){
         
             testMenu.setVendTestbalance(vmFactory.getVM().getBalance());
-            testMenu.clearVendTestArea();
-                    if (!(vmFactory.getVM() instanceof SpecialVM)) {
-                        testMenu.setMaintLabelVisibility(9, false);
-                        testMenu.setMaintLabelVisibility(8, false);
-                        testMenu.setComboVisibility(false);
-                        testMenu.showStockMenu();
-                    }
-                    else{
-                        testMenu.setMaintLabelVisibility(9, true);
-                        testMenu.setMaintLabelVisibility(8, true);
-                        testMenu.setComboVisibility(true);
-                        testMenu.hideStockMenu();
-                        String extra[] = new String[4];
-                        for (int i =0; i < 4; i++) {
-                            extra[i] = vmFactory.getVM().extraItems.get(i).getName();
-                        }
-                        testMenu.setComboChoices(extra);
-                    }
+            if(clear)
+                testMenu.clearVendTestArea();
+            if (!(vmFactory.getVM() instanceof SpecialVM)) {
+                testMenu.setMaintLabelVisibility(9, false);
+                testMenu.setMaintLabelVisibility(8, false);
+                testMenu.setComboVisibility(false);
+                testMenu.showStockMenu();
+            }
+            else{
+                testMenu.setMaintLabelVisibility(9, true);
+                testMenu.setMaintLabelVisibility(8, true);
+                testMenu.setComboVisibility(true);
+                testMenu.hideStockMenu();
+                String extra[] = new String[4];
+                for (int i =0; i < 4; i++) {
+                    extra[i] = vmFactory.getVM().extraItems.get(i).getName();
+                }
+                testMenu.setComboChoices(extra);
+            }
 
 
-                    for(int i = 0; i < 8; i++) {
-                        if(vmFactory.getVM() instanceof SpecialVM)
-                            if(vmFactory.getVM().slotRecord.get(i).getType() != 0 && vmFactory.getVM().slotRecord.get(i).getType() != 2) {                        
-                                if(vmFactory.getVM().slotList.get(i).size() == 0) {
-                                    testMenu.setOrderBTNText("Empty", i);
-                                    testMenu.setPriceLabelText(" ", i);
-                                    testMenu.setToolTipText(null, i);
-                                } else{
-                                    testMenu.setOrderBTNText(vmFactory.getVM().slotRecord.get(i).getName(), i);
-                                    String msg = String.format("P%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
-                                    testMenu.setPriceLabelText(msg, i);
-                                    String msg2 = String.format("Calories:%.1fkcal", vmFactory.getVM().slotRecord.get(i).getCalories());
-                                    testMenu.setToolTipText(msg2, i);
-                                }
-                            } else {
-                                testMenu.setBtnVisibility(false, i);
-                                testMenu.setPriceLabelVisibility(i, false);
-                            }
-                        else {
-                            if(vmFactory.getVM().slotList.get(i).size() == 0) {
-                                    testMenu.setOrderBTNText("Empty", i);
-                                    testMenu.setPriceLabelText(" ", i);
-                                    testMenu.setToolTipText(null, i);
-                            } else{
-                                testMenu.setOrderBTNText(vmFactory.getVM().slotRecord.get(i).getName(), i);
-                                String msg = String.format("P%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
-                                testMenu.setPriceLabelText(msg, i);
-                                String msg2 = String.format("Calories:%.1fkcal", vmFactory.getVM().slotRecord.get(i).getCalories());
-                                testMenu.setToolTipText(msg2, i);
-                            }
-                        }
-                    }
-
-                    for(int i = 0; i < vmFactory.getVM().slotRecord.size(); i++) {
-                        String name = i + 1 + ".) " + vmFactory.getVM().slotRecord.get(i).getName();
-                        testMenu.setMaintTestLabelText(name, i);
-                        String price = String.format("%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
-                        testMenu.setMaintTestPriceText(price, i);
-                        String quantity = String.format("%d", vmFactory.getVM().slotList.get(i).size());
-                        testMenu.setMaintTestQuantityText(quantity, i);
-                        if(vmFactory.getVM() instanceof SpecialVM)
-                        if (vmFactory.getVM().slotRecord.get(i).getType() == 3) {
+            for(int i = 0; i < 8; i++) {
+                if(vmFactory.getVM() instanceof SpecialVM)
+                    if(vmFactory.getVM().slotRecord.get(i).getType() != 0 && vmFactory.getVM().slotRecord.get(i).getType() != 2 ) {                        
+                        if(vmFactory.getVM().slotList.get(i).size() == 0) {
+                            testMenu.setOrderBTNText("Empty", i);
                             testMenu.setPriceLabelText(" ", i);
-                            testMenu.setMaintPriceVisibility(i, false);
-                            testMenu.setMaintQuantityVisibility(i, false);
+                            testMenu.setToolTipText(null, i);
+                        } else{
+                            testMenu.setOrderBTNText(vmFactory.getVM().slotRecord.get(i).getName(), i);
+                            String msg = String.format("P%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
+                            testMenu.setPriceLabelText(msg, i);
+                            String msg2 = String.format("Calories:%.1fkcal", vmFactory.getVM().slotRecord.get(i).getCalories());
+                            testMenu.setToolTipText(msg2, i);
                         }
+                    } else {
+                        testMenu.setBtnVisibility(false, i);
+                        testMenu.setPriceLabelVisibility(i, false);
                     }
+                else {
+                    if(vmFactory.getVM().slotList.get(i).size() == 0) {
+                            testMenu.setOrderBTNText("Empty", i);
+                            testMenu.setPriceLabelText(" ", i);
+                            testMenu.setToolTipText(null, i);
+                    } else{
+                        testMenu.setOrderBTNText(vmFactory.getVM().slotRecord.get(i).getName(), i);
+                        String msg = String.format("P%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
+                        testMenu.setPriceLabelText(msg, i);
+                        String msg2 = String.format("Calories:%.1fkcal", vmFactory.getVM().slotRecord.get(i).getCalories());
+                        testMenu.setToolTipText(msg2, i);
+                    }
+                }
+            }
+
+            for(int i = 0; i < vmFactory.getVM().slotRecord.size(); i++) {
+                String name = i + 1 + ".) " + vmFactory.getVM().slotRecord.get(i).getName();
+                testMenu.setMaintTestLabelText(name, i);
+                String price = String.format("%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
+                testMenu.setMaintTestPriceText(price, i);
+                String quantity = String.format("%d", vmFactory.getVM().slotList.get(i).size());
+                testMenu.setMaintTestQuantityText(quantity, i);
+                if(vmFactory.getVM() instanceof SpecialVM)
+                if (vmFactory.getVM().slotRecord.get(i).getType() == 3) {
+                    testMenu.setPriceLabelText(" ", i);
+                    testMenu.setMaintPriceVisibility(i, false);
+                    testMenu.setMaintQuantityVisibility(i, false);
+                }
+            }
         }
 
         /**

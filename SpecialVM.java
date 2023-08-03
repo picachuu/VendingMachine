@@ -37,10 +37,10 @@ public class SpecialVM extends RegularVM {
         Item itemNine = new Item("Pesto Sauce", 20, 20, 2, "resources/pizzapesto.png");
         Item itemTen = new Item("Dough", 100, 200, 0);
         // Extra Items
-        Item itemEleven = new Item("Egg", 50, 42, "resources/pizzaegg.png");
-        Item itemTwelve = new Item("Tomato", 45, 12.3, "resources/pizzatomato.png");
-        Item itemThirteen = new Item("Bell Peppers", 43, 10.2, "resources/pizzabellpeppers.png");
-        Item itemFourteen = new Item("Basil", 37, 13.2, "resources/pizzabasil.png");
+        Item itemEleven = new Item("Egg", 50, 42, 1, "resources/pizzaegg.png");
+        Item itemTwelve = new Item("Tomato", 45, 12.3, 1, "resources/pizzatomato.png");
+        Item itemThirteen = new Item("Bell Peppers", 43, 10.2, 1, "resources/pizzabellpeppers.png");
+        Item itemFourteen = new Item("Basil", 37, 13.2, 1, "resources/pizzabasil.png");
         slotRecord.put(0,itemOne);
         slotRecord.put(1,itemTwo);
         slotRecord.put(2,itemThree);
