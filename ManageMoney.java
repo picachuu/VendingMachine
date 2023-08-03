@@ -1,5 +1,9 @@
+package MCO2_Lim_Jimenez;
 import java.awt.event.ActionListener;
 
+/**
+ * ManageMoney is the GUI of the Vending Machine's manage money menu. It is the view class of the MVC pattern.
+ */
 public class ManageMoney extends javax.swing.JFrame {
 
     /**

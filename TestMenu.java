@@ -1,10 +1,13 @@
+package MCO2_Lim_Jimenez;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
   
-
+/**
+ * TestMenu is the class that creates the GUI for the test menu of the vending machine.
+ */
 public class TestMenu extends javax.swing.JFrame {
 
     /**

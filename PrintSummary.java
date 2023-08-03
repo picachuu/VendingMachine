@@ -1,8 +1,12 @@
+package MCO2_Lim_Jimenez;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * PizzaMake is the class that creates the GUI for the print summary menu of the vending machine.
+ */
 public class PrintSummary extends javax.swing.JFrame {
 
     /**

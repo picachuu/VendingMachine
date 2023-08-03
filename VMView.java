@@ -1,9 +1,12 @@
+package MCO2_Lim_Jimenez;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
+/**
+ * VMView is the view class of the program's main menu.
+ */
 public class VMView extends javax.swing.JFrame {
 
     /**
@@ -15,7 +18,6 @@ public class VMView extends javax.swing.JFrame {
 
     /**
      * This method is called from within the constructor to initialize the form.
-     * 
      */
     
     private void initComponents() {
@@ -166,7 +168,7 @@ public class VMView extends javax.swing.JFrame {
         flowLayout1.setAlignOnBaseline(true);
         jPanel2.setLayout(flowLayout1);
 
-        jLabel2.setIcon(new ImageIcon("resources/vendingmachine.png"));
+        jLabel2.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/vendingmachine.png"));
         jPanel2.add(jLabel2);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);

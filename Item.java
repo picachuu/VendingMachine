@@ -1,7 +1,7 @@
+package MCO2_Lim_Jimenez;
 /**
- * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim
  * The class is a blueprint to create an object, the class "Item" creates an object for a vending machine item
- * The class "Item" has 4 attributes: name, calories, price, stock;
+ * The class "Item" has 4 attributes: name, calories, price, stock, and image;
  */
 public class Item {
     protected String name;

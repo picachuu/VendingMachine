@@ -1,8 +1,12 @@
+package MCO2_Lim_Jimenez;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;    
 
+/**
+ * PizzaMake is the class that creates the GUI for the Pizza Vending Machine.
+ */
 public class PizzaMake extends javax.swing.JFrame {
 
     /**
@@ -107,7 +111,7 @@ public class PizzaMake extends javax.swing.JFrame {
 
         baconBTN.setBackground(new java.awt.Color(242, 242, 242));
         baconBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
-        baconBTN.setIcon(new ImageIcon("resources/bacon.png"));
+        baconBTN.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/bacon.png"));
         baconBTN.setToolTipText("Calories: 40");
 
         jLabel12.setBackground(new java.awt.Color(17, 105, 226));
@@ -119,14 +123,14 @@ public class PizzaMake extends javax.swing.JFrame {
         completeBTN.setBackground(new java.awt.Color(17, 105, 226));
         completeBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         completeBTN.setForeground(new java.awt.Color(255, 255, 255));
-        completeBTN.setIcon(new ImageIcon("resources/pizzabox.png"));
+        completeBTN.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzabox.png"));
         completeBTN.setMaximumSize(new java.awt.Dimension(63, 24));
         completeBTN.setMinimumSize(new java.awt.Dimension(63, 24));
         completeBTN.setPreferredSize(new java.awt.Dimension(63, 24));
 
         pepperoniBTN.setBackground(new java.awt.Color(242, 242, 242));
         pepperoniBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
-        pepperoniBTN.setIcon(new ImageIcon("resources/pepperoni.png"));
+        pepperoniBTN.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pepperoni.png"));
         pepperoniBTN.setToolTipText("Calories: 136");
 
         jLabel18.setBackground(new java.awt.Color(17, 105, 226));
@@ -143,7 +147,7 @@ public class PizzaMake extends javax.swing.JFrame {
 
         cheeseBTN.setBackground(new java.awt.Color(242, 242, 242));
         cheeseBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
-        cheeseBTN.setIcon(new ImageIcon("resources/cheese.png"));
+        cheeseBTN.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/cheese.png"));
         cheeseBTN.setToolTipText("Calories: 215");
 
         jLabel13.setBackground(new java.awt.Color(17, 105, 226));
@@ -160,7 +164,7 @@ public class PizzaMake extends javax.swing.JFrame {
 
         onionsBTN.setBackground(new java.awt.Color(242, 242, 242));
         onionsBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
-        onionsBTN.setIcon(new ImageIcon("resources/onion.png"));
+        onionsBTN.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/onion.png"));
         onionsBTN.setToolTipText("Calories: 210");
 
         jLabel20.setBackground(new java.awt.Color(17, 105, 226));
@@ -177,7 +181,7 @@ public class PizzaMake extends javax.swing.JFrame {
 
         olivesBTN.setBackground(new java.awt.Color(242, 242, 242));
         olivesBTN.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
-        olivesBTN.setIcon(new ImageIcon("resources/olives.png"));
+        olivesBTN.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/olives.png"));
         olivesBTN.setToolTipText("Calories: 85");
 
         jLabel15.setBackground(new java.awt.Color(17, 105, 226));
@@ -474,71 +478,71 @@ public class PizzaMake extends javax.swing.JFrame {
         jPanel4.setLayout(new javax.swing.OverlayLayout(jPanel4));
 
         pizzaBoxedIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaBoxedIMG.setIcon(new ImageIcon("resources/Blank.png"));
+        pizzaBoxedIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/Blank.png"));
         jPanel4.add(pizzaBoxedIMG);
 
         pizzaBellPeppersIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaBellPeppersIMG.setIcon(new ImageIcon("resources/pizzaolives.png"));
+        pizzaBellPeppersIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzaolives.png"));
         pizzaBellPeppersIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaBellPeppersIMG);
 
         pizzaBasilIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaBasilIMG.setIcon(new ImageIcon("resources/pizzaolives.png"));
+        pizzaBasilIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzaolives.png"));
         pizzaBasilIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaBasilIMG);
 
         pizzaTomatoIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaTomatoIMG.setIcon(new ImageIcon("resources/pizzaolives.png"));
+        pizzaTomatoIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzaolives.png"));
         pizzaTomatoIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaTomatoIMG);
 
         pizzaEggIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaEggIMG.setIcon(new ImageIcon("resources/pizzaolives.png"));
+        pizzaEggIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzaolives.png"));
         pizzaEggIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaEggIMG);
 
         pizzaOlivesIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaOlivesIMG.setIcon(new ImageIcon("resources/pizzaolives.png"));
+        pizzaOlivesIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzaolives.png"));
         pizzaOlivesIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaOlivesIMG);
 
         pizzaPepperoniIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaPepperoniIMG.setIcon(new ImageIcon("resources/pizzapepperoni.png"));
+        pizzaPepperoniIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzapepperoni.png"));
         pizzaPepperoniIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaPepperoniIMG);
 
         pizzaCheeseIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaCheeseIMG.setIcon(new ImageIcon("resources/pizzacheese.png"));
+        pizzaCheeseIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzacheese.png"));
         pizzaCheeseIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaCheeseIMG);
 
         pizzaBaconIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaBaconIMG.setIcon(new ImageIcon("resources/pizzabacon.png"));
+        pizzaBaconIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzabacon.png"));
         pizzaBaconIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaBaconIMG);
 
         pizzaOnionsIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaOnionsIMG.setIcon(new ImageIcon("resources/pizzaonions.png"));
+        pizzaOnionsIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzaonions.png"));
         pizzaOnionsIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaOnionsIMG);
 
         pizzaCheeseSauceIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaCheeseSauceIMG.setIcon(new ImageIcon("resources/pizzacheesesauce.png"));
+        pizzaCheeseSauceIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzacheesesauce.png"));
         pizzaCheeseSauceIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaCheeseSauceIMG);
 
         pizzaPestoIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaPestoIMG.setIcon(new ImageIcon("resources/pizzapesto.png"));
+        pizzaPestoIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzapesto.png"));
         pizzaPestoIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaPestoIMG);
 
         pizzaTomatoSauceIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaTomatoSauceIMG.setIcon(new ImageIcon("resources/pizzatomatosauce.png"));
+        pizzaTomatoSauceIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzatomatosauce.png"));
         pizzaTomatoSauceIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaTomatoSauceIMG);
 
         pizzaBaseIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizzaBaseIMG.setIcon(new ImageIcon("resources/pizzabase.png"));
+        pizzaBaseIMG.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/pizzabase.png"));
         pizzaBaseIMG.setAlignmentX(0.1F);
         jPanel4.add(pizzaBaseIMG);
 

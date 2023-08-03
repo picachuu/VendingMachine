@@ -1,3 +1,4 @@
+package MCO2_Lim_Jimenez;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 
@@ -108,12 +109,12 @@ public class CreateMenu extends javax.swing.JFrame {
 
         cRegularVMbtn1.setBackground(new java.awt.Color(255, 255, 255));
         cRegularVMbtn1.setForeground(new java.awt.Color(255, 255, 255));
-        cRegularVMbtn1.setIcon(new ImageIcon("resources/regularmachine.png"));
+        cRegularVMbtn1.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/regularmachine.png"));
         cRegularVMbtn1.setBorder(null);
 
         cSpecialVMbtn1.setBackground(new java.awt.Color(255, 255, 255));
         cSpecialVMbtn1.setForeground(new java.awt.Color(255, 255, 255));
-        cSpecialVMbtn1.setIcon(new ImageIcon("resources/specialmachine.png"));
+        cSpecialVMbtn1.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/specialmachine.png"));
         cSpecialVMbtn1.setBorder(null);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

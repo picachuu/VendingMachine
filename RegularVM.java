@@ -1,9 +1,8 @@
+package MCO2_Lim_Jimenez;
 import java.util.*;
 
 /**
- * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim
  * The class is a blueprint to create an object, the class "RegularVM" creates a regular vending machine
- * The class "RegularVM" has 5 attributes: slot, balance, totalIncome, stockRecord, money;
  */
 public class RegularVM {
 
@@ -26,6 +25,9 @@ public class RegularVM {
         cashRegister = new cashRegister(10);    
     }
 
+    /**
+     * This method is called from within the constructor to initialize the objects.
+     */
     public void StartSlots(){
         Item itemOne = new Item("Pepperoni", 53, 136);
         Item itemTwo = new Item("Ham", 69, 40);
@@ -54,13 +56,6 @@ public class RegularVM {
             }
         }
         
-    }
-    public void displayVendingFeaturesMenu(){
-        System.out.println("\n-------Vending Features-------");
-        System.out.println("[1] Insert Payment");
-        System.out.println("[2] Order Item");
-        System.out.println("[3] Receive Change");
-        System.out.println("[4] Return to Test Menu");
     }
 
     //Vending Features
@@ -107,6 +102,7 @@ public class RegularVM {
      * not have enough change to give.
      * 
      * @param selOrder index of selected item to order
+     * @return message to be displayed to customer
      */
     public String orderItem(int selOrder) {
         String msg = "";
@@ -145,6 +141,8 @@ public class RegularVM {
     
     /**
      * Dispenses customer's current balance after purchase deductions.
+     * 
+     * @return message to be displayed to customer
      */
     public String receiveChange(){
             String msg = "";
@@ -160,19 +158,6 @@ public class RegularVM {
     }
 
     //Maintenance Features
-
-    /**
-     * Prints the available items of the vending machine, 
-     * including its name, price, and stock number.
-     */
-    public void maintDisplayItems(){
-        System.out.printf("%25s", "Items\n");
-        System.out.println("--------------------------------------------");
-        System.out.printf("%10s%19s%13s", "Name", "Price", "Stock\n");
-        System.out.println("--------------------------------------------");
-        for (int i = 0; i < slotList.size(); i++)
-                System.out.printf("%d.) %-17s%8.2f%s%10d\n", i+1, slotRecord.get(i).getName(),slotRecord.get(i).getPrice(), "P", slotList.get(i).size());
-    }
     
     /**
      * Restocks selected item by adding inputted number to current stock.
@@ -218,6 +203,8 @@ public class RegularVM {
     
     /**
      * Dispenses all money in denominations currently inside the machine.
+     * 
+     * @return message to be displayed to customer
      */
     public String collectMoney()
     {
@@ -237,6 +224,7 @@ public class RegularVM {
      * 
      * @param val value of money denomination
      * @param amt number of bills or coins to add
+     * @return message to be displayed to customer
      */
     public String replenishMoney(int val, int amt){
         cashRegister.addMoney(val, amt);
@@ -245,6 +233,8 @@ public class RegularVM {
 
     /**
      * Prints the number of each denomination currently in the machine.
+     * 
+     * @return message to be displayed to customer
      */
     public String viewDenominations(){
         String msg = "";
@@ -326,6 +316,9 @@ public class RegularVM {
         return this.balance;
     }
 
+    /**
+     * Removes all balance of the customer in the machine.
+     */
     public void clearBalance(){
         this.balance = 0;
     }

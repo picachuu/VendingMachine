@@ -1,3 +1,4 @@
+package MCO2_Lim_Jimenez;
 /**
  * Money represents the money held within the vending machine holding a certain denomination value.
  */

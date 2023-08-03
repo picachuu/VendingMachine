@@ -1,16 +1,17 @@
+package MCO2_Lim_Jimenez;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim
  * The class is a blueprint to create an object, the class "SpecialVM" creates a Special vending machine
  * The class "SpecialVM" has 4 attributes: slotRecord, balance, FreqMap, itemOne;
  */
 public class SpecialVM extends RegularVM {
     protected Map<String, Integer> FreqMap = new LinkedHashMap<String, Integer>();
     protected Pizza itemOne;
+
 /**
  * This method creates a Special Vending Machine
  */
@@ -26,21 +27,21 @@ public class SpecialVM extends RegularVM {
      */
     public void StartSlots(){
         itemOne = new Pizza();
-        Item itemTwo = new Item("Pepperoni", 53, 136, 1, "resources/pizzapepperoni.png");
-        Item itemThree = new Item("Bacon", 69, 40, 1, "resources/pizzabacon.png");
-        Item itemFour = new Item("Onions", 55, 210, 1, "resources/pizzaonions.png");
-        Item itemFive = new Item("Mozarella", 55, 215, 1, "resources/pizzacheese.png");
-        Item itemSix = new Item("Olives", 40, 85, 1, "resources/pizzaolives.png");
+        Item itemTwo = new Item("Pepperoni", 53, 136, 1, "MCO2_Lim_Jimenez/resources/pizzapepperoni.png");
+        Item itemThree = new Item("Bacon", 69, 40, 1, "MCO2_Lim_Jimenez/resources/pizzabacon.png");
+        Item itemFour = new Item("Onions", 55, 210, 1, "MCO2_Lim_Jimenez/resources/pizzaonions.png");
+        Item itemFive = new Item("Mozarella", 55, 215, 1, "MCO2_Lim_Jimenez/resources/pizzacheese.png");
+        Item itemSix = new Item("Olives", 40, 85, 1, "MCO2_Lim_Jimenez/resources/pizzaolives.png");
         // Items not shown in the menu (Only sold with Pizza)
-        Item itemSeven = new Item( "Tomato Sauce", 20, 30, 2, "resources/pizzatomatosauce.png");
-        Item itemEight = new Item("Cheese Sauce", 20, 50, 2, "resources/pizzacheesesauce.png");
-        Item itemNine = new Item("Pesto Sauce", 20, 20, 2, "resources/pizzapesto.png");
+        Item itemSeven = new Item( "Tomato Sauce", 20, 30, 2, "MCO2_Lim_Jimenez/resources/pizzatomatosauce.png");
+        Item itemEight = new Item("Cheese Sauce", 20, 50, 2, "MCO2_Lim_Jimenez/resources/pizzacheesesauce.png");
+        Item itemNine = new Item("Pesto Sauce", 20, 20, 2, "MCO2_Lim_Jimenez/resources/pizzapesto.png");
         Item itemTen = new Item("Dough", 100, 200, 0);
         // Extra Items
-        Item itemEleven = new Item("Egg", 50, 42, "resources/pizzaegg.png");
-        Item itemTwelve = new Item("Tomato", 45, 12.3, "resources/pizzatomato.png");
-        Item itemThirteen = new Item("Bell Peppers", 43, 10.2, "resources/pizzabellpeppers.png");
-        Item itemFourteen = new Item("Basil", 37, 13.2, "resources/pizzabasil.png");
+        Item itemEleven = new Item("Egg", 50, 42, "MCO2_Lim_Jimenez/resources/pizzaegg.png");
+        Item itemTwelve = new Item("Tomato", 45, 12.3, "MCO2_Lim_Jimenez/resources/pizzatomato.png");
+        Item itemThirteen = new Item("Bell Peppers", 43, 10.2, "MCO2_Lim_Jimenez/resources/pizzabellpeppers.png");
+        Item itemFourteen = new Item("Basil", 37, 13.2, "MCO2_Lim_Jimenez/resources/pizzabasil.png");
         slotRecord.put(0,itemOne);
         slotRecord.put(1,itemTwo);
         slotRecord.put(2,itemThree);
@@ -66,6 +67,7 @@ public class SpecialVM extends RegularVM {
         }
 
     }
+    
     /**
      * This method displays the items in the vending machine
      * @return void 
@@ -94,6 +96,7 @@ public class SpecialVM extends RegularVM {
                     System.out.printf("%d.) %s\n", i+1, slotRecord.get(i).getName()); 
         }
     }
+
     /**
      * This method displays the items in the vending machine in maintenance view
      * @return void
@@ -121,6 +124,7 @@ public class SpecialVM extends RegularVM {
                 System.out.printf("%d.) %-17s%8.2f%s\n", i+1, extraItems.get(i).getName(),extraItems.get(i).getPrice(), "P");
         }
     }
+
     /**
      * This method displays the items in the vending machine
      * @return void
@@ -136,12 +140,13 @@ public class SpecialVM extends RegularVM {
         extraItems.put(replaceWith, container);
         
     }
+
     /**
      * This method adds an item to a given Pizza
      * @return boolean return if adding of item was successful
      * @param custom takes the Pizza object to add toppings to
      * @param index takes the index of the item/topping to be added
-     * @return
+     * @return flag returns true if adding of item was successful
      */
     public boolean addIngredient(Pizza custom, int index)
     {
@@ -161,7 +166,7 @@ public class SpecialVM extends RegularVM {
     /**
      * This method displays the prepartion the pizza will go through
      * @param custom the pizza to be prepared 
-     * @return
+     * @return prep the string of the preparation
      */
     public String displayPrep(Pizza custom)
     {
@@ -205,6 +210,7 @@ public class SpecialVM extends RegularVM {
 
         return prep;
     }
+
     /**
      * This method counts the frequency of an ingredient in the pizza being prepared
      * @param toInsert
@@ -216,11 +222,12 @@ public class SpecialVM extends RegularVM {
         else
             FreqMap.put(toInsert.getName(), 1);
     }
+
     /**
      * This method is used to order ingredients that are in the pizza
      * @param Price
      * @param Index
-     * @return
+     * @return msg the message to be displayed
      */
     public String orderIngredient(double Price, ArrayList<Item> Index)
     {
@@ -241,6 +248,7 @@ public class SpecialVM extends RegularVM {
         }
         return msg;
     }
+
     /**
      * This method is used to return / get itemOne which is Pizza
      * @return Pizza 
@@ -248,5 +256,4 @@ public class SpecialVM extends RegularVM {
     public Pizza getPizza() {
         return this.itemOne;
     }
-
 }

@@ -1,3 +1,8 @@
+package MCO2_Lim_Jimenez;
+/**
+ * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim.
+ * MCOMain is the main class of the program.
+ */
 public class MCOMain {
 	public static void main(String[] args) {
 		VMView vmView = new VMView();

@@ -1,9 +1,8 @@
+package MCO2_Lim_Jimenez;
 import java.util.*;
 /**
  * Javadoc documentation by Niccolo G Jimenez and Jannica S Lim
- * The class is a blueprint to create an object, the class "Pizza" creates a Pizza Object for a vending machine 
- * The class "Pizza" has 4 attributes: name, calories, price, stock;
- * 
+ * The class is a blueprint to create an object, the class "Pizza" creates a Pizza Object for a vending machine.
  */
 public class Pizza extends Item {    
     protected ArrayList<Item> ingredients;
