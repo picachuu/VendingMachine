@@ -167,7 +167,7 @@ public class VMView extends javax.swing.JFrame {
         flowLayout1.setAlignOnBaseline(true);
         jPanel2.setLayout(flowLayout1);
 
-        jLabel2.setIcon(new ImageIcon("MCO2_Lim_Jimenez/resources/vendingmachine.png"));
+        jLabel2.setIcon(new ImageIcon("resources/vendingmachine.png"));
         jPanel2.add(jLabel2);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);

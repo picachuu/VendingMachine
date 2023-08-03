@@ -118,13 +118,14 @@ public class RegularVM {
                 
                 msg += String.format("Dispensing " + slotRecord.get(selOrder).getName() + "...");
                 msg += String.format("\nThank you for your purchase!\n\n", balance);
-                //msg += receiveChange();
+                msg += receiveChange() + "\n";
                 }
                 else{
                     msg += String.format("!: Sorry, this machine does not have \nenough change to return.\n");   
                     msg += String.format("\nCancelling transaction..."); 
                     msg += String.format("\nReturning money...\n");   
-                    msg += receiveChange();                  
+                    msg += cashRegister.dispenseAll();  
+                    this.balance = 0;                
                 }
             }
             else{
@@ -132,7 +133,7 @@ public class RegularVM {
             }
         else
         {
-            msg += String.format("\n!: Sorry, that item is out of stock.\n");
+            msg += String.format("\n!: Sorry, that item is out \nof stock.\n");
         } 
 
         return msg;
@@ -171,7 +172,7 @@ public class RegularVM {
             {
                 slotList.get(index).add(slotRecord.get(index));
             }
-            System.out.printf("\nItem: %s stock has been set to: %d successfully.", slotRecord.get(index).getName(), amount);
+            System.out.printf("Item: %s stock has been set to: %d successfully.", slotRecord.get(index).getName(), amount);
         }
         else if (slotList.get(index).size() > amount )
         {
@@ -179,7 +180,7 @@ public class RegularVM {
             {
                 slotList.get(index).remove(slotRecord.get(index));
             }
-            System.out.printf("\nItem: %s stock has been set to: %d successfully.", slotRecord.get(index).getName(), amount);
+            System.out.printf("Item: %s stock has been set to: %d successfully.", slotRecord.get(index).getName(), amount);
         }
         
 
@@ -197,7 +198,7 @@ public class RegularVM {
         {
             slotList.get(index).get(i).changePrice(newPrice);
         }
-        System.out.printf("\nItem: %s has been set to P%.2f successfully.\n\n", slotRecord.get(index).getName(), newPrice);
+        System.out.printf("\nItem: %s has been set to P%.2f successfully.\n", slotRecord.get(index).getName(), newPrice);
     }
     
     /**

@@ -26,21 +26,21 @@ public class SpecialVM extends RegularVM {
      */
     public void StartSlots(){
         itemOne = new Pizza();
-        Item itemTwo = new Item("Pepperoni", 53, 136, 1, "MCO2_Lim_Jimenez/resources/pizzapepperoni.png");
-        Item itemThree = new Item("Bacon", 69, 40, 1, "MCO2_Lim_Jimenez/resources/pizzabacon.png");
-        Item itemFour = new Item("Onions", 55, 210, 1, "MCO2_Lim_Jimenez/resources/pizzaonions.png");
-        Item itemFive = new Item("Mozarella", 55, 215, 1, "MCO2_Lim_Jimenez/resources/pizzacheese.png");
-        Item itemSix = new Item("Olives", 40, 85, 1, "MCO2_Lim_Jimenez/resources/pizzaolives.png");
+        Item itemTwo = new Item("Pepperoni", 53, 136, 1, "resources/pizzapepperoni.png");
+        Item itemThree = new Item("Bacon", 69, 40, 1, "resources/pizzabacon.png");
+        Item itemFour = new Item("Onions", 55, 210, 1, "resources/pizzaonions.png");
+        Item itemFive = new Item("Mozarella", 55, 215, 1, "resources/pizzacheese.png");
+        Item itemSix = new Item("Olives", 40, 85, 1, "resources/pizzaolives.png");
         // Items not shown in the menu (Only sold with Pizza)
-        Item itemSeven = new Item( "Tomato Sauce", 20, 30, 2, "MCO2_Lim_Jimenez/resources/pizzatomatosauce.png");
-        Item itemEight = new Item("Cheese Sauce", 20, 50, 2, "MCO2_Lim_Jimenez/resources/pizzacheesesauce.png");
-        Item itemNine = new Item("Pesto Sauce", 20, 20, 2, "MCO2_Lim_Jimenez/resources/pizzapesto.png");
+        Item itemSeven = new Item( "Tomato Sauce", 20, 30, 2, "resources/pizzatomatosauce.png");
+        Item itemEight = new Item("Cheese Sauce", 20, 50, 2, "resources/pizzacheesesauce.png");
+        Item itemNine = new Item("Pesto Sauce", 20, 20, 2, "resources/pizzapesto.png");
         Item itemTen = new Item("Dough", 100, 200, 0);
         // Extra Items
-        Item itemEleven = new Item("Egg", 50, 42, "MCO2_Lim_Jimenez/resources/pizzaegg.png");
-        Item itemTwelve = new Item("Tomato", 45, 12.3, "MCO2_Lim_Jimenez/resources/pizzatomato.png");
-        Item itemThirteen = new Item("Bell Peppers", 43, 10.2, "MCO2_Lim_Jimenez/resources/pizzabellpeppers.png");
-        Item itemFourteen = new Item("Basil", 37, 13.2, "MCO2_Lim_Jimenez/resources/pizzabasil.png");
+        Item itemEleven = new Item("Egg", 50, 42, "resources/pizzaegg.png");
+        Item itemTwelve = new Item("Tomato", 45, 12.3, "resources/pizzatomato.png");
+        Item itemThirteen = new Item("Bell Peppers", 43, 10.2, "resources/pizzabellpeppers.png");
+        Item itemFourteen = new Item("Basil", 37, 13.2, "resources/pizzabasil.png");
         slotRecord.put(0,itemOne);
         slotRecord.put(1,itemTwo);
         slotRecord.put(2,itemThree);
@@ -154,10 +154,6 @@ public class SpecialVM extends RegularVM {
        { 
            custom.addIngredient(slotRecord.get(index));
            flag = true;
-       }
-       else
-       {
-           System.out.println("\nSorry, we ran out of " + slotRecord.get(index).getName() + "\n");
        }
     return flag;
     }

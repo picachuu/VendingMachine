@@ -164,9 +164,11 @@ public class VMController {
                     if (index == 0 && vmFactory.getVM() instanceof SpecialVM && vmFactory.getVM().slotList.get(9).size() > 0) {
                         testMenu.setVisible(false);
                         pizzaMake.clearTextArea();
-                        for (int i = 1; i < 14; i++){
-                            pizzaMake.setPizzaIcon(i, "MCO2_Lim_Jimenez/resources/Blank.png");
-                        }
+                        for (int i = 0; i < 3; i++)
+                            pizzaMake.setSauceIcon(i, "resources/Blank.png");
+                        for (int i = 1; i < 11; i++)
+                            pizzaMake.setPizzaIcon(i, "resources/Blank.png");
+                        
 
                         //instantiate buttons
                         refreshPizzaMakeScreen();
@@ -174,8 +176,8 @@ public class VMController {
                         pizzaMake.addTextArea("Dough is being prepared!\n(PHP100)\n");
                         if(((SpecialVM)vmFactory.getVM()).addIngredient(((SpecialVM)vmFactory.getVM()).getPizza(), 9)) {
                             pizzaMake.addTextArea("\nDough is ready!\n");
-                            pizzaMake.setPizzaIcon(0, "MCO2_Lim_Jimenez/resources/pizzabase.png");
-                            pizzaMake.setPizzaIcon(13, "MCO2_Lim_Jimenez/resources/Blank.png");
+                            pizzaMake.setPizzaIcon(0, "resources/pizzabase.png");
+                            pizzaMake.setPizzaIcon(10, "resources/Blank.png");
                             pizzaMake.buttonsEnabler(true);
                             pizzaMake.setVisible(true);
                     }} else if (index == 0 && vmFactory.getVM() instanceof SpecialVM){
@@ -220,7 +222,7 @@ public class VMController {
             public void actionPerformed(ActionEvent e) {
                 
                 if (vmFactory.getVM() instanceof SpecialVM) {
-                    if(testMenu.getNewItemSlotNumber() > 1 && testMenu.getNewItemSlotNumber() <= 8)
+                    if(testMenu.getNewItemSlotNumber() > 1 && testMenu.getNewItemSlotNumber() <= 6)
                     {
                         int found = -1;
 
@@ -232,7 +234,10 @@ public class VMController {
                     }
                     ((SpecialVM)vmFactory.getVM()).replaceItem(testMenu.getNewItemSlotNumber() - 1, found);
                 } else {
-                    vmView.displayErrorMessage("Invalid slot number.");
+                    if(testMenu.getNewItemSlotNumber() >= 6 && testMenu.getNewItemSlotNumber() <= 10)
+                        vmView.displayErrorMessage("Item cannot be replaced.");
+                    else
+                        vmView.displayErrorMessage("Invalid slot number.");
                 }}
                 else{
                     if(testMenu.getNewItemSlotNumber() > 0 && testMenu.getNewItemSlotNumber() <= 8)
@@ -415,7 +420,10 @@ public class VMController {
             public void actionPerformed(ActionEvent e) {
                     int index = Integer.valueOf(e.getActionCommand()) + 1;
                     if(((SpecialVM)vmFactory.getVM()).addIngredient(((SpecialVM)vmFactory.getVM()).getPizza(), index)) {
-                        pizzaMake.setPizzaIcon(index + 1, vmFactory.getVM().slotRecord.get(index).getImage());
+                        if(index >= 6 && index <=8){
+                            pizzaMake.setSauceIcon(index - 6, vmFactory.getVM().slotRecord.get(index).getImage());
+                        } else
+                            pizzaMake.setPizzaIcon(index + 1, vmFactory.getVM().slotRecord.get(index).getImage());
                         String add = String.format(vmFactory.getVM().slotRecord.get(index).getName() + " added.\n");
                         pizzaMake.addTextArea("\n" + add);
                         ((SpecialVM)vmFactory.getVM()).getPizza().TotalCalories();
@@ -425,7 +433,7 @@ public class VMController {
                         pizzaMake.addTextArea(price);
                         pizzaMake.addTextArea(calories);
                     } else {
-                        String error = String.format("Sorry, we ran out of " + vmFactory.getVM().slotRecord.get(index).getName() + ".\n");
+                        String error = String.format("\nSorry, we ran out of\n" + vmFactory.getVM().slotRecord.get(index).getName() + ".\n");
                         pizzaMake.addTextArea(error);
                     }
             
@@ -446,10 +454,11 @@ public class VMController {
                 if(vmFactory.getVM().getBalance() >= ((SpecialVM)vmFactory.getVM()).getPizza().getPrice()) {
                     pizzaMake.addTextArea(((SpecialVM)vmFactory.getVM()).orderIngredient(((SpecialVM)vmFactory.getVM()).getPizza().getPrice(), ((SpecialVM)vmFactory.getVM()).getPizza().getIngredients()));
                     pizzaMake.addTextArea(((SpecialVM)vmFactory.getVM()).displayPrep(((SpecialVM)vmFactory.getVM()).getPizza()));
-                    for (int i = 0; i < 13; i++){
-                        pizzaMake.setPizzaIcon(i, "MCO2_Lim_Jimenez/resources/Blank.png");
-                        }
-                    pizzaMake.setPizzaIcon(13, "MCO2_Lim_Jimenez/resources/boxed.png");
+                    for (int i = 0; i < 3; i++)
+                        pizzaMake.setSauceIcon(i, "resources/Blank.png");
+                    for (int i = 0; i < 11; i++)
+                        pizzaMake.setPizzaIcon(i, "resources/Blank.png");
+                    pizzaMake.setPizzaIcon(10, "resources/boxed.png");
                 } else {
                     String error = String.format("\nSorry, you don't have \nenough money to buy this.\nPlease return \nto the menu.\n");
                     pizzaMake.addTextArea(error);
@@ -488,17 +497,17 @@ public class VMController {
 
                     for(int i = 0; i < 8; i++) {
                         if(vmFactory.getVM() instanceof SpecialVM)
-                            if(vmFactory.getVM().slotRecord.get(i).getType() != 0 || vmFactory.getVM().slotRecord.get(i).getType() != 2) {                        
+                            if(vmFactory.getVM().slotRecord.get(i).getType() != 0 && vmFactory.getVM().slotRecord.get(i).getType() != 2) {                        
                                 if(vmFactory.getVM().slotList.get(i).size() == 0) {
                                     testMenu.setOrderBTNText("Empty", i);
                                     testMenu.setPriceLabelText(" ", i);
                                     testMenu.setToolTipText(null, i);
                                 } else{
-                                testMenu.setOrderBTNText(vmFactory.getVM().slotRecord.get(i).getName(), i);
-                                String msg = String.format("P%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
-                                testMenu.setPriceLabelText(msg, i);
-                                String msg2 = String.format("Calories:%.1fkcal", vmFactory.getVM().slotRecord.get(i).getCalories());
-                                testMenu.setToolTipText(msg2, i);
+                                    testMenu.setOrderBTNText(vmFactory.getVM().slotRecord.get(i).getName(), i);
+                                    String msg = String.format("P%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
+                                    testMenu.setPriceLabelText(msg, i);
+                                    String msg2 = String.format("Calories:%.1fkcal", vmFactory.getVM().slotRecord.get(i).getCalories());
+                                    testMenu.setToolTipText(msg2, i);
                                 }
                             } else {
                                 testMenu.setBtnVisibility(false, i);
@@ -509,14 +518,14 @@ public class VMController {
                                     testMenu.setOrderBTNText("Empty", i);
                                     testMenu.setPriceLabelText(" ", i);
                                     testMenu.setToolTipText(null, i);
-                                } else{
+                            } else{
                                 testMenu.setOrderBTNText(vmFactory.getVM().slotRecord.get(i).getName(), i);
                                 String msg = String.format("P%.2f", vmFactory.getVM().slotRecord.get(i).getPrice());
                                 testMenu.setPriceLabelText(msg, i);
                                 String msg2 = String.format("Calories:%.1fkcal", vmFactory.getVM().slotRecord.get(i).getCalories());
                                 testMenu.setToolTipText(msg2, i);
-                                }
                             }
+                        }
                     }
 
                     for(int i = 0; i < vmFactory.getVM().slotRecord.size(); i++) {
@@ -543,10 +552,15 @@ public class VMController {
                 int j = i + 1;
                 if(vmFactory.getVM().slotRecord.get(j).getType() != 0 || vmFactory.getVM().slotRecord.get(j).getType() != 3) {                  
                     if(vmFactory.getVM().slotList.get(j).size() == 0) {
-                        pizzaMake.setIngredientLabel(i, "Empty");
-                        pizzaMake.setIngredientButtonIcon(i, null);
-                        pizzaMake.setIngredientPriceLabel(i, "");
-                        pizzaMake.setToolTipText(i, null);
+                        if (i < 5){
+                            pizzaMake.setIngredientLabel(i, "Empty");
+                            pizzaMake.setIngredientButtonIcon(i, null);
+                            pizzaMake.setIngredientPriceLabel(i, "");                            
+                        }
+                        else {
+                            pizzaMake.setButtonText(i, "   Empty   ");
+                            pizzaMake.setToolTipText(i, null);
+                        }
                     } else{
                         if(i < 5){
                             pizzaMake.setIngredientLabel(i, vmFactory.getVM().slotRecord.get(j).getName());
@@ -554,7 +568,7 @@ public class VMController {
                             pizzaMake.setIngredientPriceLabel(i, msg);
                             String msg2 = String.format("Calories: %.1fkcal", vmFactory.getVM().slotRecord.get(j).getCalories());
                             pizzaMake.setToolTipText(i, msg2);
-                            String icon = "MCO2_Lim_Jimenez/resources/" + vmFactory.getVM().slotRecord.get(j).getName() + ".png";
+                            String icon = "resources/" + vmFactory.getVM().slotRecord.get(j).getName() + ".png";
                             pizzaMake.setIngredientButtonIcon(i, icon);
                         } else if (i >= 5){
                             pizzaMake.setButtonText(i, vmFactory.getVM().slotRecord.get(j).getName());
