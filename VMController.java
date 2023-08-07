@@ -421,6 +421,7 @@ public class VMController {
             public void actionPerformed(ActionEvent e) {
                     int index = Integer.valueOf(e.getActionCommand()) + 1;
                     if(((SpecialVM)vmFactory.getVM()).addIngredient(((SpecialVM)vmFactory.getVM()).getPizza(), index)) {
+                        vmFactory.getVM().slotList.get(index).remove(vmFactory.getVM().slotList.get(index).size() - 1);
                         if(index >= 6 && index <=8){
                             pizzaMake.setSauceIcon(index - 6, vmFactory.getVM().slotRecord.get(index).getImage());
                         } else
